@@ -2,6 +2,8 @@
 
 Personal portfolio site showcasing my work in full-stack development and game development tools.
 
+If you're here from my online stuff, what's up! Just keep my real name lowkey, thanks.
+
 ## About
 
 I'm a developer who builds systems that eliminate friction and bring people together. This site highlights some of my technical projects, from live web platforms to game development automation tools.
@@ -10,9 +12,6 @@ I'm a developer who builds systems that eliminate friction and bring people toge
 
 The site features several projects including SoloDevelopment (a community platform), automation tools for game development, and various full-stack applications. Each project page includes demos and technical details.
 
-## Hey CharlesKleeven folks
-
-If you're here from my online stuff, what's up! Just keep my real name lowkey, thanks.
 
 ## Local Development
 
