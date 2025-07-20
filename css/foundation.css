@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* 
+==================================================================
+                CSS VARIABLES & FOUNDATION STYLES
+==================================================================
+*/
+
+:root {
+    /* Typography Families */
+    --font-display: 'Rubik', sans-serif;     /* Headings, hero titles */
+    --font-main: 'DM Sans', sans-serif;      /* Body text, general use */
+
+    /* Typography Scale - Responsive font sizes */
+    --text-2xs: 0.7rem;     /* 11px - tiny text */
+    --text-xs: 0.75rem;     /* 12px - captions, meta info */
+    --text-xs-alt: 0.8rem;  /* 13px - alternative small text */
+    --text-sm: 0.875rem;    /* 14px - small text, tags */
+    --text-base: 1rem;      /* 16px - body text */
+    --text-base-alt: 1.05rem; /* 17px - alternative body text */
+    --text-lg: 1.125rem;    /* 18px - large body text */
+    --text-xl: 1.25rem;     /* 20px - small headings */
+    --text-2xl: 1.5rem;     /* 24px - section headings */
+    --text-3xl: 1.875rem;   /* 30px - page headings */
+    --text-4xl: 2.25rem;    /* 40px - hero headings */
+    --text-5xl: 3.5rem;     /* 48px - large hero (name) */
+
+    /* Line Heights */
+    --leading-tight: 1.2;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.6;
+    
+    /* === PRIMARY BRAND COLORS === */
+    --nav-bg: #1b2022;
+    --hero-bg: #2b343e;
+    --hero-title-text: rgb(243, 245, 242);
+    --blue-button: #56758c;
+    --blue-button-hover: #4a6578;
+    --sage-green: rgba(202, 221, 186, 0.78);
+    --sage-green-lighter: rgba(196, 230, 186, 0.815);
+    --sage-green-darker: rgba(174, 193, 159, 0.78);
+    --sage-blue: rgba(190, 207, 228, 0.664);
+
+    /* === BACKGROUND COLORS === */
+    --bg-light: #e6ebf52e;
+    --bg-dark: #30281a;
+    --bg-soft: rgb(211 213 219 / 16%);
+    --bg-soft-blue: #f6f8fa;
+    --bg-white: white;
+    --bg-transparent: transparent;
+    --bg-hero-fullscreen: rgb(33, 33, 33);
+    --bg-technical-work: var(--text-main);
+
+    /* === TEXT COLORS === */
+    --text-main: #2A2620;
+    --text-muted: #505d6b;
+    --text-light: #F9F8F4;
+    --text-technical-work: #F9F8F4;
+    --text-tech-line: var(--bg-soft-blue);
+    --text-full-name: var(--text-technical-work);
+
+    /* === ACCENT & UTILITY COLORS === */
+    --accent: #b9f1cfb9;
+
+    /* === FORM & INPUT COLORS === */
+    --form-bg: #ffffffe8;
+    --form-border: #d6d3d1;
+    --form-focus: #4a6578a1;
+    --form-input-bg: #ffffff;
+
+    /* === FOOTER COLORS === */
+    --footer-bg: #1b1d1d;
+    --footer-border: #505d6b59;
+
+    /* === TAG COLORS === */
+    --tag-default-bg: #E2E8F0;
+    --tag-tech-bg: rgba(157, 164, 180, 0.15);
+    --tag-tech-text: #3e3f4a;
+    --tag-tech-border: rgba(62, 64, 74, 0.08);
+
+    /* === GREEN VARIANTS === */
+    --green-project: #4a6b47;
+
+    /* === SHADOW COLORS === */
+    --shadow-light: rgba(42, 38, 32, 0.06);
+    --shadow-medium: rgba(42, 38, 32, 0.082);
+    --shadow-dark: rgba(42, 38, 32, 0.04);
+    --shadow-button: rgba(8, 32, 56, 0.284);
+    --shadow-button-hover: rgba(8, 32, 56, 0.2);
+    --shadow-video-hover: rgba(8, 32, 56, 0.076);
+    --shadow-automation: rgba(0, 0, 0, 0.08);
+    --shadow-overlay-light: rgba(0, 0, 0, 0.1);
+    --shadow-overlay-medium: rgba(0, 0, 0, 0.2);
+    --shadow-overlay-dark: rgba(0, 0, 0, 0.3);
+    --shadow-hero-text: rgba(15, 20, 28, 0.235);
+
+    /* === LIGHTBOX & OVERLAY === */
+    --lightbox-overlay: rgba(0, 0, 0, 0.85);
+
+    /* === GLASS EFFECT COLORS === */
+    --glass-bg-primary: rgba(255, 255, 255, 0.2);
+    --glass-bg-secondary: rgba(255, 255, 255, 0.1);
+    --glass-text: rgba(255, 255, 255, 0.675);
+
+    /* Border Radius */
+    --radius: 0.65rem;
+    --radius-lg: 0.75rem;
+
+    /* Shadows */
+    --shadow: 0 4px 12px var(--shadow-light);
+    --shadow-lg: 0 8px 20px var(--shadow-medium);
+}
+
+/* === DARK MODE (AUTO-DETECTED) === */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* PRIMARY BRAND COLORS - Dark Mode */
+        --nav-bg: #0f1419;
+        --hero-bg: #3a4562;
+        --hero-title-text: rgb(248, 250, 252);
+        --blue-button: #66a5da;
+        --blue-button-hover: #2d384e;
+        --sage-green: rgb(158 202 178 / 85%);
+        --sage-green-lighter: rgba(144, 198, 169, 0.9);
+        --sage-green-darker: rgba(118, 168, 139, 0.8);
+        --sage-blue: rgb(173 204 234 / 75%);
+
+        /* BACKGROUND COLORS - Dark Mode */
+        --bg-light: #202730;
+        --bg-dark: #0d1117;
+        --bg-soft: rgb(93 101 113 / 15%);
+        --bg-soft-blue: #dfe6f321;
+        --bg-white: #2d3748;
+        --bg-hero-fullscreen: #212324;
+        --bg-technical-work: white;
+
+        /* TEXT COLORS - Dark Mode */
+        --text-main: #e2e8f0;
+        --text-muted: #8998ad8c;
+        --text-light: #edeff1;
+        --text-technical-work: #f8fafc;
+        --text-tech-line: var(--sage-blue);
+        --text-full-name: var(--text-technical-work);
+
+        /* ACCENT & UTILITY COLORS - Dark Mode */
+        --accent: #86bc9f;
+
+        /* FORM & INPUT COLORS - Dark Mode */
+        --form-bg: rgb(28 31 37 / 95%);
+        --form-border: #0a0d0d;
+        --form-focus: #3e84bc;
+        --form-input-bg: #c7ced7;
+
+        /* FOOTER COLORS - Dark Mode */
+        --footer-bg: #0d1117;
+        --footer-border: rgba(94, 108, 132, 0.3);
+
+        /* TAG COLORS - Dark Mode */
+        --tag-default-bg: rgba(100, 116, 139, 0.25);
+        --tag-tech-bg: rgb(188 192 208 / 27%);
+        --tag-tech-text: #e5f6ff;
+        --tag-tech-border: rgb(164 180 203 / 61%);
+
+        /* GREEN VARIANTS - Dark Mode */
+        --green-project: #71b896;
+
+        /* SHADOW COLORS - Dark Mode */
+        --shadow-light: rgba(0, 0, 0, 0.25);
+        --shadow-medium: rgba(0, 0, 0, 0.35);
+        --shadow-dark: rgba(0, 0, 0, 0.15);
+        --shadow-button: rgba(0, 0, 0, 0.4);
+        --shadow-button-hover: rgba(0, 0, 0, 0.3);
+        --shadow-video-hover: rgba(0, 0, 0, 0.2);
+        --shadow-automation: rgba(0, 0, 0, 0.3);
+        --shadow-overlay-light: rgba(0, 0, 0, 0.2);
+        --shadow-overlay-medium: rgba(0, 0, 0, 0.4);
+        --shadow-overlay-dark: rgba(0, 0, 0, 0.6);
+        --shadow-hero-text: rgba(0, 0, 0, 0.6);
+
+        /* LIGHTBOX & OVERLAY - Dark Mode */
+        --lightbox-overlay: rgba(0, 0, 0, 0.9);
+
+        /* GLASS EFFECT COLORS - Dark Mode */
+        --glass-bg-primary: rgba(45, 55, 68, 0.4);
+        --glass-bg-secondary: rgba(30, 35, 41, 0.3);
+        --glass-text: rgba(226, 232, 240, 0.9);
+    }
+}
+
+/* 
+==================================================================
+                       GLOBAL BASE STYLES
+==================================================================
+*/
+
+body {
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: var(--text-base);
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    line-height: var(--leading-normal);
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography Utility Classes */
+.serif {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.accent-link {
+    color: var(--blue-button);
+    text-decoration: none;
+    transition: color .2s ease, transform .2s ease;
+    font-weight: 500;
+}
+
+.accent-link:hover {
+    color: var(--blue-button-hover);
+    text-decoration: underline;
+    transform: translateY(-1px);
+}
+
+/* Layout Containers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.content-section {
+    padding: 4rem 1.5rem;
+    color: var(--text-main);
+}
+
+.content-section.darker {
+    background-color: var(--bg-soft);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Typography Size Utilities */
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
+.text-3xl { font-size: var(--text-3xl); }
+.text-4xl { font-size: var(--text-4xl); }
+.text-5xl { font-size: var(--text-5xl); }
+
+/* Spacing Utilities */
+.py-16 { padding: 4rem 0; }
+.py-20 { padding: 5rem 0; }
+
+/* Line Height Utilities */
+.leading-relaxed { line-height: var(--leading-relaxed); }

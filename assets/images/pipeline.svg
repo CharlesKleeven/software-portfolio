@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="700"
+   height="700"
+   viewBox="0 0 700 700"
+   version="1.1"
+   id="svg18"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <style
+     id="style1">
+    text { font-family: 'Nunito', sans-serif; }
+  </style>
+  <!-- Aseprite File -->
+  <rect
+     x="260"
+     y="27.808645"
+     width="180"
+     height="80"
+     rx="12"
+     fill="#4a6b7a"
+     stroke="#2a2620"
+     stroke-width="1.5"
+     id="rect1" />
+  <text
+     x="350.23438"
+     y="62.808647"
+     text-anchor="middle"
+     fill="#ffffff"
+     font-size="16px"
+     font-weight="600"
+     id="text1">Aseprite File</text>
+  <text
+     x="349.69531"
+     y="82.808647"
+     text-anchor="middle"
+     fill="#cae2d3"
+     font-size="13px"
+     font-style="italic"
+     id="text2"
+     style="font-size:13.3333px">tagged layers</text>
+  <!-- Arrow 1 -->
+  <path
+     d="m 350,114.10452 v 30"
+     stroke="#4a6b7a"
+     stroke-width="2"
+     fill="none"
+     marker-end="url(#arrowhead)"
+     id="path2"
+     style="marker-end:url(#RoundedArrow)" />
+  <!-- Custom Exporter -->
+  <polygon
+     points="350,220 180,220 200,190 180,160 350,160 370,190 "
+     fill="#aec1a9"
+     stroke="#6b7d56"
+     stroke-width="1.5"
+     id="polygon2"
+     transform="matrix(1.126822,0,0,0.99811315,37.0684,2.7972938)" />
+  <text
+     x="349.73047"
+     y="199.29086"
+     text-anchor="middle"
+     fill="#2a2620"
+     font-size="16px"
+     font-weight="600"
+     id="text3">Custom Exporter</text>
+  <!-- Arrow down from exporter -->
+  <!-- JSON Metadata -->
+  <rect
+     x="156.7308"
+     y="277.71555"
+     width="180"
+     height="80"
+     rx="12"
+     fill="#f1e6d3"
+     stroke="#c4a574"
+     stroke-width="1.5"
+     id="rect3" />
+  <text
+     x="246.73079"
+     y="307.71555"
+     text-anchor="middle"
+     fill="#2a2620"
+     font-size="16px"
+     font-weight="600"
+     id="text4">JSON Metadata</text>
+  <text
+     x="246.73079"
+     y="325.71555"
+     text-anchor="middle"
+     fill="#6b5d50"
+     font-size="12px"
+     font-style="italic"
+     id="text5">component mappings</text>
+  <text
+     x="246.73079"
+     y="340.71555"
+     text-anchor="middle"
+     fill="#6b5d50"
+     font-size="12px"
+     font-style="italic"
+     id="text6">animation data</text>
+  <!-- Spritesheets -->
+  <g
+     id="g18"
+     transform="translate(12.568306)">
+    <rect
+       x="353.79193"
+       y="277.80865"
+       width="180"
+       height="80"
+       rx="12"
+       fill="#e8d5c4"
+       stroke="#b8a584"
+       stroke-width="1.5"
+       id="rect6" />
+    <text
+       x="443.79193"
+       y="340.80865"
+       text-anchor="middle"
+       fill="#6b5d50"
+       font-size="12px"
+       font-style="italic"
+       id="text9">animation frames</text>
+    <text
+       x="443.79193"
+       y="325.80865"
+       text-anchor="middle"
+       fill="#6b5d50"
+       font-size="12px"
+       font-style="italic"
+       id="text8">component atlas</text>
+    <text
+       x="443.79193"
+       y="307.80865"
+       text-anchor="middle"
+       fill="#2a2620"
+       font-size="16px"
+       font-weight="600"
+       id="text7">Spritesheets</text>
+  </g>
+  <!-- Arrows from both files to importer -->
+  <!-- Custom Animation Importer Plugin -->
+  <polygon
+     points="200,460 180,430 360,430 380,460 360,490 180,490 "
+     fill="#aec1a9"
+     stroke="#6b7d56"
+     stroke-width="1.5"
+     id="polygon10"
+     transform="matrix(1.1068561,0,0,1.0595782,35.589488,-41.001466)" />
+  <text
+     x="350.03418"
+     y="443.25656"
+     text-anchor="middle"
+     fill="#2a2620"
+     font-size="14px"
+     font-weight="600"
+     id="text10">Animation Importer</text>
+  <text
+     x="349.90088"
+     y="463.25656"
+     text-anchor="middle"
+     fill="#2a2620"
+     font-size="14px"
+     font-weight="600"
+     id="text11">Plugin</text>
+  <!-- Arrows from importer to both systems - no overlap -->
+  <!-- Runtime System -->
+  <rect
+     x="92.776459"
+     y="546.1311"
+     width="242.59579"
+     height="119.81213"
+     rx="15.321839"
+     fill="#2b343e"
+     stroke="#1b242a"
+     stroke-width="1.57966"
+     id="rect12" />
+  <text
+     x="211.75928"
+     y="586.03723"
+     text-anchor="middle"
+     fill="#ffffff"
+     font-size="16px"
+     font-weight="600"
+     id="text12">Runtime System</text>
+  <text
+     x="211.75928"
+     y="616.03723"
+     text-anchor="middle"
+     fill="#cae2d3"
+     font-size="12px"
+     font-style="italic"
+     id="text13">portrait database</text>
+  <text
+     x="211.75928"
+     y="634.03723"
+     text-anchor="middle"
+     fill="#cae2d3"
+     font-size="12px"
+     font-style="italic"
+     id="text14">animation controller &amp; libraries</text>
+  <!-- Editor Tools -->
+  <rect
+     x="371.42096"
+     y="560.77307"
+     width="180"
+     height="80"
+     rx="12"
+     fill="#56758c"
+     stroke="#3e5662"
+     stroke-width="1.5"
+     id="rect15" />
+  <text
+     x="461.42096"
+     y="590.77307"
+     text-anchor="middle"
+     fill="#ffffff"
+     font-size="16px"
+     font-weight="600"
+     id="text16">Editor Tools</text>
+  <text
+     x="461.42096"
+     y="608.77307"
+     text-anchor="middle"
+     fill="#cae2d3"
+     font-size="12px"
+     font-style="italic"
+     id="text17">expression editor</text>
+  <text
+     x="461.42096"
+     y="623.77307"
+     text-anchor="middle"
+     fill="#cae2d3"
+     font-size="12px"
+     font-style="italic"
+     id="text18">animation previewer</text>
+  <!-- Arrow markers -->
+  <defs
+     id="defs18">
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow-9"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path8-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow-2"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path8-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow-0"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path8-1" />
+    </marker>
+  </defs>
+  <path
+     d="m 350,232.40041 v 30"
+     stroke="#4a6b7a"
+     stroke-width="2"
+     fill="none"
+     marker-end="url(#arrowhead)"
+     id="path2-9"
+     style="marker-end:url(#RoundedArrow-9)" />
+  <path
+     d="m 350,360.70651 v 30"
+     stroke="#4a6b7a"
+     stroke-width="2"
+     fill="none"
+     marker-end="url(#arrowhead)"
+     id="path2-4"
+     style="marker-end:url(#RoundedArrow-2)" />
+  <path
+     d="m 350,495.17849 v 30"
+     stroke="#4a6b7a"
+     stroke-width="2"
+     fill="none"
+     marker-end="url(#arrowhead)"
+     id="path2-5"
+     style="marker-end:url(#RoundedArrow-0)" />
+</svg>

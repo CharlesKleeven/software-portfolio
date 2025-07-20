@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Jodie Nguyen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="antialiased text-stone-800 contact-page">
+    <!-- Header -->
+    <header class="header"></header>
+
+    <!-- Contact Content -->
+    <section class="contact-main-section fade-in-up">
+        <div class="container">
+            <div class="contact-form-wrapper">
+                <div class="contact-form-card">
+                    <h1 class="contact-title serif">Contact me</h1>
+
+                    <p class="contact-description">
+                        I'd love to hear from you! Feel free to reach out about my work, potential opportunities, or just to say hello.
+                    </p>
+
+                    <p class="contact-email-info">
+                        You can also email me directly at
+                        <a href="mailto:ngoc.jodie@gmail.com" class="accent-link">ngoc.jodie@gmail.com</a>.
+                    </p>
+
+                    <!-- Netlify form -->
+                    <form name="contact" method="POST" data-netlify="true" action="/thank_you.html" class="contact-form">
+                        <input type="hidden" name="form-name" value="contact" />
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First name*</label>
+                                <input type="text" id="firstName" name="firstName" required class="form-input" />
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email*</label>
+                            <input type="email" id="email" name="email" required class="form-input" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject*</label>
+                            <input type="text" id="subject" name="subject" required class="form-input" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message*</label>
+                            <textarea id="message" name="message" rows="5" required class="form-textarea"></textarea>
+                        </div>
+
+                        <button type="submit" class="send-button">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/components.js"></script>
+</body>
+</html>

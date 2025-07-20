@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context-Aware Dialogue System - Jodie Nguyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header"></header>
+
+  <!-- Hero -->
+  <section class="hero-section fade-in-up">
+    <div class="container">
+      <h1 class="hero-title subpage">Context-Aware Dialogue System</h1>
+      <p class="hero-description">
+        Dynamic conversation engine that eliminates thousands of manual scripting combinations through contextual AI
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content-section fade-in-up">
+    <div class="container">
+      <div class="project-detail-container">
+        
+        <!-- Overview -->
+        <div class="fade-in-up">
+          <h2 class="section-title">The Challenge</h2>
+          <p class="challenge-text">Static dialogue systems break immersion in narrative games. Characters need to adapt to time of day, relationship history, story progress, and player choices — creating believable NPCs that remember past interactions.</p>
+          <p class="challenge-text-final">Traditional branching dialogue becomes exponentially complex with multiple variables. I needed a dynamic system that could handle contextual awareness without requiring manual scripting of every possible conversation state.</p>
+
+          <!-- System Diagram -->
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="/assets/images/dialogue-flow-sketch.png" data-lightbox-type="image">
+                <img src="/assets/images/dialogue-flow-sketch.png" alt="Dialogue system architecture overview" class="architecture-diagram lightbox-img">
+              </a>
+              <p class="media-caption">Rule-based architecture with priority selection and automatic fallbacks</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <section class="tech-implementation-section fade-in-up">
+          <div class="tech-section-header">
+            <h2 class="section-title">Technical Implementation</h2>
+            <p class="tech-section-attribution">
+              Inspired by <a href="https://www.youtube.com/watch?v=tAbBID3N64A" target="_blank" class="accent-link">Elan Ruskin's GDC talk</a> on dynamic dialogue, implemented with custom fact dictionaries and priority selection.
+            </p>
+          </div>
+
+          <div class="dialogue-tech-grid">
+            <div class="tech-section">
+              <h3 class="tech-section-title">Fact & Priority System</h3>
+              <div class="tech-features">
+                <p><span class="feature-label">Contextual Facts:</span> Tracks player actions, relationships, world state, and story progress</p>
+                <p><span class="feature-label">Smart Selection:</span> More specific dialogue conditions automatically take priority</p>
+                <p><span class="feature-label">Automatic Fallback:</span> Always has appropriate dialogue, never breaks immersion</p>
+              </div>
+            </div>
+
+            <div class="tech-section">
+              <h3 class="tech-section-title">Event-Driven Flow</h3>
+              <div class="tech-features">
+                <p><span class="feature-label">Dynamic Triggers:</span> Player actions and world events update conversation context</p>
+                <p><span class="feature-label">Multi-Character:</span> Supports complex group conversations with relationship dynamics</p>
+                <p><span class="feature-label">System Integration:</span> Works seamlessly with portrait and audio systems</p>
+              </div>
+            </div>
+
+            <div class="tech-section">
+              <h3 class="tech-section-title">Contextual Intelligence</h3>
+              <div class="tech-features">
+                <p><span class="feature-label">World Awareness:</span> Responds to time, weather, location, and story state</p>
+                <p><span class="feature-label">Relationship Memory:</span> NPCs remember and reference past interactions</p>
+                <p><span class="feature-label">Zero Manual Scripting:</span> New content automatically integrates without combinatorial complexity</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Results -->
+        <div class="results-section fade-in-up">
+          <h2 class="section-title">Results</h2>
+          <div class="results-grid">
+            <div class="result-card">
+              <h3>Before</h3>
+              <p>Static dialogue trees with manual branching for every scenario. Exponential complexity when adding new variables or story elements.</p>
+            </div>
+            <div class="result-card">
+              <h3>After</h3>
+              <p>Dynamic conversations that feel natural and contextual. New dialogue content integrates automatically without breaking existing interactions.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section class="nav-section fade-in-up">
+    <div class="container">
+      <div class="nav-buttons">
+        <a href="./data-persistence.html" class="button">← Previous Project</a>
+        <a href="../" class="button">All Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack-preview">
+    <div class="container">
+      <p class="tech-stack-line">
+        C#, GDScript, Godot, Event Architecture, Rule Engine
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+  
+  <!-- Global Lightbox -->
+  <div id="global-lightbox-overlay">
+    <div id="global-lightbox-content"></div>
+  </div>
+  
+  <script src="../js/components.js"></script>
+</body>
+</html>

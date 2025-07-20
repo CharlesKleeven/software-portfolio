@@ -1,0 +1,19 @@
+/work/solo-development /work/solo-development.html 200
+/work/portrait-pipeline /work/portrait-pipeline.html 200
+/work/world-editor /work/world-editor.html 200
+/work/data-persistence /work/data-persistence.html 200
+/work/dialogue-system /work/dialogue-system.html 200
+/about /pages/about.html 200
+/contact /pages/contact.html 200
+/thank-you /pages/thank-you.html 200
+
+# Redirect old page URLs to new structure
+/solo_development_page.html /work/solo-development 301
+/portrait_pipeline_page.html /work/portrait-pipeline 301
+/world_editor_page.html /work/world-editor 301
+/data_persistence_page.html /work/data-persistence 301
+/dialogue_system_page.html /work/dialogue-system 301
+/persistent_world_architecture_page.html /work/world-editor 301
+/about.html /about 301
+/contact.html /contact 301
+/thank_you.html /thank-you 301

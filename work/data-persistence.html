@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Persistence System - Jodie Nguyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header"></header>
+
+  <!-- Hero -->
+  <section class="hero-section fade-in-up">
+    <div class="container">
+      <h1 class="hero-title subpage">Data Persistence System</h1>
+      <p class="hero-description">
+        Crash-proof distributed system for real-time saving and loading of complex game worlds
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content-section fade-in-up">
+    <div class="container">
+      <div class="project-detail-container">
+        
+        <!-- The Challenge -->
+        <div class="content-grid">
+          <div class="fade-in-up">
+            <h2 class="section-title">The Challenge</h2>
+            <p class="challenge-text">Complex interactive worlds generate massive amounts of interconnected state data. Every placed object, modified tile, and system interaction must persist perfectly across save/load cycles and unexpected shutdowns.</p>
+            <p class="challenge-text-final">I needed a robust architecture that could handle large-scale data without crashing, maintain integrity across updates, and avoid the version fragility that breaks save games after code changes.</p>
+          </div>
+
+          <!-- Demo Video -->
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="/assets/videos/shipment-chest-demo.mp4" data-lightbox-type="video">
+                <video autoplay loop muted playsinline class="preview-video lightbox-img">
+                  <source src="/assets/videos/shipment-chest-demo.mp4" type="video/mp4">
+                </video>
+              </a>
+              <p class="media-caption">Complex objects retain all state across level transitions and crashes</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Approach -->
+        <div class="compact-tech-section fade-in-up">
+          <h2 class="section-title">Technical Approach</h2>
+          <p class="tech-section-attribution">
+            Inspired by <a href="https://github.com/godotneers/saving-loading-video" target="_blank" class="accent-link">Jan Thomä's guide</a> on save compatibility in Godot.
+          </p>
+
+          <div class="tech-compact-grid">
+            <div class="tech-compact-card">
+              <h3>Event-Driven Saving</h3>
+              <p>Systems contribute save data through signals when needed. No tight coupling — objects save themselves when they have changes to preserve.</p>
+            </div>
+
+            <div class="tech-compact-card">
+              <h3>Crash-Safe Design</h3>
+              <p>All changes save to memory first, with file writes only on explicit save actions. Prevents corruption from unexpected shutdowns or system crashes.</p>
+            </div>
+
+            <div class="tech-compact-card">
+              <h3>Self-Restoration</h3>
+              <p>Objects reconstruct themselves from saved data using their own logic. No centralized restoration system — each object knows how to rebuild itself.</p>
+            </div>
+
+            <div class="tech-compact-card">
+              <h3>Multi-Level Coordination</h3>
+              <p>Handles complex scenarios across scene boundaries. Automatically manages level transitions without data loss or duplicate restoration.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Benefits -->
+        <div class="innovations-section fade-in-up">
+          <h2 class="section-title">Key Benefits</h2>
+
+          <div class="innovation-cards">
+            <div class="innovation-card">
+              <h3>Update-Proof Compatibility</h3>
+              <p>Save files survive game updates through flexible property handling. Missing properties default gracefully, ensuring player progress isn't lost during development.</p>
+            </div>
+
+            <div class="innovation-card">
+              <h3>Large-Scale Performance</h3>
+              <p>Handles complex worlds with thousands of objects without performance degradation. Intelligent batching and memory management prevent crashes during heavy save operations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results-section fade-in-up">
+          <h2 class="section-title">Results</h2>
+          <div class="results-grid">
+            <div class="result-card">
+              <h3>Before</h3>
+              <p>Manual object tracking with brittle save states. Data loss during crashes and level transitions. Save incompatibility after any code changes.</p>
+            </div>
+            <div class="result-card">
+              <h3>After</h3>
+              <p>Automatic distributed persistence with complete data integrity. Seamless level transitions and crash recovery that preserves all player progress.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section class="nav-section fade-in-up">
+    <div class="container">
+      <div class="nav-buttons">
+        <a href="./world-editor.html" class="button">← Previous Project</a>
+        <a href="./dialogue-system.html" class="button">Next Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack-preview">
+    <div class="container">
+      <p class="tech-stack-line">
+        C#, Godot Resource System, Event Architecture
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+  
+  <!-- Global Lightbox -->
+  <div id="global-lightbox-overlay">
+    <div id="global-lightbox-content"></div>
+  </div>
+  
+  <script src="../js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoloDevelopment Community Platform - Jodie Nguyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header"></header>
+
+  <!-- Hero -->
+  <section class="hero-section fade-in-up">
+    <div class="container">
+      <h1 class="hero-title subpage">SoloDevelopment Community Platform</h1>
+      <p class="hero-description">
+        Live community platform with intelligent game discovery, built for the indie game development community at <a href="https://solodevelopment.org" target="_blank" class="accent-link">solodevelopment.org</a>
+      </p>
+      
+      <!-- Project Links -->
+      <div style="margin-top: 2rem; text-align: center;">
+        <a href="https://solodevelopment.org" target="_blank" class="button green" style="margin-right: 1rem;">Live Site</a>
+        <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="button blue">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content-section fade-in-up">
+    <div class="container">
+      <div class="project-detail-container">
+        
+        <!-- What SoloDevelopment Is -->
+        <div class="fade-in-up" style="margin: 4rem 0; text-align: center;">
+          <h2 class="section-title">What SoloDevelopment Is</h2>
+          
+          <div class="innovation-cards">
+            <div class="innovation-card">
+              <h3>Community Mission</h3>
+              <p>A community for people making games mostly by themselves. We help solo developers succeed by connecting them and giving their work fair visibility.</p>
+            </div>
+            
+            <div class="innovation-card">
+              <h3>Growing Platform</h3>
+              <p><strong>75,000+ members</strong> across Discord and Reddit, with monthly game jams, honest feedback, and showcase highlights.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Waterfall Discovery Interface -->
+        <div class="content-grid fade-in-up">
+          <div>
+            <h2 class="section-title">Waterfall Discovery Interface</h2>
+            <p class="challenge-text">CSS-native masonry layout with tabbed filtering and real-time search. Clean interface design with responsive grid positioning.</p>
+            <p class="challenge-text-final">Built for 60fps scrolling performance without JavaScript masonry libraries.</p>
+          </div>
+
+          <!-- Interface Demo -->
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="/assets/videos/solodev-showcase-demo.mp4" data-lightbox-type="video">
+                <video autoplay loop muted playsinline class="lightbox-img">
+                  <source src="/assets/videos/solodev-showcase-demo.mp4" type="video/mp4">
+                </video>
+              </a>
+              <p class="media-caption">Masonry grid with tabbed filtering and instant search</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- External Integration -->
+        <div class="content-grid fade-in-up">
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="/assets/videos/solodev-live-integration.mp4" data-lightbox-type="video">
+                <video autoplay loop muted playsinline class="lightbox-img">
+                  <source src="/assets/videos/solodev-live-integration.mp4" type="video/mp4">
+                </video>
+              </a>
+              <p class="media-caption">External itch.io integration with participant tracking</p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="section-title">External Integration</h2>
+            <p class="challenge-text"><strong>Data Pipeline:</strong> itch.io → Data Sync → Cache → Frontend with smart caching and 5-minute refresh cycles.</p>
+            <p class="challenge-text"><strong>Participant Tracking:</strong> Counts update automatically every 10 minutes with intelligent error handling.</p>
+            <p class="challenge-text-final"><strong>Graceful Fallbacks:</strong> System never shows broken data when external services fail.</p>
+          </div>
+        </div>
+
+        <!-- Production Architecture -->
+        <div class="content-grid fade-in-up">
+          <!-- Architecture Diagram -->
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="/assets/videos/solodev-user-update.mp4" data-lightbox-type="video">
+                <video autoplay loop muted playsinline class="lightbox-img">
+                  <source src="/assets/videos/solodev-user-update.mp4" type="video/mp4">
+                </video>
+              </a>
+              <p class="media-caption">User authentication with cross-session state persistence</p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="section-title">Production-Grade Infrastructure</h2>
+            <p class="challenge-text"><strong>Security:</strong> JWT + httpOnly cookies, bcrypt with 12 salt rounds, rate limiting (200 requests/15min)</p>
+            <p class="challenge-text"><strong>Performance:</strong> Zero cold-start hosting, intelligent caching, optimized MongoDB queries</p>
+            <p class="challenge-text-final"><strong>Reliability:</strong> Sophisticated error handling that never shows broken data, automated fallbacks, 99%+ uptime</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section class="nav-section fade-in-up">
+    <div class="container">
+      <div class="nav-buttons">
+        <a href="../" class="button">← All Projects</a>
+        <a href="./portrait-pipeline.html" class="button">Next Project →</a>
+      </div>
+    </div>
+  </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack-preview">
+    <div class="container">
+      <p class="tech-stack-line">
+        TypeScript, React, Node.js, Express, MongoDB, JWT, Render, Cloudflare
+      </p>
+    </div>
+  </section>
+
+  <!-- Global Lightbox -->
+  <div id="global-lightbox-overlay">
+    <div id="global-lightbox-content"></div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/components.js"></script>
+</body>
+</html>

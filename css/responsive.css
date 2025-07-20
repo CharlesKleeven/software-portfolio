@@ -1,0 +1,316 @@
+/* 
+==================================================================
+                        RESPONSIVE BREAKPOINTS
+==================================================================
+*/
+
+/* Tablet Layout (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .content-grid {
+        gap: 2rem;
+    }
+
+    .tech-stack-grid {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+}
+
+/* Mobile Navigation and Typography (max-width: 768px) */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1.5rem; /* Reduced from 2rem */
+    }
+    
+    .nav-link {
+        font-size: var(--text-xs);
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .content-section {
+        padding: 3rem 1rem;
+    }
+
+    .hero-section {
+        padding: 8rem 0 4rem;
+    }
+
+    .hero-title {
+        font-size: var(--text-3xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-xl);
+    }
+
+    .hero-description {
+        font-size: var(--text-base);
+    }
+
+    .projects-grid,
+    .project-layout,
+    .results-grid,
+    .about-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .innovation-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Tech Stack */
+    .tech-stack-grid {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.5rem;
+    }
+
+    /* Data Persistence Responsive */
+    .persistence-tech-section {
+        padding: 2rem;
+    }
+
+    .tech-compact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .compact-tech-section,
+    .innovations-section {
+        margin: 4rem 0;
+    }
+
+    .tech-section {
+        padding: 1.5rem;
+    }
+
+    .editor-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Contact form responsiveness */
+    .contact-form-card {
+        padding: 2rem;
+    }
+
+    .contact-title {
+        font-size: var(--text-2xl);
+    }
+
+    /* About page responsiveness */
+    .about-page-section {
+        padding-top: 7rem;
+        padding-bottom: 6rem;
+    }
+
+    .about-photo {
+        width: 16rem;
+        height: 20rem;
+    }
+    
+    .about-photo {
+        margin-bottom: 1rem;
+    }
+
+    /* Footer responsive */
+    .footer h3 {
+        font-size: var(--text-xl);
+    }
+
+    .footer {
+        padding: 3rem 0;
+    }
+}
+
+/* Small Mobile (max-width: 640px) */
+@media (max-width: 640px) {
+    .contact-form-card {
+        padding: 2rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    /* Typography Scaling */
+    .hero-title {
+        font-size: var(--text-3xl);
+    }
+    
+    .hero-title.name {
+        font-size: var(--text-4xl);
+        color: var(--hero-title-text);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--text-xl);
+    }
+    
+    .hero-description {
+        font-size: var(--text-base);
+    }
+
+    .section-title {
+        font-size: var(--text-xl);
+    }
+
+    .project-title {
+        font-size: var(--text-lg);
+    }
+
+    .innovation-card,
+    .result-card {
+        padding: 1.5rem;
+    }
+
+    .project-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .project-content {
+        padding: 1.25rem;
+    }
+
+    .project-image {
+        height: 180px;
+    }
+
+    .tech-stack-grid {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .tech-group {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .tech-section {
+        gap: 1.25rem;
+    }
+
+    .tech-section-title {
+        font-size: var(--text-base);
+    }
+
+    .automation-card,
+    .pipeline-step {
+        padding: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .about-photo {
+        width: 14rem;
+        height: 18rem;
+    }
+
+    .thank-you-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 7rem 0 3rem;
+    }
+    
+    /* Reduce hero padding */
+    .hero-section {
+        padding-top: 6rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .about-page-section {
+        padding-top: 7rem;
+        padding-bottom: 5rem;
+    }
+
+    .nav-links {
+        gap: 0.75rem;
+    }
+
+    .brand-name {
+        font-size: var(--text-lg);
+    }
+
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .hero-title {
+        font-size: var(--text-2xl);
+    }
+
+    .hero-title.name {
+        font-size: var(--text-3xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-lg);
+    }
+
+    .hero-description {
+        font-size: var(--text-sm);
+    }
+
+    .project-content {
+        padding: 1rem;
+    }
+
+    .innovation-card,
+    .result-card,
+    .automation-card,
+    .pipeline-step {
+        padding: 1.25rem;
+    }
+
+    .tech-section {
+        padding: 1.25rem;
+    }
+
+    .contact-form-card {
+        padding: 1.5rem;
+    }
+
+    .contact-title {
+        font-size: var(--text-xl);
+    }
+
+    .about-photo {
+        width: 12rem;
+        height: 16rem;
+    }
+
+    .footer-button {
+        padding: 0.75rem 1.25rem;
+        font-size: var(--text-sm);
+    }
+}

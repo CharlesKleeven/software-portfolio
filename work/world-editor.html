@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive World Editor - Jodie Nguyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header"></header>
+
+  <!-- Hero -->
+  <section class="hero-section fade-in-up">
+    <div class="container">
+      <h1 class="hero-title subpage">Interactive World Editor</h1>
+      <p class="hero-description">
+        Real-time terrain editing system that reduces required art assets by 70% through smart architecture
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content-section fade-in-up">
+    <div class="container">
+      <div class="project-detail-container">
+        
+        <!-- The Challenge -->
+        <div class="content-grid">
+          <div class="fade-in-up">
+            <h2 class="section-title">The Challenge</h2>
+            <p class="challenge-text">Interactive worlds need seamless terrain editing without requiring massive amounts of artwork. Every terrain type traditionally demands extensive art assets and complex edge-case handling for visual transitions.</p>
+            <p class="challenge-text-final">I needed a system where single tool actions could update multiple terrain layers simultaneously while maintaining perfect visual quality — all from minimal artwork.</p>
+          </div>
+          
+          <!-- Demo Video -->
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="/assets/videos/dual-grid-demo.mp4" data-lightbox-type="video">
+                <video autoplay loop muted playsinline class="preview-video lightbox-img">
+                  <source src="/assets/videos/dual-grid-demo.mp4" type="video/mp4">
+                </video>
+              </a>
+              <p class="media-caption">Single tool action updates multiple terrain layers with perfect transitions</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Innovation -->
+        <div class="world-features-section fade-in-up">
+          <h2 class="section-title">The Innovation</h2>
+          
+          <div class="features-highlight">
+            <div class="feature-block">
+              <h3 class="feature-block-title">Dual-Grid Architecture</h3>
+              <p class="feature-block-text">Separate logic and visual layers allow complex terrain transitions using only 16 base tiles. Logic drives behavior while visuals auto-generate perfect corners and edges for any terrain combination.</p>
+            </div>
+
+            <div class="feature-block">
+              <h3 class="feature-block-title">Multi-System Coordination</h3>
+              <p class="feature-block-text">Single tool actions cascade through multiple managers — updating terrain properties, triggering visual changes, managing energy costs, and syncing with other systems automatically.</p>
+            </div>
+          </div>
+
+          <!-- Visual Examples -->
+          <div class="content-grid terrain-grid">
+            <div class="fade-lightbox">
+              <div class="lightbox">
+                <a href="#" data-lightbox-src="/assets/images/terrain-screenshot.png" data-lightbox-type="image">
+                  <img src="/assets/images/terrain-screenshot.png" alt="Dual-grid system architecture" class="lightbox-img">
+                </a>
+                <p class="media-caption">Logic grid drives behavior, visual grid handles appearance automatically</p>
+              </div>
+            </div>
+
+            <div class="fade-lightbox">
+              <div class="lightbox">
+                <a href="#" data-lightbox-src="/assets/images/terrains-objects.png" data-lightbox-type="image">
+                  <img src="/assets/images/terrains-objects.png" alt="Complex terrain combinations" class="lightbox-img">
+                </a>
+                <p class="media-caption">Complex terrain mixing with integrated object simulation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results-section fade-in-up">
+          <h2 class="section-title">Results</h2>
+          <div class="results-grid">
+            <div class="result-card">
+              <h3>Before</h3>
+              <p>Manual tile placement with brittle corner handling. Each new terrain type required extensive artwork and complex edge-case debugging.</p>
+            </div>
+            <div class="result-card">
+              <h3>After</h3>
+              <p>Dynamic terrain system with 70% fewer required assets. New terrain types deploy with minimal artwork and automatically blend into any surrounding terrain.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Navigation -->
+  <section class="nav-section fade-in-up">
+    <div class="container">
+      <div class="nav-buttons">
+        <a href="./portrait-pipeline.html" class="button">← Previous Project</a>
+        <a href="./data-persistence.html" class="button">Next Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack-preview">
+    <div class="container">
+      <p class="tech-stack-line">
+        C#, GDScript, Unity, Godot, Photoshop
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+  
+  <!-- Global Lightbox -->
+  <div id="global-lightbox-overlay">
+    <div id="global-lightbox-content"></div>
+  </div>
+  
+  <script src="../js/components.js"></script>
+</body>
+</html>
