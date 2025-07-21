@@ -84,6 +84,36 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
+  // === Video Lazy Loading ===
+  const lazyVideos = document.querySelectorAll('video[data-src]');
+  
+  if (lazyVideos.length > 0) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          const src = video.getAttribute('data-src');
+          
+          if (src) {
+            const source = video.querySelector('source');
+            if (source) {
+              source.src = src;
+              video.load();
+              video.play(); // Start playing once loaded
+              video.removeAttribute('data-src');
+              videoObserver.unobserve(video);
+            }
+          }
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '50px 0px'
+    });
+
+    lazyVideos.forEach(video => videoObserver.observe(video));
+  }
+
   // === Fade-In Scroll Animation ===
   const animatedElements = document.querySelectorAll('.fade-in-up');
   const lightboxFaders = document.querySelectorAll('.fade-lightbox');
