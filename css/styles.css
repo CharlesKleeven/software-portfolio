@@ -574,7 +574,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/assets/images/rhonda.png');
+    background-image: url('/assets/images/rhonda.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1986,5 +1986,65 @@ body {
     .about-page-section {
         padding-top: 7rem;
         padding-bottom: 5rem;
+    }
+}
+
+/* =================================================================== */
+/* LARGE DESKTOP SCREENS (1440p and up) */
+/* =================================================================== */
+
+/* Large Desktop Monitors Only (27"+ external monitors) */
+@media (min-width: 1800px) {
+    .container {
+        max-width: 2000px;
+    }
+    
+    .project-container {
+        max-width: 95rem;
+    }
+    
+    .project-detail-container {
+        max-width: 110rem;
+    }
+    
+    /* Scale up typography significantly for large monitors */
+    :root {
+        --text-base: 1.3rem;        /* 21px instead of 16px */
+        --text-lg: 1.5rem;          /* 24px instead of 18px */
+        --text-xl: 1.75rem;         /* 28px instead of 20px */
+        --text-2xl: 2.25rem;        /* 36px instead of 24px */
+        --text-3xl: 2.75rem;        /* 44px instead of 30px */
+        --text-4xl: 3.5rem;         /* 56px instead of 36px */
+        --text-5xl: 5rem;           /* 80px instead of 48px */
+    }
+}
+
+/* Large 4K/Ultrawide Monitors */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+    
+    .project-container {
+        max-width: 75rem;
+    }
+    
+    .project-detail-container {
+        max-width: 85rem;
+    }
+}
+
+/* Extra Large 4K Monitors */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 1800px;
+    }
+    
+    .project-container {
+        max-width: 80rem;
+    }
+    
+    .project-detail-container {
+        max-width: 90rem;
     }
 }
