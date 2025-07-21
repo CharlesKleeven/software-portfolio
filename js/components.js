@@ -42,20 +42,20 @@ document.addEventListener('DOMContentLoaded', function () {
       <a href="${pathPrefix}" class="brand-name">Jodie</a>
       <div class="nav-links">
         <div class="nav-item group relative">
-          <a href="${pathPrefix}index.html#work" class="nav-link has-dropdown ${activeLink === 'work' ? 'active' : ''}">Work</a>
+          <a href="${pathPrefix}#work" class="nav-link has-dropdown ${activeLink === 'work' ? 'active' : ''}">Work</a>
           <div class="dropdown-menu">
-            <a href="${pathPrefix}work/solo-development.html">SoloDevelopment</a>
-            <a href="${pathPrefix}work/portrait-pipeline.html">Portrait Pipeline</a>
-            <a href="${pathPrefix}work/world-editor.html">World Editor</a>
-            <a href="${pathPrefix}work/data-persistence.html">Data Persistence</a>
-            <a href="${pathPrefix}work/dialogue-system.html">Dialogue System</a>
+            <a href="${pathPrefix}work/solo-development">SoloDevelopment</a>
+            <a href="${pathPrefix}work/portrait-pipeline">Portrait Pipeline</a>
+            <a href="${pathPrefix}work/world-editor">World Editor</a>
+            <a href="${pathPrefix}work/data-persistence">Data Persistence</a>
+            <a href="${pathPrefix}work/dialogue-system">Dialogue System</a>
           </div>
         </div>
         <div class="nav-item">
-          <a href="${pathPrefix}pages/about.html" class="nav-link ${activeLink === 'about' ? 'active' : ''}">About</a>
+          <a href="${pathPrefix}about" class="nav-link ${activeLink === 'about' ? 'active' : ''}">About</a>
         </div>
         <div class="nav-item">
-          <a href="${pathPrefix}pages/contact.html" class="nav-link ${activeLink === 'contact' ? 'active' : ''}">Contact</a>
+          <a href="${pathPrefix}contact" class="nav-link ${activeLink === 'contact' ? 'active' : ''}">Contact</a>
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <footer class="footer">
       <div class="container">
         <h3 class="text-3xl font-semibold mb-6 serif">Thanks for stopping by!</h3>
-        <a href="${pathPrefix}pages/contact.html" class="footer-button">Say hello</a>
+        <a href="${pathPrefix}contact" class="footer-button">Say hello</a>
         <p class="text-orange-200/70 mt-10 text-sm">&copy; 2025 Jodie Nguyen</p>
       </div>
     </footer>
