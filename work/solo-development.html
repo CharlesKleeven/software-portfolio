@@ -17,7 +17,7 @@
     <div class="container">
       <h1 class="hero-title subpage">SoloDevelopment Community Platform</h1>
       <p class="hero-description">
-        Live community platform with intelligent game discovery, built for the indie game development community at <a href="https://solodevelopment.org" target="_blank" class="accent-link">solodevelopment.org</a>
+        Live at <a href="https://solodevelopment.org" target="_blank" class="accent-link">solodevelopment.org</a> — OAuth authentication, user portfolios, and community discovery
       </p>
       
       <!-- Project Links -->
@@ -40,13 +40,34 @@
           <div class="innovation-cards">
             <div class="innovation-card">
               <h3>Community Mission</h3>
-              <p>A community for people making games mostly by themselves. We help solo developers succeed by connecting them and giving their work fair visibility.</p>
+              <p>A community for people making games mostly by themselves. We help solo developers succeed by connecting them, showcasing their portfolios, and giving their work fair visibility.</p>
             </div>
             
             <div class="innovation-card">
               <h3>Growing Platform</h3>
-              <p><strong>75,000+ members</strong> across Discord and Reddit, with monthly game jams, honest feedback, and showcase highlights.</p>
+              <p><strong>75,000+ members</strong> across Discord and Reddit, with monthly game jams, honest feedback, showcase highlights, and individual developer portfolios.</p>
             </div>
+          </div>
+        </div>
+        
+        <!-- User Authentication & Portfolios -->
+        <div class="content-grid fade-in-up">
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="../assets/videos/oauth-portfolio-demo.mp4" data-lightbox-type="video">
+                <video loop muted playsinline class="preview-video lightbox-img" data-src="../assets/videos/oauth-portfolio-demo.mp4">
+                  <source type="video/mp4">
+                </video>
+              </a>
+              <p class="media-caption">OAuth login, portfolio creation, and developer discovery</p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="section-title">User Authentication & Portfolios</h2>
+            <p class="challenge-text"><strong>OAuth Integration:</strong> Google and Discord authentication with intelligent account linking and email normalization.</p>
+            <p class="challenge-text"><strong>Developer Portfolios:</strong> Users create comprehensive game portfolios with screenshots, descriptions, and tags to showcase their work.</p>
+            <p class="challenge-text-final"><strong>Smart Management:</strong> Real-time validation, duplicate prevention, and seamless authentication state persistence.</p>
           </div>
         </div>
         
@@ -54,11 +75,10 @@
         <div class="content-grid fade-in-up">
           <div>
             <h2 class="section-title">Waterfall Discovery Interface</h2>
-            <p class="challenge-text">CSS-native masonry layout with tabbed filtering and real-time search. Clean interface design with responsive grid positioning.</p>
+            <p class="challenge-text">CSS-native masonry layout with tabbed filtering and real-time search for both game jams and user portfolios.</p>
             <p class="challenge-text-final">Built for 60fps scrolling performance without JavaScript masonry libraries.</p>
           </div>
 
-          <!-- Interface Demo -->
           <div class="fade-lightbox">
             <div class="lightbox">
               <a href="#" data-lightbox-src="../assets/videos/solodev-showcase-demo.mp4" data-lightbox-type="video">
@@ -73,44 +93,42 @@
 
         <!-- External Integration -->
         <div class="content-grid fade-in-up">
-          <div class="fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="../assets/videos/solodev-live-integration.mp4" data-lightbox-type="video">
-                <video loop muted playsinline class="preview-video lightbox-img" data-src="../assets/videos/solodev-live-integration.mp4">
-                  <source type="video/mp4">
-                </video>
-              </a>
-              <p class="media-caption">External itch.io integration with participant tracking</p>
-            </div>
-          </div>
-
           <div>
             <h2 class="section-title">External Integration</h2>
             <p class="challenge-text"><strong>Data Pipeline:</strong> itch.io → Data Sync → Cache → Frontend with smart caching and 5-minute refresh cycles.</p>
             <p class="challenge-text"><strong>Participant Tracking:</strong> Counts update automatically every 10 minutes with intelligent error handling.</p>
             <p class="challenge-text-final"><strong>Graceful Fallbacks:</strong> System never shows broken data when external services fail.</p>
           </div>
+
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="../assets/images/external-integration.jpg" data-lightbox-type="image">
+                <img src="../assets/images/external-integration.jpg" alt="External integration architecture" class="lightbox-img">
+              </a>
+              <p class="media-caption">SoloDev game jam page synchronized with itch.io data</p>
+            </div>
+          </div>
         </div>
 
         <!-- Production Architecture -->
-        <div class="content-grid fade-in-up">
-          <!-- Architecture Diagram -->
-          <div class="fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="../assets/videos/solodev-user-update.mp4" data-lightbox-type="video">
-                <video loop muted playsinline class="preview-video lightbox-img" data-src="../assets/videos/solodev-user-update.mp4">
-                  <source type="video/mp4">
-                </video>
-              </a>
-              <p class="media-caption">User authentication with cross-session state persistence</p>
+        <div class="fade-in-up" style="margin: 4rem 0; text-align: center;">
+          <h2 class="section-title">Production-Grade Infrastructure</h2>
+          
+          <div class="innovation-cards">
+            <div class="innovation-card">
+              <h3>Security</h3>
+              <p>OAuth 2.0 with Passport.js, JWT + httpOnly cookies, bcrypt with 12 salt rounds, advanced rate limiting</p>
             </div>
-          </div>
-
-          <div>
-            <h2 class="section-title">Production-Grade Infrastructure</h2>
-            <p class="challenge-text"><strong>Security:</strong> JWT + httpOnly cookies, bcrypt with 12 salt rounds, rate limiting (200 requests/15min)</p>
-            <p class="challenge-text"><strong>Performance:</strong> Zero cold-start hosting, intelligent caching, optimized MongoDB queries</p>
-            <p class="challenge-text-final"><strong>Reliability:</strong> Sophisticated error handling that never shows broken data, automated fallbacks, 99%+ uptime</p>
+            
+            <div class="innovation-card">
+              <h3>Performance</h3>
+              <p>Zero cold-start hosting, intelligent caching, optimized MongoDB queries with proper indexing</p>
+            </div>
+            
+            <div class="innovation-card">
+              <h3>Reliability</h3>
+              <p>Health check endpoints, automated fallbacks, environment validation, 99%+ uptime</p>
+            </div>
           </div>
         </div>
 
@@ -135,8 +153,8 @@
   <!-- Tech Stack -->
   <section class="tech-stack-preview">
     <div class="container">
-      <p class="tech-stack-line">
-        TypeScript, React, Node.js, Express, MongoDB, JWT, Render, Cloudflare
+      <p class="tech-stack-line" style="word-wrap: break-word; white-space: normal; line-height: 1.6;">
+        React • TypeScript • Node.js • Express • MongoDB • OAuth 2.0 • JWT • Cloudflare
       </p>
     </div>
   </section>

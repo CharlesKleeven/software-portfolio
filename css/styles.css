@@ -271,9 +271,9 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.6rem 1.25rem;
+    padding: 0.75rem 1.5rem;
     font-weight: 600;
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     border: 2px solid var(--blue-button);
     border-radius: var(--radius-lg);
     text-decoration: none;
@@ -285,8 +285,8 @@ body {
 .button {
     background-color: var(--bg-light);
     color: var(--blue-button);
-    font-size: var(--text-sm);
-    padding: 0.6rem 1.25rem;
+    font-size: var(--text-base);
+    padding: 0.75rem 1.5rem;
 }
 
 .view-project-link {
@@ -294,7 +294,7 @@ body {
     color: var(--blue-button);
     border-color: var(--blue-button);
     font-size: var(--text-base);
-    padding: 0.4rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     box-shadow: 0px 3px 1px var(--shadow-button);
 }
 
@@ -367,9 +367,9 @@ body {
 .tech-tags .tag {
     background: var(--tag-tech-bg);
     color: var(--tag-tech-text);
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    padding: 0.25rem 0.55rem;
+    padding: 0.35rem 0.75rem;
     border-radius: 1rem;
     letter-spacing: 0.01em;
     border: 1px solid var(--tag-tech-border);
@@ -493,7 +493,7 @@ body {
     position: relative;
     font-family: var(--font-main);
     font-weight: 600;
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     letter-spacing: 0.025em;
     color: var(--text-light);
     transition: color 0.2s ease;
@@ -821,7 +821,7 @@ body {
 }
 
 .media-caption {
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     color: var(--text-muted);
     margin-top: 0.65rem;
     text-align: center;
@@ -884,8 +884,10 @@ body {
     font-size: var(--text-sm);
     color: var(--text-tech-line);
     opacity: 0.6;
-    line-height: 0.5;
+    line-height: 1.4;
     font-style: italic;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 /* 
@@ -1715,7 +1717,7 @@ body {
     
     .nav-link {
         font-size: var(--text-sm);
-        padding: 0.25rem 0.5rem; /* Reduced from 0.5rem 0.75rem */
+        padding: 0.3rem 0.6rem;
     }
     
     .nav-link::after {
@@ -1850,7 +1852,7 @@ body {
 
     /* Tighter content sections */
     .content-section {
-        padding: 1.5 1rem;
+        padding: 2rem 1rem;
     }
 
     .about-photo {
@@ -1884,6 +1886,12 @@ body {
     
     .nav-buttons {
         align-items: center;
+    }
+    
+    /* Button responsiveness */
+    .button, .view-project-link {
+        font-size: var(--text-sm);
+        padding: 0.65rem 1.25rem;
     }
     
     /* Typography Scaling */
@@ -1968,8 +1976,18 @@ body {
 
     /* Even tighter spacing for small screens */
     .content-section {
-        padding: 2rem 0.75rem;
+        padding: 2rem 1rem;
         padding-bottom: 2.5rem;
+    }
+    
+    /* Tech stack mobile improvements */
+    .tech-stack-preview {
+        padding: 1rem;
+    }
+    
+    .tech-stack-line {
+        font-size: var(--text-xs);
+        line-height: 1.8;
     }
     
     /* Compact project containers */
