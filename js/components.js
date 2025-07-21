@@ -39,10 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
   const components = `
     <div class="nav-container">
-      <a href="${pathPrefix}" class="brand-name">Jodie</a>
+      <a href="${pathPrefix || '/'}" class="brand-name">Jodie</a>
       <div class="nav-links">
         <div class="nav-item group relative">
-          <a href="${pathPrefix}#work" class="nav-link has-dropdown ${activeLink === 'work' ? 'active' : ''}">Work</a>
+          <a href="${pathPrefix || '/'}#work" class="nav-link has-dropdown ${activeLink === 'work' ? 'active' : ''}">Work</a>
           <div class="dropdown-menu">
             <a href="${pathPrefix}work/solo-development">SoloDevelopment</a>
             <a href="${pathPrefix}work/portrait-pipeline">Portrait Pipeline</a>
