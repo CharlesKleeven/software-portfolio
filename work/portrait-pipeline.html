@@ -6,6 +6,7 @@
   <title>Portrait Animation Pipeline - Jodie Nguyen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -30,7 +31,7 @@
         <!-- The Problem -->
         <div class="content-grid">
           <div class="fade-in-up">
-            <h2 class="section-title">The Challenge</h2>
+            <h2 class="section-title blue">The Challenge</h2>
             <p class="challenge-text">Creating character expressions manually meant drawing entire new faces for every emotion. Each expression required complete artwork, individual file exports, and manual animation setup in the game engine.</p>
             <p class="challenge-text-final">Testing different combinations was painfully slow — making it impractical to achieve the expression variety I wanted for dynamic characters.</p>
           </div>
@@ -53,7 +54,7 @@
           <!-- Process Diagram -->
           <div class="diagram-container fade-lightbox">
             <div class="lightbox">
-              <a href="#" data-lightbox-src="/assets/images/pipeline.svg" data-lightbox-type="image">
+              <a href="#" data-lightbox-src="../assets/images/pipeline.svg" data-lightbox-type="image">
                 <img src="/assets/images/pipeline.svg" alt="Pipeline workflow from Aseprite to Godot" class="architecture-diagram lightbox-img">
               </a>
               <p class="media-caption">Three-stage automation: Tag → Process → Generate</p>
@@ -62,7 +63,7 @@
 
           <!-- Process Explanation -->
           <div class="how-it-works-text">
-            <h2 class="section-title">The Solution</h2>
+            <h2 class="section-title blue">The Solution</h2>
 
             <p class="feature-description">
               <strong>Smart Tag System:</strong> Artists tag expression components (eyes, mouths, eyebrows) in Aseprite using simple naming conventions. The system reads these tags automatically.
@@ -79,34 +80,31 @@
         </div>
 
         <!-- Key Innovation -->
-        <div class="smart-automation-wrapper fade-in-up">
-          <h3 class="automation-title">Key Innovation</h3>
+        <div class="content-grid fade-in-up">
+          <div>
+            <h2 class="section-title blue">Key Innovation</h2>
+            <p class="challenge-text">
+              <strong>Modular Expression System:</strong> Instead of drawing complete faces, artists create reusable components that combine automatically. Twenty base assets generate over 1,000 unique expressions through smart combinations.
+            </p>
+            <p class="challenge-text-final">
+              20 art assets → 1,000+ expressions → 95% time reduction
+            </p>
+          </div>
 
-          <div class="smart-automation-flex">
-            <div class="smart-automation-box">
-              <p class="automation-description">
-                <strong>Modular Expression System:</strong> Instead of drawing complete faces, artists create reusable components that combine automatically. Twenty base assets generate over 1,000 unique expressions through smart combinations.
-              </p>
-              <p class="automation-caption">
-                20 art assets → 1,000+ expressions → 95% time reduction
-              </p>
-            </div>
-
-            <!-- Tags Demo -->
-            <div class="smart-automation-image-container fade-lightbox">
-              <div class="lightbox">
-                <a href="#" data-lightbox-src="/assets/images/aseprite-tags.jpg" data-lightbox-type="image">
-                  <img src="/assets/images/aseprite-tags.jpg" alt="Aseprite tag setup for automation" class="lightbox-img">
-                </a>
-                <p class="media-caption">Simple tag setup drives the entire automation</p>
-              </div>
+          <!-- Tags Demo -->
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="/assets/images/aseprite-tags.jpg" data-lightbox-type="image">
+                <img src="/assets/images/aseprite-tags.jpg" alt="Aseprite tag setup for automation" class="lightbox-img">
+              </a>
+              <p class="media-caption">Simple tag setup drives the entire automation</p>
             </div>
           </div>
         </div>
 
         <!-- Results -->
-        <div class="results-section fade-in-up">
-          <h2 class="section-title">Results</h2>
+        <div class="fade-in-up">
+          <h2 class="section-title blue">Results</h2>
           <div class="results-grid">
             <div class="result-card">
               <h3>Before</h3>
@@ -136,7 +134,7 @@
   <!-- Tech Stack -->
   <section class="tech-stack-preview">
     <div class="container">
-      <p class="tech-stack-line" style="word-wrap: break-word; white-space: normal; line-height: 1.6;">
+      <p class="tech-stack-line">
         Lua • C# • GDScript • JSON • Godot • Aseprite
       </p>
     </div>

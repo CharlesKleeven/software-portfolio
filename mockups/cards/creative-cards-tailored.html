@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailored Creative Cards - Warm & Harmonious</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Rubik:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #20262e;
+      --background-light: #2a3340;
+      --surface: #33394a;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent: #56758c;
+      --warm-sage: #92bba1;
+      --warm-beige: #f4e8d8;
+      --warm-rose: #d4a5a5;
+      --warm-clay: #c4a484;
+      --warm-sand: #e8dcc6;
+      --border: rgba(86, 117, 140, 0.15);
+      --font-primary: 'DM Sans', sans-serif;
+      --font-display: 'Rubik', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--background);
+      color: var(--text-primary);
+      padding: 40px 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 48px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    /* Animation Recipe Card */
+    .animation-recipe {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .animation-recipe::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: var(--warm-beige);
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+
+    .recipe-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .recipe-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--warm-beige);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .recipe-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 4px;
+      color: var(--text-primary);
+    }
+
+    .recipe-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .ingredient-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--background);
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+
+    .ingredient-item:hover {
+      background: var(--background-light);
+      transform: translateX(4px);
+    }
+
+    .ingredient-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--warm-sage);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Transformation Gallery */
+    .transformation-gallery {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .gallery-header {
+      margin-bottom: 20px;
+    }
+
+    .gallery-header h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .transform-item {
+      position: relative;
+      aspect-ratio: 4/3;
+      background: var(--background);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .transform-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .transform-label {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      padding: 4px 12px;
+      background: rgba(32, 38, 46, 0.9);
+      border-radius: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* Layer Stack Card */
+    .layer-stack {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .layer-stack h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 24px;
+    }
+
+    .stack-container {
+      position: relative;
+      height: 200px;
+    }
+
+    .layer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--background);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .layer:nth-child(1) {
+      top: 0;
+      z-index: 3;
+      background: var(--warm-sage);
+      color: white;
+    }
+
+    .layer:nth-child(2) {
+      top: 40px;
+      z-index: 2;
+      background: var(--warm-beige);
+      color: var(--background);
+    }
+
+    .layer:nth-child(3) {
+      top: 80px;
+      z-index: 1;
+    }
+
+    .layer:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    /* Conversation Flow Card */
+    .conversation-flow {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .conversation-flow h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 24px;
+    }
+
+    .chat-bubble {
+      padding: 16px 20px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      position: relative;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .chat-bubble.npc {
+      background: var(--warm-sage);
+      color: white;
+      margin-right: 40px;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-bubble.context {
+      background: var(--background);
+      color: var(--text-secondary);
+      margin-left: 40px;
+      border-bottom-right-radius: 4px;
+      font-size: 14px;
+    }
+
+    .context-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .context-tag {
+      padding: 4px 10px;
+      background: var(--surface);
+      border-radius: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Tool Palette Card */
+    .tool-palette {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .tool-palette h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 24px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .tool-item {
+      aspect-ratio: 1;
+      background: var(--background);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .tool-item:hover {
+      background: var(--background-light);
+      border-color: var(--warm-sage);
+      transform: translateY(-2px);
+    }
+
+    .tool-icon {
+      font-size: 24px;
+      color: var(--warm-sage);
+    }
+
+    .tool-name {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* State Preservation Card */
+    .state-preservation {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+    }
+
+    .preservation-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .preservation-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--warm-rose);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .preservation-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .state-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .state-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--background);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .state-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--warm-rose);
+      border-radius: 50%;
+    }
+
+    /* Community Card */
+    .community-showcase {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .community-header {
+      margin-bottom: 24px;
+    }
+
+    .community-header h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .member-avatar {
+      aspect-ratio: 1;
+      background: var(--background);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .member-avatar:hover {
+      transform: scale(1.1);
+      z-index: 10;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    .member-avatar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--warm-sage), var(--warm-beige));
+      opacity: 0.3;
+    }
+
+    /* Integration Flow Card */
+    .integration-flow {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .flow-header {
+      margin-bottom: 24px;
+    }
+
+    .flow-header h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .flow-step {
+      flex: 1;
+      text-align: center;
+    }
+
+    .step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--background);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 28px;
+      transition: all 0.2s;
+    }
+
+    .flow-step:hover .step-icon {
+      background: var(--warm-sage);
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    .step-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .flow-connector {
+      width: 24px;
+      height: 2px;
+      background: var(--border);
+      position: relative;
+    }
+
+    .flow-connector::after {
+      content: '•';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--warm-sage);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* Process Timeline */
+    .process-timeline {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .timeline-header h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 24px;
+    }
+
+    .timeline-items {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline-items::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -18px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      background: var(--warm-sage);
+      border-radius: 50%;
+      border: 3px solid var(--surface);
+    }
+
+    .timeline-content {
+      padding: 12px 16px;
+      background: var(--background);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    /* Priority Rule Ladder Card */
+    .priority-rule-card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .priority-rule-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .rule-ladder {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rule-rung {
+      background: var(--background);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      transition: all 0.3s;
+      cursor: pointer;
+      border-left: 4px solid transparent;
+    }
+
+    .rule-rung:hover {
+      background: var(--accent);
+      color: var(--text-primary);
+      transform: translateX(8px);
+    }
+
+    .rule-rung.level-1 {
+      border-left-color: var(--warm-sage);
+      opacity: 1;
+    }
+
+    .rule-rung.level-2 {
+      border-left-color: var(--accent);
+      opacity: 0.85;
+    }
+
+    .rule-rung.level-3 {
+      border-left-color: var(--warm-rose);
+      opacity: 0.7;
+    }
+
+    .rule-rung.level-4 {
+      border-left-color: var(--text-muted);
+      opacity: 0.55;
+    }
+
+    .rung-number {
+      width: 32px;
+      height: 32px;
+      background: var(--warm-sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--background);
+      flex-shrink: 0;
+    }
+
+    .rule-rung.level-2 .rung-number {
+      background: var(--accent);
+    }
+
+    .rule-rung.level-3 .rung-number {
+      background: var(--warm-rose);
+    }
+
+    .rule-rung.level-4 .rung-number {
+      background: var(--text-muted);
+    }
+
+    .rung-content {
+      flex: 1;
+    }
+
+    .rung-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .rung-condition {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Courier New', monospace;
+    }
+
+    .rule-rung:hover .rung-condition {
+      color: rgba(248, 250, 252, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Portrait Animation Pipeline Cards</h2>
+    <div class="cards-grid">
+      <!-- Animation Recipe -->
+      <div class="animation-recipe">
+        <div class="recipe-header">
+          <div class="recipe-icon" style="background: var(--warm-beige); color: var(--accent);">◐</div>
+          <div class="recipe-content">
+            <h3>Animation Recipe</h3>
+            <div class="recipe-subtitle">Transform static art into life</div>
+          </div>
+        </div>
+        <div class="ingredient-list">
+          <div class="ingredient-item">
+            <div class="ingredient-dot"></div>
+            <span>20 static portrait layers</span>
+          </div>
+          <div class="ingredient-item">
+            <div class="ingredient-dot"></div>
+            <span>Python automation scripts</span>
+          </div>
+          <div class="ingredient-item">
+            <div class="ingredient-dot"></div>
+            <span>Photoshop batch processing</span>
+          </div>
+          <div class="ingredient-item">
+            <div class="ingredient-dot"></div>
+            <span>A pinch of creative magic</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transformation Gallery -->
+      <div class="transformation-gallery">
+        <div class="gallery-header">
+          <h3>From Static to Dynamic</h3>
+          <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">See the magic happen</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="transform-item">
+            <div class="transform-label">Original</div>
+          </div>
+          <div class="transform-item">
+            <div class="transform-label">Happy</div>
+          </div>
+          <div class="transform-item">
+            <div class="transform-label">Surprised</div>
+          </div>
+          <div class="transform-item">
+            <div class="transform-label">Thoughtful</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process Timeline -->
+      <div class="process-timeline">
+        <div class="timeline-header">
+          <h3>Build Process</h3>
+        </div>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-title">Layer Separation</div>
+              <div>Split artwork into modular pieces</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-title">Script Generation</div>
+              <div>Create automation rules</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-title">Batch Processing</div>
+              <div>Generate thousands of variants</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Interactive World Editor Cards</h2>
+    <div class="cards-grid">
+      <!-- Layer Stack -->
+      <div class="layer-stack">
+        <h3>Dual-Grid Architecture</h3>
+        <div class="stack-container">
+          <div class="layer">
+            <span>Visual Layer</span>
+            <span style="font-size: 14px; color: var(--text-secondary);">Beautiful Terrain</span>
+          </div>
+          <div class="layer">
+            <span>Logic Layer</span>
+            <span style="font-size: 14px;">Game Rules</span>
+          </div>
+          <div class="layer">
+            <span>Data Layer</span>
+            <span style="font-size: 14px; color: var(--text-secondary);">Binary Grid</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool Palette -->
+      <div class="tool-palette">
+        <h3>Editor Tools</h3>
+        <div class="tools-grid">
+          <div class="tool-item">
+            <div class="tool-icon">◈</div>
+            <div class="tool-name">Grass</div>
+          </div>
+          <div class="tool-item">
+            <div class="tool-icon">◉</div>
+            <div class="tool-name">Stone</div>
+          </div>
+          <div class="tool-item">
+            <div class="tool-icon">◊</div>
+            <div class="tool-name">Water</div>
+          </div>
+          <div class="tool-item">
+            <div class="tool-icon">◐</div>
+            <div class="tool-name">Forest</div>
+          </div>
+          <div class="tool-item">
+            <div class="tool-icon">◑</div>
+            <div class="tool-name">Desert</div>
+          </div>
+          <div class="tool-item">
+            <div class="tool-icon">◒</div>
+            <div class="tool-name">Snow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Data Persistence Cards</h2>
+    <div class="cards-grid">
+      <!-- State Preservation -->
+      <div class="state-preservation">
+        <div class="preservation-header">
+          <div class="preservation-icon">◈</div>
+          <div class="preservation-content">
+            <h3>What Gets Saved</h3>
+          </div>
+        </div>
+        <div class="state-items">
+          <div class="state-item">
+            <div class="state-dot"></div>
+            <span>Every placed object position</span>
+          </div>
+          <div class="state-item">
+            <div class="state-dot"></div>
+            <span>Modified terrain states</span>
+          </div>
+          <div class="state-item">
+            <div class="state-dot"></div>
+            <span>Player progress and unlocks</span>
+          </div>
+          <div class="state-item">
+            <div class="state-dot"></div>
+            <span>System configurations</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integration Flow -->
+      <div class="integration-flow">
+        <div class="flow-header">
+          <h3>Save System Flow</h3>
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-icon">◐</div>
+            <div class="step-label">Collect</div>
+          </div>
+          <div class="flow-connector"></div>
+          <div class="flow-step">
+            <div class="step-icon">◑</div>
+            <div class="step-label">Package</div>
+          </div>
+          <div class="flow-connector"></div>
+          <div class="flow-step">
+            <div class="step-icon">◒</div>
+            <div class="step-label">Store</div>
+          </div>
+          <div class="flow-connector"></div>
+          <div class="flow-step">
+            <div class="step-icon">◓</div>
+            <div class="step-label">Restore</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Context-Aware Dialogue Cards</h2>
+    <div class="cards-grid">
+      <!-- Conversation Flow -->
+      <div class="conversation-flow">
+        <h3>Dynamic Conversations</h3>
+        <div class="chat-bubble npc">
+          Good evening, friend! Shops are closing soon, but I'll keep mine open a bit longer for you.
+        </div>
+        <div class="chat-bubble context">
+          Context detected:
+          <div class="context-tags">
+            <div class="context-tag">Night</div>
+            <div class="context-tag">Friend Status</div>
+            <div class="context-tag">In Town</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Priority Rule Ladder -->
+      <div class="priority-rule-card">
+        <h3>Smart Priority Selection</h3>
+        <p style="color: var(--text-secondary); font-size: 14px; margin: 0 0 20px;">Most specific conditions win automatically</p>
+        <div class="rule-ladder">
+          <div class="rule-rung level-1">
+            <div class="rung-number">1</div>
+            <div class="rung-content">
+              <div class="rung-title">High Priority</div>
+              <div class="rung-condition">morning && tavern && quest_complete</div>
+            </div>
+          </div>
+          <div class="rule-rung level-2">
+            <div class="rung-number">2</div>
+            <div class="rung-content">
+              <div class="rung-title">Medium Priority</div>
+              <div class="rung-condition">tavern && quest_complete</div>
+            </div>
+          </div>
+          <div class="rule-rung level-3">
+            <div class="rung-number">3</div>
+            <div class="rung-content">
+              <div class="rung-title">Low Priority</div>
+              <div class="rung-condition">quest_complete</div>
+            </div>
+          </div>
+          <div class="rule-rung level-4">
+            <div class="rung-number">4</div>
+            <div class="rung-content">
+              <div class="rung-title">Fallback</div>
+              <div class="rung-condition">default_greeting</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>SoloDevelopment Platform Cards</h2>
+    <div class="cards-grid">
+      <!-- Community Showcase -->
+      <div class="community-showcase">
+        <div class="community-header">
+          <h3>Growing Community</h3>
+          <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">Thousands of creators building together</p>
+        </div>
+        <div class="member-grid">
+          <div class="member-avatar"></div>
+          <div class="member-avatar"></div>
+          <div class="member-avatar"></div>
+          <div class="member-avatar"></div>
+          <div class="member-avatar"></div>
+          <div class="member-avatar"></div>
+          <div class="member-avatar"></div>
+          <div class="member-avatar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

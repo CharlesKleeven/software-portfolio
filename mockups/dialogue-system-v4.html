@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context-Aware Dialogue System - Jodie Nguyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --sage-muted: rgba(146, 187, 161, 0.2);
+      --blue: #66a5da;
+      --blue-light: #7391ab;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --card-light: #374151;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b8c5d1;
+      --text-muted: #808080;
+      --border: #3d4556;
+      --orange: #ff7a59;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* Section Spacing */
+    .section-spacing {
+      margin-bottom: 80px;
+    }
+
+    /* Challenge Content */
+    .challenge-points {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .challenge-point {
+      margin-bottom: 32px;
+    }
+
+    .challenge-point:last-child {
+      margin-bottom: 0;
+    }
+
+    .challenge-point h4 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 8px;
+    }
+
+    .challenge-point p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* Obsidian Window for Diagram */
+    .obsidian-window {
+      background: var(--card-darkest);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      margin: 0;
+    }
+
+    .obsidian-header {
+      background: #1e1e1e;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .obsidian-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .obsidian-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .obsidian-dot:nth-child(1) { background: #ff5f57; }
+    .obsidian-dot:nth-child(2) { background: #ffbd2e; }
+    .obsidian-dot:nth-child(3) { background: #28ca42; }
+
+    .obsidian-title {
+      flex: 1;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-left: 12px;
+      font-family: var(--font-mono);
+      text-align: center;
+    }
+
+    .obsidian-content {
+      display: flex;
+      height: 450px;
+    }
+
+    .obsidian-sidebar {
+      width: 80px;
+      background: #191919;
+      border-right: 1px solid #2a2a2a;
+      padding: 8px 6px 0 6px;
+      font-size: 10px;
+      color: #666;
+    }
+
+    .obsidian-vault-title {
+      margin-bottom: 8px;
+      color: #999;
+      font-size: 9px;
+    }
+
+    .obsidian-nav-item {
+      padding: 2px 0;
+      cursor: pointer;
+      font-size: 9px;
+    }
+
+    .obsidian-nav-item.active {
+      color: #7c3aed;
+    }
+
+    .obsidian-main {
+      flex: 1;
+      background: transparent;
+      position: relative;
+      padding: 0;
+    }
+
+    .obsidian-diagram {
+      width: 100%;
+      height: 100%;
+      background: url('../assets/images/dialogue-flow-sketch.jpg') center/contain no-repeat;
+    }
+
+    /* Context Chat Demo */
+    .context-chat-demo {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 48px 0;
+    }
+
+    .chat-header {
+      background: var(--card-medium);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-npc {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .npc-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .npc-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .context-toggles {
+      display: flex;
+      gap: 8px;
+    }
+
+    .context-toggle {
+      padding: 6px 16px;
+      background: var(--card-light);
+      border-radius: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .context-toggle.active {
+      background: var(--sage);
+      color: white;
+    }
+
+    .chat-messages {
+      padding: 24px;
+      min-height: 200px;
+      background: var(--card-dark);
+    }
+
+    .chat-bubble {
+      background: var(--card-medium);
+      padding: 14px 18px;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      max-width: 80%;
+      margin-bottom: 16px;
+    }
+
+    .bubble-timestamp {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Innovation Points */
+    .innovation-points {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .innovation-point {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .innovation-bullet {
+      color: var(--sage);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .innovation-text {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* Results Section */
+    .results-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .comparison-side {
+      background: rgba(120, 175, 210, 0.15);
+      padding: 24px 24px 32px 24px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .comparison-side:last-child {
+      background: rgba(180, 220, 195, 0.22);
+    }
+
+    .comparison-side h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.9;
+    }
+
+    .comparison-items {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 18px;
+      height: 160px;
+    }
+
+    .comparison-item {
+      font-size: 16px;
+      line-height: 1.4;
+      color: var(--text-primary);
+      font-weight: 400;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .comparison-category {
+      color: var(--text-primary);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.6;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .comparison-category::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      background: currentColor;
+      border-radius: 50%;
+    }
+
+    /* Media caption styling */
+    .media-caption {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      text-align: center;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    /* Priority Ladder */
+    .priority-ladder {
+      background: var(--card-dark);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 0;
+    }
+
+    .ladder-title {
+      font-size: 20px;
+      color: var(--text-primary);
+      margin: 0 0 24px;
+      text-align: center;
+    }
+
+    .ladder-rungs {
+      position: relative;
+      padding: 0 40px;
+      min-height: 350px;
+    }
+
+    .ladder-rails {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .ladder-rails.left { left: 20px; }
+    .ladder-rails.right { right: 20px; }
+
+    .ladder-rung {
+      position: relative;
+      margin-bottom: 40px;
+      padding: 16px 24px;
+      background: var(--card-medium);
+      border-radius: 8px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .ladder-rung::before,
+    .ladder-rung::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 2px;
+      background: var(--border);
+    }
+
+    .ladder-rung::before { left: -20px; }
+    .ladder-rung::after { right: -20px; }
+
+    .ladder-rung:hover {
+      transform: translateY(-4px);
+      background: var(--sage);
+      color: white;
+    }
+
+    .rung-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .rung-text {
+      font-size: 15px;
+    }
+
+    .rung-score {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--sage);
+      font-family: var(--font-mono);
+    }
+
+    .ladder-rung:hover .rung-score {
+      color: white;
+    }
+
+    /* Tabbed Content */
+    .card-tabs {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .tabs-header {
+      display: flex;
+      background: var(--card-darkest);
+      border-bottom: 1px solid var(--border);
+    }
+    .tab-button {
+      flex: 1;
+      padding: 16px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .tab-button:hover {
+      color: var(--text-primary);
+      background: var(--card-medium);
+    }
+    .tab-button.active {
+      color: var(--sage);
+      background: var(--card-dark);
+    }
+    .tab-button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--sage);
+    }
+    .tabs-content {
+      padding: 28px;
+    }
+    .tab-panel h4 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: var(--text-primary);
+    }
+    .tab-panel p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Code Snippet */
+    .card-code {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .code-header {
+      background: #161b22;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #30363d;
+    }
+    .code-filename {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #7ee787;
+    }
+    .code-language {
+      font-size: 12px;
+      color: #8b949e;
+      background: #0d1117;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .code-content {
+      padding: 20px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.6;
+      color: #c9d1d9;
+      overflow-x: auto;
+    }
+    .code-line {
+      display: block;
+      margin: 0;
+    }
+    .code-keyword { color: #ff7b72; }
+    .code-function { color: #d2a8ff; }
+    .code-string { color: #a5d6ff; }
+    .code-comment { color: #8b949e; }
+    .code-dict { color: #ffa657; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .results-comparison {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .section-spacing {
+        margin-bottom: 48px;
+      }
+
+      .obsidian-content {
+        flex-direction: column;
+      }
+
+      .obsidian-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      .tabs-header {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header"></header>
+
+  <!-- Hero -->
+  <section class="hero-section fade-in-up">
+    <div class="container">
+      <h1 class="hero-title subpage">Context-Aware Dialogue System</h1>
+      <p class="hero-description">
+        Dynamic conversation engine that eliminates thousands of manual scripting combinations through contextual AI
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content-section fade-in-up" style="padding-top: 40px;">
+    <div class="container">
+      <div class="project-detail-container">
+
+        <!-- The Challenge -->
+        <div class="content-grid section-spacing">
+          <div class="fade-in-up">
+            <h2 class="section-title blue">The Challenge</h2>
+            <div class="challenge-points">
+              <div class="challenge-point">
+                <h4>Static dialogue breaks immersion</h4>
+                <p>NPCs repeat identical lines regardless of time, weather, or relationship history</p>
+              </div>
+              <div class="challenge-point">
+                <h4>Exponential scripting complexity</h4>
+                <p>Traditional branching dialogue requires manual scripting for every possible conversation state</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Obsidian Diagram -->
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="../assets/images/dialogue-flow-sketch.jpg" data-lightbox-type="image">
+                <div class="obsidian-window lightbox-img">
+                  <div class="obsidian-header">
+                    <div class="obsidian-dots">
+                      <div class="obsidian-dot"></div>
+                      <div class="obsidian-dot"></div>
+                      <div class="obsidian-dot"></div>
+                    </div>
+                    <div class="obsidian-title">Dialogue System Design - Obsidian</div>
+                  </div>
+                  <div class="obsidian-content">
+                    <div class="obsidian-sidebar">
+                      <div class="obsidian-vault-title">Vault</div>
+                      <div class="obsidian-nav-item active">◆ Flow</div>
+                      <div class="obsidian-nav-item">◇ Rules</div>
+                      <div class="obsidian-nav-item">◇ Priority</div>
+                      <div class="obsidian-nav-item">◇ Memory</div>
+                    </div>
+                    <div class="obsidian-main">
+                      <div class="obsidian-diagram"></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <p class="media-caption">Context evaluation and response selection flow (click to zoom)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Solution -->
+        <div class="content-grid fade-in-up section-spacing">
+          <!-- Priority Ladder -->
+          <div>
+            <div class="priority-ladder">
+              <h3 class="ladder-title">Rule Priority System</h3>
+              <div class="ladder-rungs">
+                <div class="ladder-rails left"></div>
+                <div class="ladder-rails right"></div>
+                
+                <div class="ladder-rung">
+                  <div class="rung-content">
+                    <span class="rung-text">Weather + Time + Relationship + Location</span>
+                    <span class="rung-score">High</span>
+                  </div>
+                </div>
+                
+                <div class="ladder-rung">
+                  <div class="rung-content">
+                    <span class="rung-text">Time + Relationship</span>
+                    <span class="rung-score">Medium</span>
+                  </div>
+                </div>
+                
+                <div class="ladder-rung">
+                  <div class="rung-content">
+                    <span class="rung-text">Time only</span>
+                    <span class="rung-score">Low</span>
+                  </div>
+                </div>
+                
+                <div class="ladder-rung">
+                  <div class="rung-content">
+                    <span class="rung-text">Default fallback</span>
+                    <span class="rung-score">Lowest</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="media-caption">More criteria result in higher priority (simplified for demonstration)</p>
+          </div>
+
+          <div>
+            <h2 class="section-title blue">The Solution</h2>
+            <div class="innovation-points">
+              <div class="innovation-point">
+                <span class="innovation-bullet">•</span>
+                <span class="innovation-text">Context-aware rule system that tracks player relationships, world state, and environmental factors</span>
+              </div>
+              <div class="innovation-point">
+                <span class="innovation-bullet">•</span>
+                <span class="innovation-text">Priority-based selection automatically chooses the most appropriate response</span>
+              </div>
+              <div class="innovation-point">
+                <span class="innovation-bullet">•</span>
+                <span class="innovation-text">Memory system allows NPCs to reference past conversations and build relationships</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="fade-in-up section-spacing">
+          <h2 class="section-title blue">Technical Implementation</h2>
+          <p style="color: var(--text-secondary); font-size: 18px; line-height: 1.7; margin-bottom: 48px; font-style: italic;">
+            Inspired by <a href="https://www.youtube.com/watch?v=tAbBID3N64A" target="_blank" style="color: var(--sage); text-decoration: none;">Elan Ruskin's GDC talk</a> on dynamic dialogue.
+          </p>
+          
+          <!-- Visual Flow -->
+          <div style="text-align: center; margin-bottom: 48px;">
+            <div style="display: inline-flex; align-items: center; gap: 32px; padding: 32px; background: var(--card-dark); border-radius: 12px;">
+              <!-- Facts -->
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 14px; text-align: left; color: var(--text-muted); line-height: 1.6;">
+                  <div>weather: rain</div>
+                  <div>time: evening</div>
+                  <div>met_player: no</div>
+                </div>
+                <div style="margin-top: 8px; font-size: 13px; color: var(--sage);">World State</div>
+              </div>
+              
+              <!-- Arrow -->
+              <div style="font-size: 24px; color: var(--text-muted);">→</div>
+              
+              <!-- Rules -->
+              <div>
+                <div style="font-size: 16px; color: var(--text-primary); margin-bottom: 4px;">Find best match</div>
+                <div style="font-size: 13px; color: var(--blue);">Rule Engine</div>
+              </div>
+              
+              <!-- Arrow -->
+              <div style="font-size: 24px; color: var(--text-muted);">→</div>
+              
+              <!-- Output -->
+              <div>
+                <div style="font-size: 15px; color: var(--text-secondary); font-style: italic; max-width: 200px;">
+                  "Terrible weather for introductions..."
+                </div>
+                <div style="margin-top: 8px; font-size: 13px; color: var(--orange);">Dialogue Output</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Core Innovation -->
+          <div class="content-grid" style="gap: 32px;">
+            <div>
+              <h3 style="font-size: 20px; color: var(--text-primary); margin: 0 0 16px;">The approach</h3>
+              <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary);">
+                Instead of writing every possible conversation, you define facts about the world and rules that respond to them. The system figures out the rest.
+              </p>
+              <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin-top: 16px;">
+                More specific rules automatically win. A rule checking three conditions beats one checking two. Always finds the best match.
+              </p>
+            </div>
+            
+            <div style="background: var(--card-darkest); padding: 28px; border-radius: 8px;">
+              <h4 style="font-size: 16px; color: var(--text-primary); margin: 0 0 16px;">Key components</h4>
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                  <span style="color: var(--sage); font-weight: 600;">Fact Dictionaries</span>
+                  <span style="color: var(--text-muted); margin-left: 8px;">— Track world state</span>
+                </div>
+                <div>
+                  <span style="color: var(--blue); font-weight: 600;">Entry Selector</span>
+                  <span style="color: var(--text-muted); margin-left: 8px;">— Find best rule</span>
+                </div>
+                <div>
+                  <span style="color: var(--orange); font-weight: 600;">Response Processor</span>
+                  <span style="color: var(--text-muted); margin-left: 8px;">— Output & update</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="fade-in-up section-spacing">
+          <h2 class="section-title blue">The Results</h2>
+          <div class="results-comparison">
+            <div class="comparison-side">
+              <h3>Before</h3>
+              <div class="comparison-items">
+                <div class="comparison-item">
+                  <span class="comparison-category">Process</span>
+                  Manual scripting for every scenario
+                </div>
+                <div class="comparison-item">
+                  <span class="comparison-category">Complexity</span>
+                  Exponential growth with variables
+                </div>
+                <div class="comparison-item">
+                  <span class="comparison-category">Feel</span>
+                  Robotic, repetitive responses
+                </div>
+              </div>
+            </div>
+            <div class="comparison-side">
+              <h3>After</h3>
+              <div class="comparison-items">
+                <div class="comparison-item">
+                  <span class="comparison-category">Process</span>
+                  Contextual rules generate responses
+                </div>
+                <div class="comparison-item">
+                  <span class="comparison-category">Complexity</span>
+                  Linear growth, infinite combinations
+                </div>
+                <div class="comparison-item">
+                  <span class="comparison-category">Feel</span>
+                  Natural, relationship-aware NPCs
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section class="nav-section fade-in-up">
+    <div class="container">
+      <div class="nav-buttons">
+        <a href="./data-persistence-v3" class="button">← Previous Project</a>
+        <a href="../" class="button">All Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack-preview">
+    <div class="container">
+      <p class="tech-stack-line">
+        Godot Engine • GDScript • Rule Engine • Context System • State Tracking
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Global Lightbox -->
+  <div id="global-lightbox-overlay">
+    <div id="global-lightbox-content"></div>
+  </div>
+
+  <script src="../js/components.js"></script>
+  <script>
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+      
+      tabButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          // Hide all panels
+          tabPanels.forEach(panel => panel.style.display = 'none');
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Show corresponding panel
+          const panelIds = ['tab-architecture', 'tab-rules', 'tab-data'];
+          document.getElementById(panelIds[index]).style.display = 'block';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

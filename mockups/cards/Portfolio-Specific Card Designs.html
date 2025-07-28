@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio-Specific Card Designs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --sage-muted: rgba(146, 187, 161, 0.2);
+      --blue: #56758c;
+      --blue-light: #7391ab;
+      --blue-dark: #3d526b;
+      --orange: #ff7a59;
+      --purple: #7c3aed;
+      --yellow: #f59e0b;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --card-light: #374151;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --border: #3d4556;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      padding: 40px 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 50%, var(--blue-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: var(--sage);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 24px;
+    }
+
+    /* PORTRAIT PIPELINE: Mix & Match Builder */
+    .card-expression-builder {
+      background: var(--card-dark);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .expression-title {
+      font-size: 24px;
+      margin-bottom: 24px;
+      color: var(--sage);
+    }
+    .expression-face {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 24px;
+      position: relative;
+      background: var(--card-medium);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .face-part {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      font-size: 40px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .face-eyes {
+      top: 60px;
+    }
+    .face-mouth {
+      bottom: 50px;
+    }
+    .face-part:hover {
+      transform: scale(1.2);
+      color: var(--sage);
+    }
+    .expression-counter {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px;
+      background: var(--card-medium);
+      border-radius: 8px;
+    }
+    .counter-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--sage);
+      font-family: var(--font-display);
+      transition: all 0.5s ease;
+    }
+    .counter-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* WORLD EDITOR: Dual Grid Visualization */
+    .card-dual-grid {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .grid-header {
+      background: var(--sage-dark);
+      color: white;
+      padding: 16px 24px;
+      font-weight: 600;
+    }
+    .grid-display {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 300px;
+    }
+    .grid-side {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .grid-side:first-child {
+      border-right: 2px solid var(--border);
+    }
+    .grid-visualization {
+      width: 160px;
+      height: 160px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-bottom: 16px;
+    }
+    .grid-cell {
+      background: var(--card-medium);
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .logic-grid .grid-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .logic-grid .grid-cell.active {
+      background: var(--sage);
+      color: white;
+    }
+    .visual-grid .grid-cell {
+      background-size: cover;
+      background-position: center;
+    }
+    .visual-grid .grid-cell.terrain {
+      background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%);
+    }
+    .grid-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    /* DATA PERSISTENCE: Insurance Policy */
+    .card-insurance {
+      background: #f5f5dc;
+      color: #333;
+      padding: 32px;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      font-family: 'Courier Prime', monospace;
+    }
+    .insurance-stamp {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border: 3px solid #d32f2f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d32f2f;
+      font-weight: 700;
+      font-size: 14px;
+      transform: rotate(-15deg);
+      text-align: center;
+    }
+    .insurance-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #333;
+    }
+    .insurance-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .insurance-subtitle {
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    .insurance-coverage {
+      margin-bottom: 20px;
+    }
+    .coverage-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px dotted #666;
+    }
+    .coverage-label {
+      font-weight: 600;
+    }
+    .coverage-value {
+      color: #2e7d32;
+      font-weight: 700;
+    }
+
+    /* DIALOGUE SYSTEM: Context Chat */
+    .card-context-chat {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: var(--card-medium);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-npc {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .npc-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+    }
+    .npc-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .context-toggles {
+      display: flex;
+      gap: 8px;
+    }
+    .context-toggle {
+      padding: 4px 12px;
+      background: var(--card-light);
+      border-radius: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .context-toggle.active {
+      background: var(--sage);
+      color: white;
+    }
+    .chat-messages {
+      padding: 20px;
+      min-height: 200px;
+    }
+    .chat-bubble {
+      background: var(--card-medium);
+      padding: 12px 16px;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      max-width: 80%;
+      margin-bottom: 12px;
+      animation: slideIn 0.3s ease;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .chat-bubble.special {
+      background: var(--sage);
+      color: white;
+    }
+
+    /* SOLODEV: Community Board */
+    .card-community-board {
+      background: var(--card-dark);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      min-height: 400px;
+    }
+    .board-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .board-title {
+      font-size: 24px;
+      color: var(--sage);
+      margin: 0 0 8px;
+    }
+    .board-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .board-stat strong {
+      color: var(--sage);
+    }
+    .board-pins {
+      position: relative;
+      height: 300px;
+    }
+    .pin-card {
+      position: absolute;
+      width: 140px;
+      background: white;
+      color: #333;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transform: rotate(-2deg);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 12px;
+    }
+    .pin-card:hover {
+      transform: rotate(0deg) scale(1.05);
+      z-index: 10;
+    }
+    .pin-card:nth-child(2) {
+      top: 40px;
+      left: 160px;
+      transform: rotate(3deg);
+      background: #fff3cd;
+    }
+    .pin-card:nth-child(3) {
+      top: 120px;
+      left: 80px;
+      transform: rotate(-3deg);
+      background: #d1ecf1;
+    }
+    .pin-card:nth-child(4) {
+      top: 80px;
+      right: 40px;
+      transform: rotate(2deg);
+      background: #d4edda;
+    }
+    .pin-card h4 {
+      margin: 0 0 4px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .pin-card p {
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    /* PORTRAIT PIPELINE: Assembly Line */
+    .card-assembly-line {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 0;
+    }
+    .assembly-header {
+      background: var(--card-medium);
+      padding: 20px;
+      text-align: center;
+    }
+    .assembly-title {
+      font-size: 20px;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .assembly-track {
+      background: var(--card-darkest);
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .assembly-belt {
+      height: 4px;
+      background: var(--border);
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+    }
+    .assembly-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .assembly-item {
+      text-align: center;
+    }
+    .assembly-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--sage);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      margin: 0 auto 8px;
+      position: relative;
+    }
+    .assembly-icon::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 40px;
+      background: var(--border);
+    }
+    .assembly-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .assembly-arrow {
+      color: var(--sage);
+      font-size: 24px;
+    }
+
+    /* SAVE SYSTEM: Safe Vault */
+    .card-vault {
+      background: var(--card-dark);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .vault-door {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, #37474f 0%, #263238 100%);
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      position: relative;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vault-handle {
+      width: 80px;
+      height: 80px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 32px;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.5s ease;
+      cursor: pointer;
+    }
+    .vault-handle:hover {
+      transform: rotate(180deg);
+    }
+    .vault-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 20px;
+      background: var(--card-medium);
+      border-radius: 8px;
+    }
+    .vault-stat {
+      text-align: center;
+    }
+    .vault-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--sage);
+      font-family: var(--font-display);
+    }
+    .vault-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* WORLD EDITOR: Cascade Effect */
+    .card-cascade {
+      background: var(--card-dark);
+      border-radius: 12px;
+      padding: 32px;
+      position: relative;
+      min-height: 350px;
+    }
+    .cascade-title {
+      font-size: 20px;
+      color: var(--sage);
+      margin: 0 0 24px;
+      text-align: center;
+    }
+    .cascade-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: var(--sage);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 2;
+      transition: all 0.2s;
+    }
+    .cascade-center:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 0 20px var(--sage);
+    }
+    .cascade-ripple {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--sage);
+      border-radius: 12px;
+      opacity: 0;
+      animation: ripple 2s infinite;
+    }
+    .cascade-ripple:nth-child(2) { animation-delay: 0.5s; }
+    .cascade-ripple:nth-child(3) { animation-delay: 1s; }
+    @keyframes ripple {
+      0% {
+        width: 80px;
+        height: 80px;
+        opacity: 1;
+      }
+      100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+      }
+    }
+    .cascade-systems {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .cascade-system {
+      position: absolute;
+      padding: 8px 16px;
+      background: var(--card-medium);
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      opacity: 0;
+      animation: fadeInOut 2s infinite;
+    }
+    .cascade-system:nth-child(1) { top: 20px; left: 20px; animation-delay: 0.2s; }
+    .cascade-system:nth-child(2) { top: 20px; right: 20px; animation-delay: 0.4s; }
+    .cascade-system:nth-child(3) { bottom: 20px; left: 20px; animation-delay: 0.6s; }
+    .cascade-system:nth-child(4) { bottom: 20px; right: 20px; animation-delay: 0.8s; }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    /* DIALOGUE: Priority Ladder */
+    .card-priority-ladder {
+      background: var(--card-dark);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .ladder-title {
+      font-size: 20px;
+      color: var(--sage);
+      margin: 0 0 24px;
+      text-align: center;
+    }
+    .ladder-rungs {
+      position: relative;
+      padding: 0 40px;
+      min-height: 300px;
+    }
+    .ladder-rails {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .ladder-rails.left { left: 20px; }
+    .ladder-rails.right { right: 20px; }
+    .ladder-rung {
+      position: relative;
+      margin-bottom: 40px;
+      padding: 12px 20px;
+      background: var(--card-medium);
+      border-radius: 8px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .ladder-rung::before,
+    .ladder-rung::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 2px;
+      background: var(--border);
+    }
+    .ladder-rung::before { left: -20px; }
+    .ladder-rung::after { right: -20px; }
+    .ladder-rung:hover {
+      transform: translateY(-8px);
+      background: var(--sage);
+      color: white;
+    }
+    .rung-score {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sage);
+    }
+    .ladder-rung:hover .rung-score {
+      color: white;
+    }
+
+    /* Performance Speedometer */
+    .card-speedometer {
+      background: var(--card-dark);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .speedometer {
+      width: 200px;
+      height: 100px;
+      margin: 0 auto 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .speedometer-gauge {
+      width: 200px;
+      height: 200px;
+      border: 8px solid var(--card-medium);
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    }
+    .speedometer-fill {
+      width: 100%;
+      height: 100%;
+      background: conic-gradient(
+        from 180deg,
+        var(--sage) 0deg,
+        var(--sage) 120deg,
+        transparent 120deg
+      );
+      border-radius: 50%;
+    }
+    .speedometer-needle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform-origin: bottom center;
+      transform: translateX(-50%) rotate(30deg);
+      width: 4px;
+      height: 90px;
+      background: var(--text-primary);
+      transition: transform 0.5s ease;
+    }
+    .speedometer-value {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--sage);
+      font-family: var(--font-display);
+    }
+    .speedometer-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .wide {
+      grid-column: span 2;
+    }
+    
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .wide { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Portfolio, Reimagined</h1>
+    <p style="font-size: 20px; color: var(--text-secondary); margin-bottom: 60px;">
+      Tailored card designs that bring your technical achievements to life
+    </p>
+    
+    <!-- Portrait Pipeline Section -->
+    <section class="section">
+      <h2 class="section-title">Portrait Animation Pipeline</h2>
+      <div class="grid">
+        
+        <!-- Mix & Match Expression Builder -->
+        <div class="card-expression-builder">
+          <h3 class="expression-title">Expression Generator</h3>
+          <div class="expression-face">
+            <div class="face-part face-eyes">👀</div>
+            <div class="face-part face-mouth">😊</div>
+          </div>
+          <div class="expression-counter">
+            <div>
+              <div class="counter-number">20</div>
+              <div class="counter-label">Components</div>
+            </div>
+            <div style="font-size: 32px; color: var(--sage);">→</div>
+            <div>
+              <div class="counter-number" style="color: var(--sage-light);">1,000+</div>
+              <div class="counter-label">Expressions</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Assembly Line -->
+        <div class="card-assembly-line">
+          <div class="assembly-header">
+            <h3 class="assembly-title">Automated Pipeline</h3>
+          </div>
+          <div class="assembly-track">
+            <div class="assembly-belt"></div>
+            <div class="assembly-items">
+              <div class="assembly-item">
+                <div class="assembly-icon">🎨</div>
+                <div class="assembly-label">Aseprite Tags</div>
+              </div>
+              <div class="assembly-arrow">→</div>
+              <div class="assembly-item">
+                <div class="assembly-icon">⚙️</div>
+                <div class="assembly-label">Processing</div>
+              </div>
+              <div class="assembly-arrow">→</div>
+              <div class="assembly-item">
+                <div class="assembly-icon">✨</div>
+                <div class="assembly-label">1K+ Outputs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- World Editor Section -->
+    <section class="section">
+      <h2 class="section-title">Interactive World Editor</h2>
+      <div class="grid">
+        
+        <!-- Dual Grid Visualization -->
+        <div class="card-dual-grid">
+          <div class="grid-header">Dual-Grid Architecture</div>
+          <div class="grid-display">
+            <div class="grid-side">
+              <div class="grid-visualization logic-grid">
+                <div class="grid-cell">0</div>
+                <div class="grid-cell active">1</div>
+                <div class="grid-cell active">1</div>
+                <div class="grid-cell">0</div>
+                <div class="grid-cell active">1</div>
+                <div class="grid-cell active">1</div>
+                <div class="grid-cell active">1</div>
+                <div class="grid-cell">0</div>
+                <div class="grid-cell">0</div>
+                <div class="grid-cell active">1</div>
+                <div class="grid-cell active">1</div>
+                <div class="grid-cell">0</div>
+                <div class="grid-cell">0</div>
+                <div class="grid-cell">0</div>
+                <div class="grid-cell">0</div>
+                <div class="grid-cell">0</div>
+              </div>
+              <div class="grid-label">Logic Grid (Game Rules)</div>
+            </div>
+            <div class="grid-side">
+              <div class="grid-visualization visual-grid">
+                <div class="grid-cell"></div>
+                <div class="grid-cell terrain"></div>
+                <div class="grid-cell terrain"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell terrain"></div>
+                <div class="grid-cell terrain"></div>
+                <div class="grid-cell terrain"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell terrain"></div>
+                <div class="grid-cell terrain"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-label">Visual Grid (Beautiful Terrain)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cascade Effect -->
+        <div class="card-cascade">
+          <h3 class="cascade-title">Multi-System Cascade</h3>
+          <div class="cascade-ripple"></div>
+          <div class="cascade-ripple"></div>
+          <div class="cascade-ripple"></div>
+          <div class="cascade-center">Click Tile</div>
+          <div class="cascade-systems">
+            <div class="cascade-system">Terrain Update</div>
+            <div class="cascade-system">Visual Refresh</div>
+            <div class="cascade-system">Energy Cost</div>
+            <div class="cascade-system">Object Sync</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Data Persistence Section -->
+    <section class="section">
+      <h2 class="section-title">Data Persistence System</h2>
+      <div class="grid">
+        
+        <!-- Insurance Policy -->
+        <div class="card-insurance">
+          <div class="insurance-stamp">100%<br>SAFE</div>
+          <div class="insurance-header">
+            <h3 class="insurance-title">Data Protection Policy</h3>
+            <p class="insurance-subtitle">Premium Coverage Plan</p>
+          </div>
+          <div class="insurance-coverage">
+            <div class="coverage-item">
+              <span class="coverage-label">Object Coverage:</span>
+              <span class="coverage-value">10,000+ Items</span>
+            </div>
+            <div class="coverage-item">
+              <span class="coverage-label">Save Speed:</span>
+              <span class="coverage-value">&lt; 100ms</span>
+            </div>
+            <div class="coverage-item">
+              <span class="coverage-label">Crash Protection:</span>
+              <span class="coverage-value">Full Recovery</span>
+            </div>
+            <div class="coverage-item">
+              <span class="coverage-label">Version Safety:</span>
+              <span class="coverage-value">Update-Proof</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Safe Vault -->
+        <div class="card-vault">
+          <h3 style="font-size: 24px; color: var(--sage); margin-bottom: 24px;">Secure Save Vault</h3>
+          <div class="vault-door">
+            <div class="vault-handle">🔒</div>
+          </div>
+          <div class="vault-stats">
+            <div class="vault-stat">
+              <div class="vault-number">0</div>
+              <div class="vault-label">Data Loss</div>
+            </div>
+            <div class="vault-stat">
+              <div class="vault-number">100%</div>
+              <div class="vault-label">Recovery</div>
+            </div>
+            <div class="vault-stat">
+              <div class="vault-number">∞</div>
+              <div class="vault-label">Compatibility</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dialogue System Section -->
+    <section class="section">
+      <h2 class="section-title">Context-Aware Dialogue System</h2>
+      <div class="grid">
+        
+        <!-- Context Chat -->
+        <div class="card-context-chat">
+          <div class="chat-header">
+            <div class="chat-npc">
+              <div class="npc-avatar">M</div>
+              <div class="npc-name">Merchant NPC</div>
+            </div>
+            <div class="context-toggles">
+              <div class="context-toggle active">Day</div>
+              <div class="context-toggle">Night</div>
+              <div class="context-toggle">Friend</div>
+            </div>
+          </div>
+          <div class="chat-messages">
+            <div class="chat-bubble">
+              Good morning! Looking for supplies?
+            </div>
+            <div class="chat-bubble special" style="opacity: 0.5;">
+              <small>Toggle context to see dynamic responses...</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Priority Ladder -->
+        <div class="card-priority-ladder">
+          <h3 class="ladder-title">Rule Priority System</h3>
+          <div class="ladder-rungs">
+            <div class="ladder-rails left"></div>
+            <div class="ladder-rails right"></div>
+            <div class="ladder-rung">
+              <span>Time + Location + Relationship</span>
+              <span class="rung-score">95</span>
+            </div>
+            <div class="ladder-rung">
+              <span>Time + Location</span>
+              <span class="rung-score">60</span>
+            </div>
+            <div class="ladder-rung">
+              <span>Default Greeting</span>
+              <span class="rung-score">10</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SoloDev Platform Section -->
+    <section class="section">
+      <h2 class="section-title">SoloDevelopment Platform</h2>
+      <div class="grid">
+        
+        <!-- Community Board -->
+        <div class="card-community-board wide">
+          <div class="board-header">
+            <h3 class="board-title">Community Hub</h3>
+            <div class="board-stats">
+              <span><strong>75,000+</strong> Members</span>
+              <span><strong>Active</strong> Game Jams</span>
+              <span><strong>60fps</strong> Smooth Scroll</span>
+            </div>
+          </div>
+          <div class="board-pins">
+            <div class="pin-card">
+              <h4>Space Runner</h4>
+              <p>Endless runner with procedural planets</p>
+            </div>
+            <div class="pin-card">
+              <h4>Pixel Farm</h4>
+              <p>Cozy farming sim with seasons</p>
+            </div>
+            <div class="pin-card">
+              <h4>Echo Tower</h4>
+              <p>Puzzle platformer with time loops</p>
+            </div>
+            <div class="pin-card">
+              <h4>Neon Rush</h4>
+              <p>Cyberpunk racing adventure</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Performance Metrics -->
+    <section class="section">
+      <h2 class="section-title">Performance Showcase</h2>
+      <div class="grid">
+        
+        <!-- Speedometer -->
+        <div class="card-speedometer">
+          <h3 style="font-size: 20px; color: var(--sage); margin-bottom: 20px;">Save Performance</h3>
+          <div class="speedometer">
+            <div class="speedometer-gauge">
+              <div class="speedometer-fill"></div>
+            </div>
+            <div class="speedometer-needle"></div>
+          </div>
+          <div class="speedometer-value">&lt; 100ms</div>
+          <div class="speedometer-label">Lightning Fast Saves</div>
+        </div>
+
+        <div class="card-speedometer">
+          <h3 style="font-size: 20px; color: var(--sage); margin-bottom: 20px;">Asset Reduction</h3>
+          <div class="speedometer">
+            <div class="speedometer-gauge">
+              <div class="speedometer-fill" style="background: conic-gradient(from 180deg, var(--blue-light) 0deg, var(--blue-light) 126deg, transparent 126deg);"></div>
+            </div>
+            <div class="speedometer-needle" style="transform: translateX(-50%) rotate(36deg);"></div>
+          </div>
+          <div class="speedometer-value">70%</div>
+          <div class="speedometer-label">Fewer Assets Needed</div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="card-styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Core Cards</h1>
+    <p class="subtitle">Essential card patterns</p>
+    
+    <div class="grid">
+      
+      <!-- A1: Terminal -->
+      <div class="card-wrapper">
+        <div class="card-label">A1</div>
+        <div class="card-terminal">
+          <div class="terminal-header">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+          </div>
+          <div class="terminal-content">
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span> 
+              <span class="terminal-command">npm run build</span>
+            </div>
+            <div class="terminal-line">✓ Compiled successfully</div>
+            <div class="terminal-line">✓ 0 errors, 0 warnings</div>
+            <div class="terminal-line">✓ Build time: 2.34s</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- A2: Feature List -->
+      <div class="card-wrapper">
+        <div class="card-label">A2</div>
+        <div class="card-feature-list">
+          <h3>Key Features</h3>
+          <ul>
+            <li>Distributed signal-driven architecture</li>
+            <li>Crash-safe persistence with autosave</li>
+            <li>Version-resilient schema evolution</li>
+            <li>Zero frame drops during operations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- A3: Recipe Card -->
+      <div class="card-wrapper">
+        <div class="card-label">A3</div>
+        <div class="card-recipe">
+          <div class="recipe-header">
+            <div class="recipe-icon">⚡</div>
+            <div class="recipe-title">Build Recipe</div>
+          </div>
+          <div class="recipe-ingredients">
+            <div class="ingredient">• 20 static portrait layers</div>
+            <div class="ingredient">• Python automation scripts</div>
+            <div class="ingredient">• Photoshop batch processing</div>
+            <div class="ingredient">• Creative magic</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- A4: Polaroid Stack -->
+      <div class="card-wrapper">
+        <div class="card-label">A4</div>
+        <div class="card-polaroid-stack">
+          <div class="polaroid" style="transform: rotate(-3deg);">
+            <div class="polaroid-photo">Original</div>
+            <div class="polaroid-caption">Base Portrait</div>
+          </div>
+          <div class="polaroid" style="transform: rotate(2deg); top: 10px; left: 15px;">
+            <div class="polaroid-photo">Happy</div>
+            <div class="polaroid-caption">Expression 1</div>
+          </div>
+          <div class="polaroid" style="transform: rotate(-1deg); top: 20px; left: 30px;">
+            <div class="polaroid-photo">Surprise</div>
+            <div class="polaroid-caption">Expression 2</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="card-browser.html" style="color: var(--sage); text-decoration: none;">← Back</a>
+    </div>
+
+  </div>
+</body>
+</html>

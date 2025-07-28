@@ -6,6 +6,7 @@
   <title>Interactive World Editor - Jodie Nguyen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -28,8 +29,8 @@
       <div class="project-detail-container">
         
         <!-- The Challenge -->
-        <div class="content-grid">
-          <div class="fade-in-up">
+        <div class="content-grid fade-in-up">
+          <div>
             <h2 class="section-title">The Challenge</h2>
             <p class="challenge-text">Interactive worlds need seamless terrain editing without requiring massive amounts of artwork. Every terrain type traditionally demands extensive art assets and complex edge-case handling for visual transitions.</p>
             <p class="challenge-text-final">I needed a system where single tool actions could update multiple terrain layers simultaneously while maintaining perfect visual quality — all from minimal artwork.</p>
@@ -49,23 +50,20 @@
         </div>
 
         <!-- The Innovation -->
-        <div class="world-features-section fade-in-up">
+        <div class="fade-in-up">
           <h2 class="section-title">The Innovation</h2>
           
-          <div class="features-highlight">
-            <div class="feature-block">
-              <h3 class="feature-block-title">Dual-Grid Architecture</h3>
-              <p class="feature-block-text">Separate logic and visual layers allow complex terrain transitions using only 16 base tiles. Logic drives behavior while visuals auto-generate perfect corners and edges for any terrain combination.</p>
+          <div class="terrain-grid">
+            <div class="tech-card">
+              <h3>Dual-Grid Architecture</h3>
+              <p>Separate logic and visual layers allow complex terrain transitions using only 16 base tiles. Logic drives behavior while visuals auto-generate perfect corners and edges for any terrain combination.</p>
             </div>
 
-            <div class="feature-block">
-              <h3 class="feature-block-title">Multi-System Coordination</h3>
-              <p class="feature-block-text">Single tool actions cascade through multiple managers — updating terrain properties, triggering visual changes, managing energy costs, and syncing with other systems automatically.</p>
+            <div class="tech-card">
+              <h3>Multi-System Coordination</h3>
+              <p>Single tool actions cascade through multiple managers — updating terrain properties, triggering visual changes, managing energy costs, and syncing with other systems automatically.</p>
             </div>
-          </div>
 
-          <!-- Visual Examples -->
-          <div class="content-grid terrain-grid">
             <div class="fade-lightbox">
               <div class="lightbox">
                 <a href="#" data-lightbox-src="/assets/images/terrain-screenshot.jpg" data-lightbox-type="image">
@@ -117,7 +115,7 @@
   <!-- Tech Stack -->
   <section class="tech-stack-preview">
     <div class="container">
-      <p class="tech-stack-line" style="word-wrap: break-word; white-space: normal; line-height: 1.6;">
+      <p class="tech-stack-line">
         C# • GDScript • Unity • Godot • Photoshop
       </p>
     </div>

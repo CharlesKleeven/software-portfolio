@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoloDevelopment Community Platform - Jodie Nguyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    /* V6 - Personality without corporate metrics */
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --sage-muted: rgba(146, 187, 161, 0.2);
+      --blue: #66a5da;
+      --blue-light: #7391ab;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --card-light: #374151;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b8c5d1;
+      --text-muted: #808080;
+      --border: #3d4556;
+      --orange: #ff7a59;
+      --purple: #7c3aed;
+      --yellow: #f59e0b;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    .section-spacing {
+      margin-bottom: 60px;
+    }
+
+    .content-section {
+      padding-top: 40px;
+    }
+
+    /* Opening - Community board with post-its */
+    /* Remove old centered styles */
+
+    .intro-statement {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+    }
+    
+    .intro-statement.blue {
+      color: var(--blue);
+    }
+
+    .intro-tagline {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    /* Post-it notes for stats */
+    .postit-board {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+
+    .postit {
+      width: 160px;
+      padding: 20px;
+      background: var(--yellow);
+      color: var(--dark-bg);
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      transform: rotate(-2deg);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .postit:nth-child(2) {
+      background: var(--sage-light);
+      transform: rotate(1deg);
+      top: -8px;
+    }
+
+    .postit:nth-child(3) {
+      background: #89CFF0;  /* Lighter blue for better contrast */
+      transform: rotate(-1.5deg);
+    }
+
+    .postit:nth-child(4) {
+      background: #d4a5ff;
+      transform: rotate(2deg);
+      top: -4px;
+    }
+
+    .postit:hover {
+      transform: rotate(0deg) scale(1.02);
+      z-index: 10;
+    }
+
+    .postit-number {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .postit-label {
+      font-size: 13px;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    /* Platform showcase grid */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .platform-feature {
+      background: var(--card-dark);
+      padding: 20px 16px;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .platform-feature:hover {
+      transform: translateY(-2px);
+      border-color: var(--sage);
+    }
+
+    .feature-label {
+      font-size: 12px;
+      color: var(--sage);
+      margin-bottom: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-value {
+      font-size: 16px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* Browser window */
+    .browser-window {
+      background: #2b2b2b;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      /* Ensure clean corners */
+      isolation: isolate;
+    }
+
+    .browser-window:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .browser-header {
+      background: #3a3a3a;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .browser-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #4a4a4a;
+    }
+
+    .browser-dot:nth-child(1) {
+      background: #ff5f57;
+    }
+
+    .browser-dot:nth-child(2) {
+      background: #ffbd2e;
+    }
+
+    .browser-dot:nth-child(3) {
+      background: #28ca42;
+    }
+
+    .browser-url {
+      flex: 1;
+      background: #1f1f1f;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #a0a0a0;
+      margin-left: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-align: center;
+      border: 1px solid #444;
+    }
+
+    .browser-content {
+      position: relative;
+      background: #000;
+      /* Match browser window corners at bottom */
+      border-radius: 0 0 7px 7px;
+      overflow: hidden;
+      /* Ensure no gaps */
+      margin-top: -1px;
+    }
+
+    .browser-image,
+    .browser-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    
+    /* Ensure content fills browser without gaps */
+    .browser-content {
+      line-height: 0;
+    }
+    
+    /* Prevent any hover effects on inner content */
+    .browser-window:hover .browser-content,
+    .browser-window:hover .browser-content * {
+      transform: none !important;
+    }
+
+    /* Clean up unused notebook styles */
+
+    /* Discovery masonry preview */
+
+    .masonry-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .masonry-item {
+      background: var(--card-medium);
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .masonry-item:nth-child(1),
+    .masonry-item:nth-child(4) {
+      grid-row: span 2;
+      padding: 24px 16px;
+    }
+
+    .masonry-item:hover {
+      background: var(--sage-dark);
+      color: white;
+      transform: scale(1.02);
+    }
+
+    /* Clean up unused pipeline styles */
+
+    /* Clean up unused styles */
+
+    /* Media caption styling */
+    .media-caption {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .postit-board {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .platform-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pipeline-flow {
+        flex-direction: column;
+      }
+
+      .pipeline-arrow {
+        transform: rotate(90deg);
+      }
+
+      .tech-details {
+        grid-template-columns: 1fr;
+      }
+
+      .masonry-preview {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header"></header>
+
+  <!-- Hero -->
+  <section class="hero-section fade-in-up">
+    <div class="container">
+      <h1 class="hero-title subpage">SoloDevelopment Community Platform</h1>
+      <p class="hero-description">
+        OAuth authentication, user portfolios, and community discovery
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content-section fade-in-up">
+    <div class="container">
+      <div class="project-detail-container">
+
+        <!-- Community Introduction -->
+        <div class="fade-in-up" style="margin-bottom: 80px; margin-top: 60px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+            <!-- Left side - What it is -->
+            <div>
+              <h2 class="intro-statement blue">What is SoloDevelopment?</h2>
+              <p style="font-size: 20px; font-weight: 500; color: var(--text-primary); margin-bottom: 24px; line-height: 1.5;">
+                A community for people making games mostly by themselves.
+              </p>
+              <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 48px;">
+                We host game jams, showcase member projects, and connect developers through shared experiences.
+              </p>
+
+              <!-- CTAs -->
+              <div>
+                <a href="https://solodevelopment.org" target="_blank" style="display: inline-block; background: var(--dark-bg); color: var(--sage); padding: 12px 28px; text-decoration: none; font-weight: 600; font-size: 16px; border: 2px solid var(--sage); border-radius: 8px; transition: all 0.3s ease; position: relative;"
+                   onmouseover="this.style.background='var(--sage)'; this.style.color='var(--dark-bg)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.25)'"
+                   onmouseout="this.style.background='var(--dark-bg)'; this.style.color='var(--sage)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Platform</a>
+                <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" style="display: inline-block; background: var(--dark-bg); color: var(--blue); padding: 12px 28px; text-decoration: none; font-weight: 600; font-size: 16px; border: 2px solid var(--blue); border-radius: 8px; transition: all 0.3s ease; margin-left: 16px; position: relative;"
+                   onmouseover="this.style.background='var(--blue)'; this.style.color='var(--dark-bg)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.25)'"
+                   onmouseout="this.style.background='var(--dark-bg)'; this.style.color='var(--blue)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">View Source</a>
+              </div>
+            </div>
+
+            <!-- Right side - Stats -->
+            <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+              <div class="postit-board" style="margin: 0;">
+                <div class="postit">
+                  <div class="postit-number">75K+</div>
+                  <div class="postit-label">members on Reddit</div>
+                </div>
+                <div class="postit">
+                  <div class="postit-number">2021</div>
+                  <div class="postit-label">founded to support solo devs</div>
+                </div>
+                <div class="postit">
+                  <div class="postit-number">8K</div>
+                  <div class="postit-label">members on Discord</div>
+                </div>
+                <div class="postit">
+                  <div class="postit-number">750+</div>
+                  <div class="postit-label">game jam entries submitted</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Authentication -->
+        <div class="content-grid fade-in-up section-spacing">
+          <div class="fade-lightbox">
+            <div class="browser-window">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
+                </div>
+                <div class="browser-url">solodevelopment.org/login</div>
+              </div>
+              <div class="browser-content">
+                <div class="lightbox">
+                  <a href="#" data-lightbox-src="../assets/videos/oauth-portfolio-demo.mp4" data-lightbox-type="video">
+                    <video loop muted playsinline class="preview-video lightbox-img browser-video"
+                      data-src="../assets/videos/oauth-portfolio-demo.mp4">
+                      <source type="video/mp4">
+                    </video>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <p class="media-caption">OAuth login, portfolio creation, and developer discovery</p>
+          </div>
+
+          <div>
+            <h2 class="section-title blue">Authentication & Developer Profiles</h2>
+            <div>
+              <div style="margin-bottom: 24px;">
+                <h3 style="font-size: 20px; color: var(--text-primary); margin: 0 0 8px;">OAuth Integration</h3>
+                <p style="margin: 0; color: var(--text-secondary); line-height: 1.7; font-size: 18px;">Google and Discord login with JWT tokens in httpOnly cookies.</p>
+              </div>
+              <div style="margin-bottom: 24px;">
+                <h3 style="font-size: 20px; color: var(--text-primary); margin: 0 0 8px;">Developer Portfolios</h3>
+                <p style="margin: 0; color: var(--text-secondary); line-height: 1.7; font-size: 18px;">Create your profile, showcase games, link social media.</p>
+              </div>
+              <div>
+                <h3 style="font-size: 20px; color: var(--text-primary); margin: 0 0 8px;">Community Features</h3>
+                <p style="margin: 0; color: var(--text-secondary); line-height: 1.7; font-size: 18px;">Discover developers, join jams, showcase projects.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Discovery Interface -->
+        <div class="content-grid fade-in-up" style="margin-bottom: 80px; margin-top: 60px;">
+          <div>
+            <h2 class="section-title blue">Waterfall Discovery Interface</h2>
+            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 18px; margin-bottom: 24px;">
+              CSS-native masonry layout displaying game jam entries in a Pinterest-style grid. Features tabbed filtering for marathon and themed jams, plus real-time search across all content.
+            </p>
+            <div style="margin-top: 24px;">
+              <div style="margin-bottom: 16px;">
+                <div style="font-size: 13px; color: var(--sage); margin-bottom: 4px; font-weight: 600;">FILTERING</div>
+                <div style="font-size: 16px; color: var(--text-primary);">Marathon & themed jam tabs</div>
+              </div>
+              <div>
+                <div style="font-size: 13px; color: var(--sage); margin-bottom: 4px; font-weight: 600;">SEARCH</div>
+                <div style="font-size: 16px; color: var(--text-primary);">Real-time across all content</div>
+              </div>
+            </div>
+          </div>
+            
+            <div class="fade-lightbox">
+              <div class="browser-window">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                  </div>
+                  <div class="browser-url">solodevelopment.org/showcase</div>
+                </div>
+                <div class="browser-content">
+                  <div class="lightbox">
+                    <a href="#" data-lightbox-src="../assets/videos/solodev-showcase-demo.mp4" data-lightbox-type="video">
+                      <video loop muted playsinline class="preview-video lightbox-img browser-image"
+                        data-src="../assets/videos/solodev-showcase-demo.mp4">
+                        <source type="video/mp4">
+                      </video>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <p class="media-caption">Masonry grid with tabbed filtering and instant search</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- External Integration -->
+        <div class="fade-in-up section-spacing">
+          <h2 class="section-title blue">External Integration</h2>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; max-width: 800px;">
+            Just like the Waterfall Discovery Interface showcases our game jams, we integrate with itch.io to pull external jam data. This allows solo developers to see all opportunities in one place.
+          </p>
+          
+          <div class="fade-lightbox" style="margin-bottom: 32px;">
+              <div style="display: flex; gap: 20px; position: relative; transition: transform 0.3s ease;" 
+                   onmouseover="this.style.transform='translateY(-8px)'" 
+                   onmouseout="this.style.transform='translateY(0)'">
+                <div style="width: 48.5%;">
+                  <div class="browser-window">
+                    <div class="browser-header">
+                      <div class="browser-dots">
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                      </div>
+                      <div class="browser-url">solodevelopment.org/jams</div>
+                    </div>
+                    <div class="browser-content" style="padding: 0; background: #fff; position: relative; overflow: hidden; height: 320px;">
+                      <img src="../assets/images/external-integration.jpg"
+                        alt="SoloDevelopment game jam page"
+                        style="width: 206%; height: 320px; object-fit: cover; margin-left: 0;">
+                    </div>
+                  </div>
+                </div>
+                
+                <div style="width: 51.5%;">
+                  <div class="browser-window">
+                    <div class="browser-header">
+                      <div class="browser-dots">
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                      </div>
+                      <div class="browser-url">itch.io/jams</div>
+                    </div>
+                    <div class="browser-content" style="padding: 0; background: #fff; position: relative; overflow: hidden; height: 320px;">
+                      <img src="../assets/images/external-integration.jpg"
+                        alt="itch.io game jam page"
+                        style="width: 194%; height: 320px; object-fit: cover; margin-left: -94%;">
+                    </div>
+                  </div>
+                </div>
+                
+                <a href="#" data-lightbox-src="../assets/images/external-integration.jpg" data-lightbox-type="image" class="lightbox" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5;"></a>
+              </div>
+              <p class="media-caption">External itch.io integration with participant tracking</p>
+            </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 900px;">
+            <div style="text-align: center;">
+              <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">SYNC RATE</div>
+              <div style="font-size: 16px; color: var(--text-primary);">Every 10 min</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">DATA TRACKED</div>
+              <div style="font-size: 16px; color: var(--text-primary);">Participants</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">CACHE</div>
+              <div style="font-size: 16px; color: var(--text-primary);">5 min refresh</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">FALLBACK</div>
+              <div style="font-size: 16px; color: var(--text-primary);">Graceful</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Production Infrastructure -->
+        <div class="fade-in-up">
+          <h2 class="section-title blue">Production Infrastructure</h2>
+          
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div style="background: var(--card-dark); border-radius: 12px; padding: 32px;">
+              <h3 style="font-size: 20px; color: var(--text-primary); margin: 0 0 24px; font-weight: 600;">Security</h3>
+              
+              <div style="margin-bottom: 20px;">
+                <div style="font-size: 13px; color: var(--sage); margin-bottom: 4px; font-weight: 600;">AUTHENTICATION</div>
+                <div style="font-size: 18px; color: var(--text-primary);">JWT + httpOnly cookies</div>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <div style="font-size: 13px; color: var(--sage); margin-bottom: 4px; font-weight: 600;">ENCRYPTION</div>
+                <div style="font-size: 18px; color: var(--text-primary);">bcrypt with 12 salt rounds</div>
+              </div>
+              
+              <div>
+                <div style="font-size: 13px; color: var(--sage); margin-bottom: 4px; font-weight: 600;">PROTECTION</div>
+                <div style="font-size: 18px; color: var(--text-primary);">Rate limiting (200/15min)</div>
+              </div>
+            </div>
+            
+            <div style="background: var(--card-dark); border-radius: 12px; padding: 32px;">
+              <h3 style="font-size: 20px; color: var(--text-primary); margin: 0 0 24px; font-weight: 600;">Performance</h3>
+              
+              <div style="margin-bottom: 20px;">
+                <div style="font-size: 13px; color: var(--blue); margin-bottom: 4px; font-weight: 600;">HOSTING</div>
+                <div style="font-size: 18px; color: var(--text-primary);">Zero cold-start deployment</div>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <div style="font-size: 13px; color: var(--blue); margin-bottom: 4px; font-weight: 600;">CACHING</div>
+                <div style="font-size: 18px; color: var(--text-primary);">Multi-layer intelligent cache</div>
+              </div>
+              
+              <div>
+                <div style="font-size: 13px; color: var(--blue); margin-bottom: 4px; font-weight: 600;">DATABASE</div>
+                <div style="font-size: 18px; color: var(--text-primary);">MongoDB compound indexes</div>
+              </div>
+            </div>
+            
+            <div style="background: var(--card-dark); border-radius: 12px; padding: 32px;">
+              <h3 style="font-size: 20px; color: var(--text-primary); margin: 0 0 24px; font-weight: 600;">Reliability</h3>
+              
+              <div style="margin-bottom: 20px;">
+                <div style="font-size: 13px; color: var(--orange); margin-bottom: 4px; font-weight: 600;">RESILIENCE</div>
+                <div style="font-size: 18px; color: var(--text-primary);">Automated error recovery</div>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <div style="font-size: 13px; color: var(--orange); margin-bottom: 4px; font-weight: 600;">MONITORING</div>
+                <div style="font-size: 18px; color: var(--text-primary);">Real-time health checks</div>
+              </div>
+              
+              <div>
+                <div style="font-size: 13px; color: var(--orange); margin-bottom: 4px; font-weight: 600;">UPTIME</div>
+                <div style="font-size: 18px; color: var(--text-primary);">99%+ availability SLA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section class="nav-section fade-in-up">
+    <div class="container">
+      <div class="nav-buttons">
+        <a href="../" class="button">← All Projects</a>
+        <a href="./portrait-pipeline" class="button">Next Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack-preview">
+    <div class="container">
+      <p class="tech-stack-line">
+        React • TypeScript • Node.js • Express • MongoDB • OAuth 2.0 • JWT • Cloudflare
+      </p>
+    </div>
+  </section>
+
+  <!-- Global Lightbox -->
+  <div id="global-lightbox-overlay">
+    <div id="global-lightbox-content"></div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/components.js"></script>
+</body>
+
+</html>

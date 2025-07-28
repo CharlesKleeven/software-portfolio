@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SoloDevelopment Community Platform - Jodie Nguyen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
   <!-- Header -->
   <header class="header"></header>
@@ -17,14 +22,8 @@
     <div class="container">
       <h1 class="hero-title subpage">SoloDevelopment Community Platform</h1>
       <p class="hero-description">
-        Live at <a href="https://solodevelopment.org" target="_blank" class="accent-link">solodevelopment.org</a> — OAuth authentication, user portfolios, and community discovery
+        OAuth authentication, user portfolios, and community discovery
       </p>
-      
-      <!-- Project Links -->
-      <div style="margin-top: 2rem; text-align: center;">
-        <a href="https://solodevelopment.org" target="_blank" class="button green" style="margin-right: 1rem;">Live Site</a>
-        <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="button blue">GitHub</a>
-      </div>
     </div>
   </section>
 
@@ -32,30 +31,44 @@
   <section class="content-section fade-in-up">
     <div class="container">
       <div class="project-detail-container">
-        
+
         <!-- What SoloDevelopment Is -->
-        <div class="fade-in-up" style="margin: 4rem 0; text-align: center;">
-          <h2 class="section-title">What SoloDevelopment Is</h2>
+        <div class="fade-in-up">
+          <h2 class="section-title blue">What SoloDevelopment Is</h2>
           
-          <div class="innovation-cards">
-            <div class="innovation-card">
+          <div class="tech-grid">
+            <div class="tech-card">
               <h3>Community Mission</h3>
               <p>A community for people making games mostly by themselves. We help solo developers succeed by connecting them, showcasing their portfolios, and giving their work fair visibility.</p>
             </div>
             
-            <div class="innovation-card">
+            <div class="tech-card">
               <h3>Growing Platform</h3>
-              <p><strong>75,000+ members</strong> across Discord and Reddit, with monthly game jams, honest feedback, showcase highlights, and individual developer portfolios.</p>
+              <p>75,000+ members across Discord and Reddit, with monthly game jams, honest feedback, showcase highlights, and individual developer portfolios.</p>
             </div>
           </div>
         </div>
-        
+
+        <!-- Call to Action -->
+        <div class="fade-in-up">
+          <p class="text-callout">
+            Experience the platform live or explore the technical implementation
+          </p>
+          <div>
+            <a href="https://solodevelopment.org" target="_blank" class="button green">Visit Website</a>
+            <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="button blue">View Code</a>
+          </div>
+        </div>
+
+        <!-- Divider -->
+
         <!-- User Authentication & Portfolios -->
         <div class="content-grid fade-in-up">
           <div class="fade-lightbox">
             <div class="lightbox">
               <a href="#" data-lightbox-src="../assets/videos/oauth-portfolio-demo.mp4" data-lightbox-type="video">
-                <video loop muted playsinline class="preview-video lightbox-img" data-src="../assets/videos/oauth-portfolio-demo.mp4">
+                <video loop muted playsinline class="preview-video lightbox-img"
+                  data-src="../assets/videos/oauth-portfolio-demo.mp4">
                   <source type="video/mp4">
                 </video>
               </a>
@@ -64,25 +77,27 @@
           </div>
 
           <div>
-            <h2 class="section-title">User Authentication & Portfolios</h2>
-            <p class="challenge-text"><strong>OAuth Integration:</strong> Google and Discord authentication with intelligent account linking and email normalization.</p>
-            <p class="challenge-text"><strong>Developer Portfolios:</strong> Users create comprehensive game portfolios with screenshots, descriptions, and tags to showcase their work.</p>
-            <p class="challenge-text-final"><strong>Smart Management:</strong> Real-time validation, duplicate prevention, and seamless authentication state persistence.</p>
+            <h2 class="section-title blue">User Authentication & Portfolios</h2>
+            <p class="challenge-text">Google and Discord OAuth with portfolio creation system. Users showcase their games with screenshots, descriptions, and tags for community discovery.</p>
+            <p class="challenge-text-final">Real-time validation and seamless authentication state management across sessions.</p>
           </div>
         </div>
-        
+
         <!-- Waterfall Discovery Interface -->
         <div class="content-grid fade-in-up">
           <div>
-            <h2 class="section-title">Waterfall Discovery Interface</h2>
-            <p class="challenge-text">CSS-native masonry layout with tabbed filtering and real-time search for both game jams and user portfolios.</p>
-            <p class="challenge-text-final">Built for 60fps scrolling performance without JavaScript masonry libraries.</p>
+            <h2 class="section-title blue">Waterfall Discovery Interface</h2>
+            <p class="challenge-text">CSS-native masonry layout with tabbed filtering and real-time search for both game
+              jams and user portfolios.</p>
+            <p class="challenge-text-final">Built for 60fps scrolling performance without JavaScript masonry libraries.
+            </p>
           </div>
 
           <div class="fade-lightbox">
             <div class="lightbox">
               <a href="#" data-lightbox-src="../assets/videos/solodev-showcase-demo.mp4" data-lightbox-type="video">
-                <video loop muted playsinline class="preview-video lightbox-img" data-src="../assets/videos/solodev-showcase-demo.mp4">
+                <video loop muted playsinline class="preview-video lightbox-img"
+                  data-src="../assets/videos/solodev-showcase-demo.mp4">
                   <source type="video/mp4">
                 </video>
               </a>
@@ -94,16 +109,16 @@
         <!-- External Integration -->
         <div class="content-grid fade-in-up">
           <div>
-            <h2 class="section-title">External Integration</h2>
-            <p class="challenge-text"><strong>Data Pipeline:</strong> itch.io → Data Sync → Cache → Frontend with smart caching and 5-minute refresh cycles.</p>
-            <p class="challenge-text"><strong>Participant Tracking:</strong> Counts update automatically every 10 minutes with intelligent error handling.</p>
-            <p class="challenge-text-final"><strong>Graceful Fallbacks:</strong> System never shows broken data when external services fail.</p>
+            <h2 class="section-title blue">External Integration</h2>
+            <p class="challenge-text">Automated itch.io data pipeline with 5-minute refresh cycles and participant tracking that updates every 10 minutes.</p>
+            <p class="challenge-text-final">Graceful fallbacks ensure the system never shows broken data when external services fail.</p>
           </div>
 
           <div class="fade-lightbox">
             <div class="lightbox">
               <a href="#" data-lightbox-src="../assets/images/external-integration.jpg" data-lightbox-type="image">
-                <img src="../assets/images/external-integration.jpg" alt="External integration architecture" class="lightbox-img">
+                <img src="../assets/images/external-integration.jpg" alt="External integration architecture"
+                  class="lightbox-img">
               </a>
               <p class="media-caption">SoloDev game jam page synchronized with itch.io data</p>
             </div>
@@ -111,21 +126,21 @@
         </div>
 
         <!-- Production Architecture -->
-        <div class="fade-in-up" style="margin: 4rem 0; text-align: center;">
-          <h2 class="section-title">Production-Grade Infrastructure</h2>
+        <div class="fade-in-up">
+          <h2 class="section-title blue">Production-Grade Infrastructure</h2>
           
-          <div class="innovation-cards">
-            <div class="innovation-card">
+          <div class="tech-grid">
+            <div class="tech-card">
               <h3>Security</h3>
               <p>OAuth 2.0 with Passport.js, JWT + httpOnly cookies, bcrypt with 12 salt rounds, advanced rate limiting</p>
             </div>
             
-            <div class="innovation-card">
+            <div class="tech-card">
               <h3>Performance</h3>
               <p>Zero cold-start hosting, intelligent caching, optimized MongoDB queries with proper indexing</p>
             </div>
             
-            <div class="innovation-card">
+            <div class="tech-card">
               <h3>Reliability</h3>
               <p>Health check endpoints, automated fallbacks, environment validation, 99%+ uptime</p>
             </div>
@@ -146,14 +161,14 @@
       </div>
     </div>
   </section>
-      </div>
-    </div>
+  </div>
+  </div>
   </section>
 
   <!-- Tech Stack -->
   <section class="tech-stack-preview">
     <div class="container">
-      <p class="tech-stack-line" style="word-wrap: break-word; white-space: normal; line-height: 1.6;">
+      <p class="tech-stack-line">
         React • TypeScript • Node.js • Express • MongoDB • OAuth 2.0 • JWT • Cloudflare
       </p>
     </div>
@@ -169,4 +184,5 @@
 
   <script src="../js/components.js"></script>
 </body>
+
 </html>

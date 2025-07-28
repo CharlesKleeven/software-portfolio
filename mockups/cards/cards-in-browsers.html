@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards in Context - Browser Mockups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --blue: #56758c;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      padding: 40px 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 50%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 80px;
+      text-align: center;
+    }
+
+    /* Browser Window Styles */
+    .browser-window {
+      background: var(--card-darkest);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      margin-bottom: 60px;
+    }
+
+    .browser-header {
+      background: var(--card-dark);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .browser-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--card-medium);
+    }
+
+    .browser-dot:nth-child(1) { background: #ff5f57; }
+    .browser-dot:nth-child(2) { background: #ffbd2e; }
+    .browser-dot:nth-child(3) { background: #28ca42; }
+
+    .browser-url {
+      flex: 1;
+      background: var(--card-darkest);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 16px;
+      font-family: var(--font-mono);
+    }
+
+    .browser-content {
+      background: #f5f5f5;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Dark mode browser content */
+    .browser-content.dark {
+      background: var(--dark-bg);
+    }
+
+    /* Dashboard Layout */
+    .dashboard-layout {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      height: 600px;
+      overflow-y: auto;
+    }
+
+    .dashboard-sidebar {
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      height: fit-content;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .dashboard-main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      height: fit-content;
+    }
+
+    /* Example Card Styles in Browser Context */
+    .metric-card {
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .metric-card h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .metric-card .value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 8px;
+    }
+
+    .metric-card .change {
+      font-size: 14px;
+      color: var(--sage);
+    }
+
+    /* SoloDev Platform Context */
+    .solodev-layout {
+      background: var(--dark-bg);
+      padding: 0;
+    }
+
+    .solodev-nav {
+      background: var(--card-dark);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .solodev-content {
+      padding: 32px;
+    }
+
+    /* Game cards grid */
+    .game-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .game-card {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .game-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .game-card-image {
+      height: 160px;
+      background: linear-gradient(135deg, var(--sage-dark) 0%, var(--blue) 100%);
+    }
+
+    .game-card-content {
+      padding: 20px;
+    }
+
+    .game-card h3 {
+      margin: 0 0 8px;
+      color: var(--text-primary);
+      font-size: 18px;
+    }
+
+    .game-card p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .section {
+      margin-bottom: 100px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      margin-bottom: 40px;
+      color: var(--sage);
+    }
+
+    /* Code editor window */
+    .code-window {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      margin-bottom: 60px;
+    }
+
+    .code-header {
+      background: #2d2d2d;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #3e3e3e;
+    }
+
+    .code-tabs {
+      display: flex;
+      gap: 0;
+    }
+
+    .code-tab {
+      padding: 6px 16px;
+      background: #1e1e1e;
+      color: #ccc;
+      font-size: 13px;
+      border-right: 1px solid #3e3e3e;
+      cursor: pointer;
+    }
+
+    .code-tab.active {
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .code-content {
+      padding: 24px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.6;
+      color: #d4d4d4;
+      min-height: 400px;
+    }
+
+    /* Terminal window */
+    .terminal-window {
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      margin-bottom: 60px;
+    }
+
+    .terminal-header {
+      background: #333;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #444;
+    }
+
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .terminal-content {
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #0f0;
+      min-height: 300px;
+    }
+
+    /* Mobile browser */
+    .mobile-browser {
+      max-width: 375px;
+      margin: 0 auto 60px;
+      background: var(--card-darkest);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 2px solid #333;
+    }
+
+    .mobile-browser-header {
+      background: var(--card-dark);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .mobile-browser-content {
+      background: var(--dark-bg);
+      min-height: 600px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cards in Context</h1>
+    <p class="subtitle">See how card components look in real-world applications</p>
+
+    <!-- Analytics Dashboard Context -->
+    <section class="section">
+      <h2 class="section-title">Analytics Dashboard</h2>
+      <div class="browser-window">
+        <div class="browser-header">
+          <div class="browser-dots">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+          </div>
+          <div class="browser-url">app.solodevelopment.org/analytics</div>
+        </div>
+        <div class="browser-content">
+          <div class="dashboard-layout">
+            <div class="dashboard-sidebar">
+              <h3 style="margin: 0 0 20px; font-size: 18px; color: #333;">Dashboard</h3>
+              <nav>
+                <div style="padding: 8px 0; color: var(--sage); font-weight: 600;">Analytics</div>
+                <div style="padding: 8px 0; color: #666;">Projects</div>
+                <div style="padding: 8px 0; color: #666;">Community</div>
+                <div style="padding: 8px 0; color: #666;">Settings</div>
+              </nav>
+            </div>
+            <div class="dashboard-main">
+              <div class="metric-card">
+                <h3>Total Views</h3>
+                <div class="value">12,847</div>
+                <div class="change">↑ 12.5% from last month</div>
+              </div>
+              <div class="metric-card">
+                <h3>Active Projects</h3>
+                <div class="value">24</div>
+                <div class="change">↑ 3 new this week</div>
+              </div>
+              <div class="metric-card">
+                <h3>Community Engagement</h3>
+                <div class="value">89%</div>
+                <div class="change">↑ 5.2% improvement</div>
+              </div>
+              <div class="metric-card" style="grid-column: span 3;">
+                <h3>Recent Activity</h3>
+                <div style="margin-top: 16px;">
+                  <div style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                    <div style="font-weight: 600; color: #333; margin-bottom: 4px;">New comment on "Pixel Art Pipeline"</div>
+                    <div style="font-size: 14px; color: #666;">2 hours ago</div>
+                  </div>
+                  <div style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                    <div style="font-weight: 600; color: #333; margin-bottom: 4px;">Project "Terrain System" featured</div>
+                    <div style="font-size: 14px; color: #666;">5 hours ago</div>
+                  </div>
+                  <div style="padding: 12px 0;">
+                    <div style="font-weight: 600; color: #333; margin-bottom: 4px;">3 new followers</div>
+                    <div style="font-size: 14px; color: #666;">1 day ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SoloDev Game Showcase -->
+    <section class="section">
+      <h2 class="section-title">SoloDevelopment Game Showcase</h2>
+      <div class="browser-window">
+        <div class="browser-header">
+          <div class="browser-dots">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+          </div>
+          <div class="browser-url">solodevelopment.org/showcase</div>
+        </div>
+        <div class="browser-content dark">
+          <div class="solodev-layout">
+            <div class="solodev-nav">
+              <div style="font-size: 20px; font-weight: 700; color: var(--sage);">SoloDev</div>
+              <div style="display: flex; gap: 32px;">
+                <span style="color: var(--text-primary); cursor: pointer;">Showcase</span>
+                <span style="color: var(--text-secondary); cursor: pointer;">Jams</span>
+                <span style="color: var(--text-secondary); cursor: pointer;">Community</span>
+              </div>
+            </div>
+            <div class="solodev-content">
+              <h2 style="color: var(--text-primary); margin-bottom: 32px;">Featured Games</h2>
+              <div class="game-cards-grid">
+                <div class="game-card">
+                  <div class="game-card-image"></div>
+                  <div class="game-card-content">
+                    <h3>Pixel Dungeon</h3>
+                    <p>A roguelike adventure with procedural generation and permadeath.</p>
+                  </div>
+                </div>
+                <div class="game-card">
+                  <div class="game-card-image"></div>
+                  <div class="game-card-content">
+                    <h3>Space Trader</h3>
+                    <p>Trade your way across the galaxy in this economic simulation.</p>
+                  </div>
+                </div>
+                <div class="game-card">
+                  <div class="game-card-image"></div>
+                  <div class="game-card-content">
+                    <h3>Mystic Forest</h3>
+                    <p>Explore an enchanted world full of puzzles and secrets.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Editor Context -->
+    <section class="section">
+      <h2 class="section-title">Development Environment</h2>
+      <div class="code-window">
+        <div class="code-header">
+          <div class="code-tabs">
+            <div class="code-tab active">CardComponent.tsx</div>
+            <div class="code-tab">styles.css</div>
+            <div class="code-tab">index.html</div>
+          </div>
+          <div class="browser-dots">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+          </div>
+        </div>
+        <div class="code-content">
+          <div style="color: #c586c0;">import</div> React <div style="color: #c586c0;">from</div> <span style="color: #ce9178;">'react'</span>;<br>
+          <div style="color: #c586c0;">import</div> { Card, CardContent } <div style="color: #c586c0;">from</div> <span style="color: #ce9178;">'@/components/ui'</span>;<br><br>
+          
+          <div style="color: #c586c0;">export const</div> <span style="color: #dcdcaa;">GameCard</span> = ({ <span style="color: #9cdcfe;">title</span>, <span style="color: #9cdcfe;">description</span>, <span style="color: #9cdcfe;">image</span> }) => {<br>
+          &nbsp;&nbsp;<div style="color: #c586c0;">return</div> (<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style="color: #569cd6;">Card</span> <span style="color: #9cdcfe;">className</span>=<span style="color: #ce9178;">"game-card"</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style="color: #569cd6;">div</span> <span style="color: #9cdcfe;">className</span>=<span style="color: #ce9178;">"game-card-image"</span> <span style="color: #9cdcfe;">style</span>={{ <span style="color: #9cdcfe;">backgroundImage</span>: <span style="color: #ce9178;">`url(${image})`</span> }} /&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style="color: #569cd6;">CardContent</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style="color: #569cd6;">h3</span>&gt;{title}&lt;/<span style="color: #569cd6;">h3</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style="color: #569cd6;">p</span>&gt;{description}&lt;/<span style="color: #569cd6;">p</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span style="color: #569cd6;">CardContent</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span style="color: #569cd6;">Card</span>&gt;<br>
+          &nbsp;&nbsp;);<br>
+          };<br>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal Context -->
+    <section class="section">
+      <h2 class="section-title">Build Process</h2>
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="browser-dots">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+          </div>
+          <div class="terminal-title">portfolio-builder — npm run build</div>
+        </div>
+        <div class="terminal-content">
+          > portfolio-builder@1.0.0 build<br>
+          > webpack --mode production<br><br>
+          
+          <span style="color: #0ff;">ℹ</span> Compiling card components...<br>
+          <span style="color: #0f0;">✓</span> GameCard component built<br>
+          <span style="color: #0f0;">✓</span> MetricCard component built<br>
+          <span style="color: #0f0;">✓</span> ProfileCard component built<br><br>
+          
+          <span style="color: #0ff;">ℹ</span> Optimizing assets...<br>
+          <span style="color: #0f0;">✓</span> CSS minified: 234kb → 67kb<br>
+          <span style="color: #0f0;">✓</span> JS bundled: 567kb → 123kb<br><br>
+          
+          <span style="color: #0f0;">✓</span> Build completed in 3.2s<br>
+          <span style="color: #ff0;">⚡</span> Ready for deployment!
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Context -->
+    <section class="section">
+      <h2 class="section-title">Mobile Experience</h2>
+      <div class="mobile-browser">
+        <div class="mobile-browser-header">
+          <div style="font-size: 12px; color: var(--text-secondary);">solodevelopment.org</div>
+        </div>
+        <div class="mobile-browser-content">
+          <div style="padding: 20px;">
+            <div style="background: var(--card-dark); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+              <h3 style="margin: 0 0 8px; color: var(--sage); font-size: 18px;">Your Profile</h3>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">3 games • 1.2k followers</p>
+            </div>
+            <div style="background: var(--card-dark); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+              <h3 style="margin: 0 0 8px; color: var(--text-primary); font-size: 16px;">Latest Jam</h3>
+              <p style="margin: 0 0 12px; color: var(--text-secondary); font-size: 14px;">Mini Game Jam #45</p>
+              <button style="background: var(--sage); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px;">Join Now</button>
+            </div>
+            <div style="background: var(--card-dark); border-radius: 12px; padding: 20px;">
+              <h3 style="margin: 0 0 8px; color: var(--text-primary); font-size: 16px;">Community Activity</h3>
+              <div style="font-size: 14px; color: var(--text-secondary);">
+                <div style="padding: 8px 0;">🎮 New game posted</div>
+                <div style="padding: 8px 0;">💬 5 new comments</div>
+                <div style="padding: 8px 0;">⭐ Featured developer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SoloDev Portfolio Page V5 -->
+    <section class="section">
+      <h2 class="section-title">SoloDevelopment Portfolio Page V5</h2>
+      <div class="browser-window">
+        <div class="browser-header">
+          <div class="browser-dots">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+          </div>
+          <div class="browser-url">localhost:3000/mockups/solo-development-v5.html</div>
+        </div>
+        <div class="browser-content dark">
+          <iframe src="solo-development-v5.html" 
+                  style="width: 100%; height: 600px; border: none; background: var(--dark-bg); border-radius: 0 0 8px 8px;"
+                  frameborder="0"></iframe>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Showcase Cards Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --sage-muted: rgba(146, 187, 161, 0.2);
+      --blue: #56758c;
+      --blue-light: #7391ab;
+      --blue-dark: #3d526b;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --card-light: #374151;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --accent-orange: #ff7a59;
+      --accent-purple: #7c3aed;
+      --accent-yellow: #f59e0b;
+      --border: #3d4556;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-typewriter: 'Courier Prime', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      padding: 40px 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 50%, var(--blue-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 60px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: var(--sage);
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--sage);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    /* Card Label System */
+    .card-label {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 400;
+      padding: 2px 6px;
+      border-radius: 2px;
+      z-index: 10;
+      font-family: monospace;
+    }
+
+    /* Position relative for cards that need labels */
+    .card-with-label {
+      position: relative;
+    }
+
+    /* CARD: Browser Window */
+    .card-browser-window {
+      background: var(--card-darkest);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    .browser-header {
+      background: var(--card-dark);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .browser-dots {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .browser-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--card-medium);
+    }
+    
+    .browser-dot:nth-child(1) { background: #ff5f57; }
+    .browser-dot:nth-child(2) { background: #ffbd2e; }
+    .browser-dot:nth-child(3) { background: #28ca42; }
+    
+    .browser-url {
+      flex: 1;
+      background: var(--card-darkest);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 16px;
+      font-family: var(--font-mono);
+    }
+    
+    .browser-content {
+      background: var(--dark-bg);
+      min-height: 300px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .browser-preview {
+      background: var(--card-dark);
+      border-radius: 8px;
+      padding: 24px;
+      width: 100%;
+      max-width: 400px;
+    }
+    
+    .browser-preview h3 {
+      margin: 0 0 12px;
+      color: var(--sage);
+      font-size: 20px;
+    }
+    
+    .browser-preview p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Game Engine Windows */
+    .card-game-engine {
+      background: var(--card-darkest);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    .engine-header {
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .godot-header {
+      background: #2e3440;
+    }
+    
+    .unity-header {
+      background: #393939;
+    }
+    
+    .engine-title {
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    
+    .engine-buttons {
+      display: flex;
+      gap: 12px;
+      color: var(--text-muted);
+    }
+    
+    .engine-tabs {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .engine-tabs .tab {
+      padding: 4px 0;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    
+    .engine-tabs .tab.active {
+      color: var(--text-primary);
+      border-bottom: 2px solid #5a9fd4;
+    }
+    
+    .unity-play-buttons {
+      display: flex;
+      gap: 8px;
+      font-size: 16px;
+    }
+    
+    .engine-content {
+      background: #1e1e1e;
+    }
+    
+    .engine-toolbar {
+      background: var(--card-dark);
+      padding: 8px 16px;
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .engine-toolbar span {
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    
+    .engine-toolbar span.active {
+      color: var(--text-primary);
+    }
+    
+    .unity-toolbar {
+      background: #525252;
+      padding: 8px 16px;
+      display: flex;
+      gap: 16px;
+      font-size: 18px;
+      border-bottom: 1px solid #444;
+    }
+    
+    .engine-viewport {
+      min-height: 200px;
+    }
+    
+    /* Code Editor */
+    .card-code-editor {
+      background: #282c34;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    .code-editor-header {
+      background: #21252b;
+      padding: 0;
+      border-bottom: 1px solid #181a1f;
+    }
+    
+    .code-tabs {
+      display: flex;
+    }
+    
+    .code-tab {
+      padding: 12px 20px;
+      background: #21252b;
+      color: var(--text-muted);
+      font-size: 13px;
+      border-right: 1px solid #181a1f;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .code-tab.active {
+      background: #282c34;
+      color: var(--text-primary);
+    }
+    
+    .code-editor-content {
+      display: flex;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 200px;
+    }
+    
+    .code-sidebar {
+      background: #21252b;
+      padding: 16px 12px;
+      text-align: right;
+      border-right: 1px solid #181a1f;
+    }
+    
+    .code-main {
+      padding: 16px 20px;
+      flex: 1;
+    }
+    
+    /* Generic App Window - Simple like browser */
+    .app-window {
+      background: var(--card-darkest);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    .app-header {
+      background: var(--card-dark);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .app-title {
+      flex: 1;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 16px;
+      font-family: var(--font-mono);
+      text-align: center;
+    }
+    
+    .app-content {
+      position: relative;
+      min-height: 200px;
+    }
+
+    /* Utility classes */
+    .wide {
+      grid-column: span 2;
+    }
+    .tall {
+      grid-row: span 2;
+    }
+    
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .wide, .tall { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Media Showcase Cards</h1>
+    <p class="subtitle">Creative ways to display media content in your projects</p>
+    
+    <!-- Media Showcase Cards -->
+    <section class="section">
+      <h2 class="section-title">Media Display Collection</h2>
+      <div class="grid">
+
+        <!-- Browser Window -->
+        <div class="card-browser-window card-with-label">
+          <div class="card-label">browser-window</div>
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+            </div>
+            <div class="browser-url">solodevelopment.org/showcase</div>
+          </div>
+          <div class="browser-content">
+            <div class="browser-preview">
+              <h3>Portfolio Showcase</h3>
+              <p>Display your work in a realistic browser context. Perfect for showing web applications, dashboards, and live demos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Godot Engine Window -->
+        <div class="card-game-engine godot card-with-label">
+          <div class="card-label">godot-engine</div>
+          <div class="engine-header godot-header">
+            <div class="engine-title">
+              <span style="color: #478cbf;">●</span> WorldEditor - Godot
+            </div>
+            <div class="engine-buttons">
+              <span>▢</span>
+              <span>×</span>
+            </div>
+          </div>
+          <div class="engine-content">
+            <div class="engine-toolbar">
+              <span>2D</span>
+              <span class="active">3D</span>
+              <span>Script</span>
+              <span>AssetLib</span>
+            </div>
+            <div class="engine-viewport">
+              <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #2a3142 0%, #1e2431 100%); display: flex; align-items: center; justify-content: center; color: #478cbf; font-size: 48px;">
+                3D
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unity Engine Window -->
+        <div class="card-game-engine unity card-with-label">
+          <div class="card-label">unity-engine</div>
+          <div class="engine-header unity-header">
+            <div class="engine-tabs">
+              <span class="tab active">Scene</span>
+              <span class="tab">Game</span>
+              <span class="tab">Inspector</span>
+            </div>
+            <div class="unity-play-buttons">
+              <span style="color: #5a9fd4;">▶</span>
+              <span>⏸</span>
+              <span>⏭</span>
+            </div>
+          </div>
+          <div class="engine-content">
+            <div class="unity-toolbar">
+              <span>⬚</span>
+              <span>◆</span>
+              <span>↔</span>
+              <span>⟲</span>
+              <span>▢</span>
+            </div>
+            <div class="engine-viewport">
+              <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #383838 0%, #2c2c2c 100%); display: flex; align-items: center; justify-content: center; color: #5a9fd4; font-size: 48px;">
+                Unity
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Editor Window -->
+        <div class="card-code-editor card-with-label">
+          <div class="card-label">code-editor</div>
+          <div class="code-editor-header">
+            <div class="code-tabs">
+              <div class="code-tab active">
+                <span style="color: #e06c75;">●</span> game_system.gd
+              </div>
+              <div class="code-tab">
+                <span style="color: #61afef;">●</span> player.gd
+              </div>
+              <div class="code-tab">
+                <span style="color: #98c379;">●</span> world.tscn
+              </div>
+            </div>
+          </div>
+          <div class="code-editor-content">
+            <div class="code-sidebar">
+              <div style="color: #5c6370;">1</div>
+              <div style="color: #5c6370;">2</div>
+              <div style="color: #5c6370;">3</div>
+              <div style="color: #5c6370;">4</div>
+              <div style="color: #5c6370;">5</div>
+            </div>
+            <div class="code-main">
+              <div><span style="color: #c678dd;">extends</span> <span style="color: #e06c75;">Node2D</span></div>
+              <div>&nbsp;</div>
+              <div><span style="color: #c678dd;">func</span> <span style="color: #61afef;">_ready</span>():</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #98c379;"># Initialize game world</span></div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Hello, World!"</span>)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aseprite Window -->
+        <div class="card-aseprite card-with-label">
+          <div class="card-label">aseprite-window</div>
+          <div class="app-window">
+            <div class="app-header" style="background: #2a2a2a;">
+              <div class="browser-dots">
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+              </div>
+              <div class="app-title">portrait_happy.ase - Aseprite</div>
+            </div>
+            <div class="app-content" style="background: #1e1e1e;">
+              <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%); display: flex; align-items: center; justify-content: center; color: #92bba1; font-size: 48px;">
+                Pixel Art
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Version Control -->
+        <div class="card-version-control card-with-label">
+          <div class="card-label">version-control</div>
+          <div class="app-window">
+            <div class="app-header" style="background: var(--card-dark);">
+              <div class="browser-dots">
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+              </div>
+              <div class="app-title">github.com/jodie-nguyen/portrait-pipeline</div>
+            </div>
+            <div class="app-content">
+              <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #0d1117 0%, #161b22 100%); display: flex; align-items: center; justify-content: center; color: #58a6ff; font-size: 48px;">
+                Pull Request
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Note App -->
+        <div class="card-note-app card-with-label">
+          <div class="card-label">obsidian</div>
+          <div class="app-window">
+            <div class="app-header" style="background: #1e1e1e;">
+              <div class="browser-dots">
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+              </div>
+              <div class="app-title">Game Dev Vault - Obsidian</div>
+            </div>
+            <div class="app-content" style="display: flex;">
+              <div style="width: 140px; background: #191919; border-right: 1px solid #2a2a2a; padding: 16px 12px; font-size: 13px; color: #666;">
+                <div style="margin-bottom: 16px; color: #999;">Vault</div>
+                <div style="padding: 4px 0; color: #7c3aed;">◆ Daily Notes</div>
+                <div style="padding: 4px 0;">◇ Projects</div>
+                <div style="padding: 4px 0;">◇ Ideas</div>
+                <div style="padding: 4px 0;">◇ Archive</div>
+              </div>
+              <div style="flex: 1; height: 200px; background: linear-gradient(135deg, #202020 0%, #262626 100%); display: flex; align-items: center; justify-content: center; color: #7c3aed; font-size: 48px;">
+                [[Notes]]
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

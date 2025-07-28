@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive & Technical Cards Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --sage-muted: rgba(146, 187, 161, 0.2);
+      --blue: #56758c;
+      --blue-light: #7391ab;
+      --blue-dark: #3d526b;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --card-light: #374151;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --accent-orange: #ff7a59;
+      --accent-purple: #7c3aed;
+      --accent-yellow: #f59e0b;
+      --border: #3d4556;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-typewriter: 'Courier Prime', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      padding: 40px 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 50%, var(--blue-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 60px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: var(--sage);
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--sage);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    /* Card Label System */
+    .card-label {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 400;
+      padding: 2px 6px;
+      border-radius: 2px;
+      z-index: 10;
+      font-family: monospace;
+    }
+
+    /* Position relative for cards that need labels */
+    .card-with-label {
+      position: relative;
+    }
+
+    /* Accordion Style */
+    .card-accordion {
+      background: var(--card-dark);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-header {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .accordion-header:hover {
+      background: var(--card-medium);
+    }
+    .accordion-header h4 {
+      margin: 0;
+      font-size: 16px;
+      color: var(--text-primary);
+    }
+    .accordion-arrow {
+      color: var(--sage);
+      font-size: 20px;
+    }
+    .accordion-content {
+      padding: 0 24px 20px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Workflow Card */
+    .card-workflow {
+      background: var(--card-dark);
+      padding: 32px;
+      border-radius: 12px;
+    }
+    .workflow-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .workflow-header h3 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--text-primary);
+    }
+    .workflow-status {
+      padding: 6px 16px;
+      background: var(--sage-muted);
+      color: var(--sage);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .workflow-steps {
+      position: relative;
+    }
+    .workflow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      position: relative;
+      padding-bottom: 24px;
+    }
+    .workflow-step:last-child {
+      padding-bottom: 0;
+    }
+    .workflow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      width: 2px;
+      height: calc(100% - 20px);
+      background: var(--border);
+    }
+    .workflow-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--card-medium);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .workflow-step.active .workflow-dot {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: white;
+    }
+    .workflow-step.completed .workflow-dot {
+      background: transparent;
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+    .workflow-content h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      color: var(--text-primary);
+    }
+    .workflow-content p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Tabbed Content */
+    .card-tabs {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .tabs-header {
+      display: flex;
+      background: var(--card-darkest);
+      border-bottom: 1px solid var(--border);
+    }
+    .tab-button {
+      flex: 1;
+      padding: 16px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .tab-button:hover {
+      color: var(--text-primary);
+      background: var(--card-medium);
+    }
+    .tab-button.active {
+      color: var(--sage);
+      background: var(--card-dark);
+    }
+    .tab-button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--sage);
+    }
+    .tabs-content {
+      padding: 28px;
+    }
+    .tab-panel h4 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: var(--text-primary);
+    }
+    .tab-panel p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Kanban Board */
+    .card-kanban {
+      background: var(--card-medium);
+      padding: 24px;
+      border-radius: 12px;
+    }
+    .kanban-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .kanban-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .kanban-count {
+      background: var(--sage-muted);
+      color: var(--sage);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .kanban-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .kanban-card {
+      background: var(--card-dark);
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+      cursor: move;
+    }
+    .kanban-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .kanban-card.priority-high {
+      border-left-color: var(--accent-orange);
+    }
+    .kanban-card.priority-medium {
+      border-left-color: var(--sage);
+    }
+    .kanban-card.priority-low {
+      border-left-color: var(--blue);
+    }
+    .kanban-card h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    .kanban-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Terminal Style */
+    .card-terminal {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .terminal-header {
+      background: #161b22;
+      padding: 12px 16px;
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #f85149;
+    }
+    .terminal-dot:nth-child(2) { background: #f0883e; }
+    .terminal-dot:nth-child(3) { background: #7ee787; }
+    .terminal-content {
+      padding: 20px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .terminal-line {
+      margin-bottom: 8px;
+      color: #c9d1d9;
+    }
+    .terminal-prompt { color: #7ee787; }
+    .terminal-command { color: #79c0ff; }
+
+    /* Code Snippet Card */
+    .card-code {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .code-header {
+      background: #161b22;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #30363d;
+    }
+    .code-filename {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #7ee787;
+    }
+    .code-language {
+      font-size: 12px;
+      color: #8b949e;
+      background: #0d1117;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .code-content {
+      padding: 20px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.6;
+      color: #c9d1d9;
+      overflow-x: auto;
+    }
+    .code-line {
+      display: block;
+      margin: 0;
+    }
+    .code-keyword { color: #ff7b72; }
+    .code-function { color: #d2a8ff; }
+    .code-string { color: #a5d6ff; }
+    .code-comment { color: #8b949e; }
+
+    /* Changelog Card */
+    .card-changelog {
+      background: var(--card-dark);
+      border-radius: 12px;
+      padding: 0;
+    }
+    .changelog-header {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .changelog-header h3 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--text-primary);
+    }
+    .changelog-item {
+      padding: 20px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .changelog-item:last-child {
+      border-bottom: none;
+    }
+    .changelog-meta {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .changelog-version {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--sage);
+      font-weight: 600;
+    }
+    .changelog-date {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .changelog-content {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* File Explorer */
+    .card-file-explorer {
+      background: var(--card-darkest);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .file-header {
+      background: var(--card-medium);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .file-breadcrumb {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .file-tree {
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+    .file-item {
+      padding: 4px 0;
+      padding-left: var(--indent, 0);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .file-item:hover {
+      color: var(--text-primary);
+      background: var(--card-medium);
+      margin: 0 -16px;
+      padding-left: calc(var(--indent, 0) + 16px);
+      padding-right: 16px;
+    }
+    .file-icon {
+      flex-shrink: 0;
+    }
+    .file-folder { color: var(--sage); }
+    .file-code { color: var(--blue-light); }
+    .file-image { color: var(--accent-purple); }
+
+    /* Utility classes */
+    .wide {
+      grid-column: span 2;
+    }
+    .tall {
+      grid-row: span 2;
+    }
+    
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .wide, .tall { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Interactive & Technical Cards</h1>
+    <p class="subtitle">Interactive and technical components</p>
+    
+    <!-- Interactive & Visual Cards Section -->
+    <section class="section">
+      <h2 class="section-title">Interactive & Visual</h2>
+      <div class="grid">
+
+        <!-- accordion -->
+        <div class="card-accordion wide card-with-label">
+          <div class="card-label">accordion</div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>Event-Driven Architecture</h4>
+              <span class="accordion-arrow">↓</span>
+            </div>
+            <div class="accordion-content">
+              Systems communicate through signals, eliminating tight coupling and enabling hot-swappable components. Each system can operate independently while coordinating through the event bus.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>Cross-Language Integration</h4>
+              <span class="accordion-arrow">→</span>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>Performance Optimization</h4>
+              <span class="accordion-arrow">→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- workflow -->
+        <div class="card-workflow card-with-label">
+          <div class="card-label">workflow</div>
+          <div class="workflow-header">
+            <h3>Build Pipeline</h3>
+            <span class="workflow-status">Active</span>
+          </div>
+          <div class="workflow-steps">
+            <div class="workflow-step completed">
+              <div class="workflow-dot">✓</div>
+              <div class="workflow-content">
+                <h4>Asset Tagging</h4>
+                <p>Components tagged in Aseprite</p>
+              </div>
+            </div>
+            <div class="workflow-step active">
+              <div class="workflow-dot">2</div>
+              <div class="workflow-content">
+                <h4>Processing</h4>
+                <p>Generating sprite combinations</p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="workflow-dot">3</div>
+              <div class="workflow-content">
+                <h4>Integration</h4>
+                <p>Import to game engine</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- tabs -->
+        <div class="card-tabs card-with-label">
+          <div class="card-label">tabs</div>
+          <div class="tabs-header">
+            <button class="tab-button active">Architecture</button>
+            <button class="tab-button">Performance</button>
+            <button class="tab-button">Integration</button>
+          </div>
+          <div class="tabs-content">
+            <div class="tab-panel">
+              <h4>Event-Driven Design</h4>
+              <p>Completely decoupled systems communicate through signals. No direct dependencies between modules, enabling hot-swapping and runtime modifications.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Code & Technical Cards Section -->
+    <section class="section">
+      <h2 class="section-title">Code & Technical</h2>
+      <div class="grid">
+
+        <!-- terminal -->
+        <div class="card-terminal card-with-label">
+          <div class="card-label">terminal</div>
+          <div class="terminal-header">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+          </div>
+          <div class="terminal-content">
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span> 
+              <span class="terminal-command">npm run build</span>
+            </div>
+            <div class="terminal-line">✓ Compiled successfully</div>
+            <div class="terminal-line">✓ 0 errors, 0 warnings</div>
+            <div class="terminal-line">✓ Build time: 2.34s</div>
+          </div>
+        </div>
+
+        <!-- code-snippet -->
+        <div class="card-code card-with-label">
+          <div class="card-label">code-snippet</div>
+          <div class="code-header">
+            <span class="code-filename">save_system.gd</span>
+            <span class="code-language">GDScript</span>
+          </div>
+          <div class="code-content">
+            <span class="code-line"><span class="code-keyword">signal</span> <span class="code-function">save_requested</span>(data: Dictionary)</span>
+            <span class="code-line"><span class="code-keyword">signal</span> <span class="code-function">load_completed</span>()</span>
+            <span class="code-line"></span>
+            <span class="code-line"><span class="code-keyword">func</span> <span class="code-function">_ready</span>():</span>
+            <span class="code-line">    <span class="code-comment"># Distributed architecture</span></span>
+            <span class="code-line">    SaveManager.<span class="code-function">connect</span>(<span class="code-string">"save_triggered"</span>, _on_save)</span>
+            <span class="code-line">    <span class="code-keyword">await</span> restore_state()</span>
+          </div>
+        </div>
+
+        <!-- changelog -->
+        <div class="card-changelog card-with-label">
+          <div class="card-label">changelog</div>
+          <div class="changelog-header">
+            <h3>Recent Updates</h3>
+          </div>
+          <div class="changelog-item">
+            <div class="changelog-meta">
+              <span class="changelog-version">v2.1.0</span>
+              <span class="changelog-date">Nov 2024</span>
+            </div>
+            <div class="changelog-content">
+              Added cross-language pipeline support. Lua scripts now integrate seamlessly with C# and GDScript components.
+            </div>
+          </div>
+          <div class="changelog-item">
+            <div class="changelog-meta">
+              <span class="changelog-version">v2.0.0</span>
+              <span class="changelog-date">Oct 2024</span>
+            </div>
+            <div class="changelog-content">
+              Complete architecture overhaul. Signal-driven systems now handle 10K+ objects without performance degradation.
+            </div>
+          </div>
+        </div>
+
+        <!-- file-explorer -->
+        <div class="card-file-explorer card-with-label">
+          <div class="card-label">file-explorer</div>
+          <div class="file-header">
+            <div class="file-breadcrumb">
+              <span>src</span>
+              <span>/</span>
+              <span>systems</span>
+            </div>
+          </div>
+          <div class="file-tree">
+            <div class="file-item" style="--indent: 0px">
+              <span class="file-icon file-folder">▼</span>
+              <span>persistence</span>
+            </div>
+            <div class="file-item" style="--indent: 20px">
+              <span class="file-icon file-code">▫</span>
+              <span>save_manager.gd</span>
+            </div>
+            <div class="file-item" style="--indent: 20px">
+              <span class="file-icon file-code">▫</span>
+              <span>load_system.gd</span>
+            </div>
+            <div class="file-item" style="--indent: 0px">
+              <span class="file-icon file-folder">▶</span>
+              <span>dialogue</span>
+            </div>
+            <div class="file-item" style="--indent: 0px">
+              <span class="file-icon file-folder">▶</span>
+              <span>terrain</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

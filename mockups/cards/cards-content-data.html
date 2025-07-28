@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content & Data Cards Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --sage-muted: rgba(146, 187, 161, 0.2);
+      --blue: #56758c;
+      --blue-light: #7391ab;
+      --blue-dark: #3d526b;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --card-light: #374151;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --accent-orange: #ff7a59;
+      --accent-purple: #7c3aed;
+      --accent-yellow: #f59e0b;
+      --border: #3d4556;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-typewriter: 'Courier Prime', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      padding: 40px 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 50%, var(--blue-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 60px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: var(--sage);
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--sage);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    /* Card Label System */
+    .card-label {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 400;
+      padding: 2px 6px;
+      border-radius: 2px;
+      z-index: 10;
+      font-family: monospace;
+    }
+
+    /* Position relative for cards that need labels */
+    .card-with-label {
+      position: relative;
+    }
+
+    /* Feature List Card */
+    .card-feature-list {
+      background: var(--card-dark);
+      padding: 32px;
+      border-radius: 8px;
+      border-left: 4px solid var(--sage);
+    }
+    .card-feature-list h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      margin: 0 0 20px;
+      color: var(--text-primary);
+    }
+    .card-feature-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .card-feature-list li {
+      padding: 12px 0;
+      padding-left: 24px;
+      position: relative;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .card-feature-list li:last-child {
+      border-bottom: none;
+    }
+    .card-feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--sage);
+    }
+
+    /* Stat Showcase */
+    .card-stat-showcase {
+      background: var(--card-medium);
+      padding: 28px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .card-stat-showcase .big-number {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--sage);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .card-stat-showcase .label {
+      font-size: 18px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .card-stat-showcase .description {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Tech Stack Grid */
+    .card-tech-stack {
+      background: var(--card-dark);
+      padding: 24px;
+      border-radius: 8px;
+    }
+    .card-tech-stack h3 {
+      font-size: 18px;
+      margin: 0 0 16px;
+      color: var(--text-primary);
+    }
+    .tech-grid-inner {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .tech-item {
+      background: var(--card-medium);
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .tech-item:hover {
+      background: var(--card-light);
+      transform: translateY(-2px);
+    }
+
+    /* Timeline Card */
+    .card-timeline {
+      background: var(--card-dark);
+      padding: 32px;
+      border-radius: 8px;
+    }
+    .card-timeline h3 {
+      font-size: 20px;
+      margin: 0 0 24px;
+      color: var(--sage);
+    }
+    .timeline-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-date {
+      flex: 0 0 80px;
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+    .timeline-content {
+      flex: 1;
+      padding-left: 16px;
+      border-left: 2px solid var(--border);
+    }
+    .timeline-content h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      color: var(--text-primary);
+    }
+    .timeline-content p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Metric Dashboard */
+    .card-metrics {
+      background: var(--card-dark);
+      padding: 24px;
+      border-radius: 8px;
+    }
+    .card-metrics h3 {
+      font-size: 18px;
+      margin: 0 0 20px;
+      color: var(--text-primary);
+    }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .metric-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--sage);
+    }
+
+    /* Data Table Card */
+    .card-table {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .table-header {
+      background: var(--card-medium);
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .table-header h3 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--text-primary);
+    }
+    .table-content {
+      padding: 0;
+    }
+    .table-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+    .table-row:hover {
+      background: var(--card-medium);
+    }
+    .table-row:last-child {
+      border-bottom: none;
+    }
+    .table-cell {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .table-cell:first-child {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    .table-cell:last-child {
+      text-align: right;
+      color: var(--sage);
+      font-family: var(--font-mono);
+    }
+
+    /* Process Steps */
+    .card-process {
+      background: var(--card-medium);
+      padding: 32px;
+      border-radius: 12px;
+    }
+    .card-process h3 {
+      font-size: 20px;
+      margin: 0 0 24px;
+      color: var(--text-primary);
+    }
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .process-step:last-child { margin-bottom: 0; }
+    .step-number {
+      flex: 0 0 40px;
+      height: 40px;
+      background: var(--sage);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .step-content h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      color: var(--text-primary);
+    }
+    .step-content p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Comparison Card */
+    .card-comparison {
+      background: var(--card-dark);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .comparison-header {
+      background: var(--sage-dark);
+      padding: 16px 24px;
+      text-align: center;
+      font-weight: 600;
+      color: white;
+    }
+    .comparison-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .comparison-side {
+      padding: 24px;
+    }
+    .comparison-side:first-child {
+      border-right: 1px solid var(--border);
+    }
+    .comparison-side h4 {
+      margin: 0 0 16px;
+      color: var(--text-primary);
+      font-size: 16px;
+    }
+    .comparison-side ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .comparison-side li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .comparison-side li::before {
+      content: '×';
+      color: #f85149;
+      margin-right: 8px;
+    }
+    .comparison-side:last-child li::before {
+      content: '✓';
+      color: #7ee787;
+    }
+
+    /* Split Content Card */
+    .card-split {
+      background: var(--card-darkest);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 280px;
+    }
+    .split-visual {
+      background: linear-gradient(135deg, var(--sage-dark) 0%, var(--blue-dark) 100%);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .split-visual-number {
+      font-size: 64px;
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+      font-family: var(--font-display);
+    }
+    .split-visual-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .split-content {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .split-content h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      color: var(--text-primary);
+    }
+    .split-content p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Progress Tracker */
+    .card-progress {
+      background: var(--card-darkest);
+      padding: 28px;
+      border-radius: 12px;
+    }
+    .card-progress h3 {
+      font-size: 18px;
+      margin: 0 0 24px;
+      color: var(--text-primary);
+    }
+    .progress-item {
+      margin-bottom: 20px;
+    }
+    .progress-item:last-child {
+      margin-bottom: 0;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .progress-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .progress-value {
+      font-size: 14px;
+      color: var(--sage);
+      font-weight: 600;
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--card-medium);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sage) 0%, var(--sage-light) 100%);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    /* Utility classes */
+    .wide {
+      grid-column: span 2;
+    }
+    .tall {
+      grid-row: span 2;
+    }
+    
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .wide, .tall { grid-column: span 1; grid-row: span 1; }
+      .card-split { grid-template-columns: 1fr; }
+      .comparison-body { grid-template-columns: 1fr; }
+      .comparison-side:first-child { 
+        border-right: none; 
+        border-bottom: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Content & Data Cards</h1>
+    <p class="subtitle">Cards for displaying content and data</p>
+    
+    <!-- Content & Data Cards Section -->
+    <section class="section">
+      <h2 class="section-title">Content & Data Cards</h2>
+      <div class="grid">
+        
+        <!-- feature-list -->
+        <div class="card-feature-list card-with-label">
+          <div class="card-label">feature-list</div>
+          <h3>Key Features</h3>
+          <ul>
+            <li>Distributed signal-driven architecture</li>
+            <li>Crash-safe persistence with autosave</li>
+            <li>Version-resilient schema evolution</li>
+            <li>Zero frame drops during operations</li>
+            <li>10,000+ object handling capacity</li>
+          </ul>
+        </div>
+
+        <!-- timeline -->
+        <div class="card-timeline card-with-label">
+          <div class="card-label">timeline</div>
+          <h3>Development Timeline</h3>
+          <div class="timeline-item">
+            <div class="timeline-date">Nov 2024</div>
+            <div class="timeline-content">
+              <h4>Portrait Pipeline</h4>
+              <p>Automated animation system launch</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Oct 2024</div>
+            <div class="timeline-content">
+              <h4>Dialogue System</h4>
+              <p>Context-aware NPC interactions</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Sept 2024</div>
+            <div class="timeline-content">
+              <h4>World Editor</h4>
+              <p>Dual-grid terrain system</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- metrics -->
+        <div class="card-metrics card-with-label">
+          <div class="card-label">metrics</div>
+          <h3>Performance Metrics</h3>
+          <div class="metric-row">
+            <span class="metric-label">Save Operation</span>
+            <span class="metric-value">&lt; 100ms</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Frame Drops</span>
+            <span class="metric-value">Zero</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Object Capacity</span>
+            <span class="metric-value">10,000+</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Asset Reduction</span>
+            <span class="metric-value">70%</span>
+          </div>
+        </div>
+
+        <!-- data-table -->
+        <div class="card-table card-with-label">
+          <div class="card-label">data-table</div>
+          <div class="table-header">
+            <h3>Performance Benchmarks</h3>
+          </div>
+          <div class="table-content">
+            <div class="table-row">
+              <div class="table-cell">Save Operation</div>
+              <div class="table-cell">10K objects</div>
+              <div class="table-cell">&lt;100ms</div>
+            </div>
+            <div class="table-row">
+              <div class="table-cell">Frame Rate</div>
+              <div class="table-cell">During autosave</div>
+              <div class="table-cell">60fps</div>
+            </div>
+            <div class="table-row">
+              <div class="table-cell">Memory Usage</div>
+              <div class="table-cell">Peak load</div>
+              <div class="table-cell">128MB</div>
+            </div>
+            <div class="table-row">
+              <div class="table-cell">Asset Pipeline</div>
+              <div class="table-cell">1000+ outputs</div>
+              <div class="table-cell">2.3s</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Process & Comparison Cards -->
+    <section class="section">
+      <h2 class="section-title">Process & Comparison</h2>
+      <div class="grid">
+
+        <!-- process-steps -->
+        <div class="card-process card-with-label">
+          <div class="card-label">process-steps</div>
+          <h3>Implementation Process</h3>
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Tag Components</h4>
+              <p>Artists tag expression parts in Aseprite</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Auto-Generate</h4>
+              <p>Pipeline creates 1000+ combinations</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Live Preview</h4>
+              <p>Test expressions in real-time</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- comparison -->
+        <div class="card-comparison card-with-label">
+          <div class="card-label">comparison</div>
+          <div class="comparison-header">Save System Evolution</div>
+          <div class="comparison-body">
+            <div class="comparison-side">
+              <h4>Before</h4>
+              <ul>
+                <li>Manual tracking</li>
+                <li>Data loss on crash</li>
+                <li>Brittle save states</li>
+                <li>Version incompatible</li>
+              </ul>
+            </div>
+            <div class="comparison-side">
+              <h4>After</h4>
+              <ul>
+                <li>Automatic persistence</li>
+                <li>Crash-safe design</li>
+                <li>Distributed saving</li>
+                <li>Update-proof saves</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- progress-tracker -->
+        <div class="card-progress card-with-label">
+          <div class="card-label">progress-tracker</div>
+          <h3>Implementation Progress</h3>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Core Architecture</span>
+              <span class="progress-value">100%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Pipeline Integration</span>
+              <span class="progress-value">85%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Performance Optimization</span>
+              <span class="progress-value">92%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 92%"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

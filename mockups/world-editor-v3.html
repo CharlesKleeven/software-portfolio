@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive World Editor - Jodie Nguyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --sage-muted: rgba(146, 187, 161, 0.2);
+      --blue: #66a5da;
+      --blue-light: #7391ab;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --card-light: #374151;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b8c5d1;
+      --text-muted: #808080;
+      --border: #3d4556;
+      --orange: #ff7a59;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* Dual Grid Visualization - inspired by dual-grid card */
+    .dual-grid-showcase {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 48px 0;
+    }
+
+    .grid-header {
+      background: var(--sage-dark);
+      color: white;
+      padding: 16px 24px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .grid-display {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 350px;
+    }
+
+    .grid-side {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .grid-side:first-child {
+      border-right: 2px solid var(--border);
+    }
+
+    .grid-visualization {
+      width: 200px;
+      height: 200px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      margin-bottom: 20px;
+    }
+
+    .grid-cell {
+      background: var(--card-medium);
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .logic-grid .grid-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .logic-grid .grid-cell.active {
+      background: var(--sage);
+      color: white;
+    }
+
+    .visual-grid .grid-cell {
+      background-size: cover;
+      background-position: center;
+    }
+
+    .visual-grid .grid-cell.terrain-grass {
+      background: linear-gradient(135deg, #5a7265 0%, #92bba1 100%);
+    }
+
+    .visual-grid .grid-cell.terrain-water {
+      background: linear-gradient(135deg, #3d526b 0%, #66a5da 100%);
+    }
+
+    .visual-grid .grid-cell.terrain-sand {
+      background: linear-gradient(135deg, #d4a574 0%, #e8c4a0 100%);
+    }
+
+    .grid-label {
+      font-size: 16px;
+      color: var(--text-secondary);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Terrain Showcase */
+    .terrain-showcase {
+      background: var(--card-darkest);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+
+    .terrain-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .terrain-type {
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .terrain-type:hover {
+      transform: translateY(-4px);
+    }
+
+    .terrain-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--card-medium);
+      border-radius: 12px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      transition: all 0.2s;
+    }
+
+    .terrain-type:hover .terrain-icon {
+      background: var(--sage-muted);
+      transform: scale(1.1);
+    }
+
+    .terrain-name {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Data Table inspired comparison */
+    .data-comparison {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 48px 0;
+    }
+
+    .table-header {
+      background: var(--card-medium);
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .table-row {
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    .table-row:last-child {
+      border-bottom: none;
+    }
+
+    .table-cell.highlight {
+      color: var(--sage);
+      font-weight: 600;
+    }
+
+    /* Media containers */
+    .media-showcase {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .media-showcase video,
+    .media-showcase img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+    /* Workflow steps */
+    .workflow-container {
+      background: var(--card-dark);
+      padding: 40px;
+      border-radius: 12px;
+      margin: 48px 0;
+    }
+
+    .workflow-steps {
+      position: relative;
+    }
+
+    .workflow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      position: relative;
+      padding-bottom: 32px;
+    }
+
+    .workflow-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .workflow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 23px;
+      top: 48px;
+      width: 2px;
+      height: calc(100% - 16px);
+      background: var(--border);
+    }
+
+    .workflow-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--card-medium);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .workflow-step.active .workflow-dot {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: white;
+    }
+
+    .workflow-content h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--text-primary);
+    }
+
+    .workflow-content p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Feature cards */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .feature-card {
+      background: var(--card-dark);
+      padding: 24px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .feature-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--sage);
+      font-family: var(--font-display);
+      line-height: 1;
+      margin: 0;
+    }
+
+    .feature-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    /* Comparison section */
+    .comparison-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      margin: 48px 0;
+    }
+
+    .comparison-item {
+      text-align: center;
+    }
+
+    .comparison-box {
+      background: var(--card-dark);
+      padding: 32px;
+      border-radius: 12px;
+      position: relative;
+      min-width: 280px;
+    }
+
+    .comparison-box h3 {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin: 0 0 16px;
+      font-weight: 400;
+    }
+
+    .asset-count {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .comparison-box.traditional .asset-count {
+      color: var(--orange);
+    }
+
+    .comparison-box.dual-grid .asset-count {
+      color: var(--sage);
+    }
+
+    .asset-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .comparison-arrow {
+      font-size: 32px;
+      color: var(--sage);
+    }
+
+    /* Media grid */
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    /* Tech pills */
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .tech-pill {
+      background: var(--card-medium);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    /* Results Section */
+    .results-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .comparison-side {
+      background: rgba(120, 175, 210, 0.15);
+      padding: 24px 24px 32px 24px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .comparison-side:last-child {
+      background: rgba(180, 220, 195, 0.22);
+    }
+
+    .comparison-side h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.9;
+    }
+
+    .comparison-items {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 18px;
+      height: 160px;
+    }
+
+    .comparison-item {
+      font-size: 16px;
+      line-height: 1.4;
+      color: var(--text-primary);
+      font-weight: 400;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .comparison-category {
+      color: var(--text-primary);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.6;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .comparison-category::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      background: currentColor;
+      border-radius: 50%;
+    }
+
+    /* Section Spacing */
+    .section-spacing {
+      margin-bottom: 80px;
+    }
+
+    /* Challenge Content */
+    .challenge-points {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .challenge-point {
+      margin-bottom: 32px;
+    }
+
+    .challenge-point:last-child {
+      margin-bottom: 0;
+    }
+
+    .challenge-point h4 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 8px;
+    }
+
+    .challenge-point p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* Innovation Section */
+    .innovation-points {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Media caption styling */
+    .media-caption {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 12px;
+      text-align: center;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .grid-display,
+      .data-comparison .table-header,
+      .data-comparison .table-row,
+      .feature-grid,
+      .media-grid,
+      .results-comparison {
+        grid-template-columns: 1fr;
+      }
+      
+      .challenge-points {
+        gap: 32px;
+      }
+      
+      .section-spacing {
+        margin-bottom: 48px;
+      }
+      
+      .comparison-visual {
+        flex-direction: column;
+      }
+
+      .grid-side:first-child {
+        border-right: none;
+        border-bottom: 2px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header"></header>
+
+  <!-- Hero -->
+  <section class="hero-section fade-in-up">
+    <div class="container">
+      <h1 class="hero-title subpage">Interactive World Editor</h1>
+      <p class="hero-description">
+        Dual-grid terrain system with property painting tools for seamless real-time editing
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content-section fade-in-up" style="padding-top: 40px;">
+    <div class="container">
+      <div class="project-detail-container">
+
+        <!-- The Challenge -->
+        <div class="content-grid section-spacing">
+          <div class="fade-in-up">
+            <h2 class="section-title blue">The Challenge</h2>
+            <div class="challenge-points">
+              <div class="challenge-point">
+                <h4>Exponential art requirements</h4>
+                <p>Each new terrain type requires dozens of transition tiles, making world expansion impractical</p>
+              </div>
+              <div class="challenge-point">
+                <h4>Complex manual coordination</h4>
+                <p>Traditional systems demand separate handling for visuals, collision, and game logic</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Demo -->
+          <div class="fade-lightbox">
+            <div class="lightbox">
+              <a href="#" data-lightbox-src="../assets/videos/dual-grid-demo.mp4" data-lightbox-type="video">
+                <video loop muted playsinline class="lightbox-img" data-src="../assets/videos/dual-grid-demo.mp4">
+                  <source src="../assets/videos/dual-grid-demo.mp4" type="video/mp4">
+                </video>
+              </a>
+              <p class="media-caption">Single brush stroke updates multiple terrain layers simultaneously</p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Dual Grid Architecture -->
+        <div class="fade-in-up section-spacing">
+          <h2 class="section-title blue">Dual-Grid Architecture</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 32px;">
+            <div class="data-comparison" style="margin: 0;">
+              <div class="table-header">
+                <div></div>
+                <div>Traditional</div>
+                <div>Dual Grid</div>
+              </div>
+              <div class="table-row">
+                <div>Tiles Required</div>
+                <div>256+ tiles</div>
+                <div class="table-cell highlight">16 tiles</div>
+              </div>
+              <div class="table-row">
+                <div>Setup Complexity</div>
+                <div>Edge case hell</div>
+                <div class="table-cell highlight">Simple offset</div>
+              </div>
+              <div class="table-row">
+                <div>Visual Result</div>
+                <div>Jagged corners</div>
+                <div class="table-cell highlight">Perfect curves</div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: flex-start; padding: 24px; height: fit-content;">
+              <h3 style="font-size: 20px; font-weight: 600; color: var(--text-primary); margin: 0 0 16px;">The Innovation</h3>
+              <p style="font-size: 18px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                Tiles offset by half a grid unit create perfectly rounded corners with only 16 base tiles. Traditional tile systems require 256+ tiles and complex edge calculations to achieve similar results.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Painting -->
+        <div class="fade-in-up section-spacing">
+          <h2 class="section-title blue">Property Painting System</h2>
+          <p class="challenge-text" style="margin-bottom: 32px;">
+            Custom tooling that extends standard tile systems. Paint additional data layers over any area with brushes, dramatically reducing manual setup time while enabling precise control over game mechanics.
+          </p>
+          <div class="terrain-grid">
+            <div class="fade-lightbox">
+              <div class="lightbox">
+                <a href="#" data-lightbox-src="../assets/images/terrain-screenshot.jpg" data-lightbox-type="image">
+                  <img src="../assets/images/terrain-screenshot.jpg" alt="Dual-grid system architecture" class="lightbox-img">
+                </a>
+                <p class="media-caption">Logic and visual grids working in parallel</p>
+              </div>
+            </div>
+            <div class="fade-lightbox">
+              <div class="lightbox">
+                <a href="#" data-lightbox-src="../assets/images/terrains-objects.jpg" data-lightbox-type="image">
+                  <img src="../assets/images/terrains-objects.jpg" alt="Complex terrain combinations" class="lightbox-img">
+                </a>
+                <p class="media-caption">Complex multi-terrain environments with objects</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- Results -->
+        <div class="fade-in-up section-spacing">
+          <h2 class="section-title">The Results</h2>
+          <div class="results-comparison">
+            <div class="comparison-side">
+              <h3>Before</h3>
+              <div class="comparison-items">
+                <div class="comparison-item">
+                  <span class="comparison-category">Assets</span>
+                  256+ tiles per terrain type
+                </div>
+                <div class="comparison-item">
+                  <span class="comparison-category">Workflow</span>
+                  Manual tile placement with debugging
+                </div>
+                <div class="comparison-item">
+                  <span class="comparison-category">Scaling</span>
+                  Each terrain multiplies complexity
+                </div>
+              </div>
+            </div>
+            <div class="comparison-side">
+              <h3>After</h3>
+              <div class="comparison-items">
+                <div class="comparison-item">
+                  <span class="comparison-category">Assets</span>
+                  16 tiles with perfect curves
+                </div>
+                <div class="comparison-item">
+                  <span class="comparison-category">Workflow</span>
+                  Property painting with brushes
+                </div>
+                <div class="comparison-item">
+                  <span class="comparison-category">Scaling</span>
+                  New terrains integrate seamlessly
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section class="nav-section fade-in-up">
+    <div class="container">
+      <div class="nav-buttons">
+        <a href="./portrait-pipeline" class="button">← Previous Project</a>
+        <a href="./data-persistence" class="button">Next Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack-preview">
+    <div class="container">
+      <p class="tech-stack-line">
+        Godot Engine • GDScript • TileMap System • Bitmasking • Custom Algorithms
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Global Lightbox -->
+  <div id="global-lightbox-overlay">
+    <div id="global-lightbox-content"></div>
+  </div>
+
+  <script src="../js/components.js"></script>
+</body>
+</html>

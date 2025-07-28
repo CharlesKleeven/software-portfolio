@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handcrafted & Creative Cards Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #92bba1;
+      --sage-light: #a8d5ba;
+      --sage-dark: #5a7265;
+      --sage-muted: rgba(146, 187, 161, 0.2);
+      --blue: #56758c;
+      --blue-light: #7391ab;
+      --blue-dark: #3d526b;
+      --dark-bg: #0f1419;
+      --card-darkest: #1a1f2e;
+      --card-dark: #232937;
+      --card-medium: #2d3548;
+      --card-light: #374151;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --accent-orange: #ff7a59;
+      --accent-purple: #7c3aed;
+      --accent-yellow: #f59e0b;
+      --border: #3d4556;
+      --font-display: 'Rubik', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-typewriter: 'Courier Prime', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      padding: 40px 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 50%, var(--blue-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 60px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: var(--sage);
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--sage);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    /* Card Label System */
+    .card-label {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 400;
+      padding: 2px 6px;
+      border-radius: 2px;
+      z-index: 10;
+      font-family: monospace;
+    }
+
+    /* Position relative for cards that need labels */
+    .card-with-label {
+      position: relative;
+    }
+
+    /* CARD 25: Post-it Note Cluster */
+    .card-postit-cluster {
+      background: transparent;
+      padding: 24px;
+      position: relative;
+      min-height: 320px;
+    }
+    .postit {
+      position: absolute;
+      width: 180px;
+      padding: 20px;
+      background: var(--accent-yellow);
+      color: var(--card-darkest);
+      font-family: var(--font-body);
+      font-size: 14px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      transform: rotate(-2deg);
+    }
+    .postit:nth-child(2) {
+      background: var(--sage-light);
+      top: 80px;
+      left: 140px;
+      transform: rotate(3deg);
+    }
+    .postit:nth-child(3) {
+      background: var(--blue-light);
+      color: white;
+      top: 160px;
+      left: 40px;
+      transform: rotate(-1deg);
+    }
+    .postit h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .postit p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* CARD 26: Recipe/Instruction Card */
+    .card-recipe {
+      background: var(--card-dark);
+      padding: 32px;
+      border-radius: 12px;
+      border: 2px dashed var(--sage);
+    }
+    .card-recipe h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--sage);
+      margin: 0 0 8px;
+    }
+    .recipe-meta {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .recipe-meta span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .recipe-ingredients {
+      background: var(--card-medium);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .recipe-ingredients h4 {
+      font-size: 16px;
+      margin: 0 0 12px;
+      color: var(--text-primary);
+    }
+    .recipe-ingredients ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .recipe-ingredients li {
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .recipe-ingredients li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--sage);
+    }
+    .recipe-steps {
+      counter-reset: step-counter;
+    }
+    .recipe-step {
+      padding-left: 40px;
+      position: relative;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .recipe-step::before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--sage);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* CARD 27: Notebook Paper */
+    .card-notebook {
+      background: linear-gradient(
+        to bottom,
+        #f5f5dc 0%,
+        #f5f5dc 95%,
+        #ff6b6b 95%,
+        #ff6b6b 100%
+      );
+      padding: 40px 40px 40px 80px;
+      border-radius: 4px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .card-notebook::before {
+      content: '';
+      position: absolute;
+      left: 60px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #ff6b6b;
+    }
+    .notebook-holes {
+      position: absolute;
+      left: 20px;
+      top: 30px;
+      bottom: 30px;
+      width: 20px;
+    }
+    .notebook-hole {
+      width: 20px;
+      height: 20px;
+      background: var(--dark-bg);
+      border-radius: 50%;
+      margin-bottom: 30px;
+    }
+    .card-notebook h3 {
+      font-family: var(--font-typewriter);
+      font-size: 24px;
+      color: #333;
+      margin: 0 0 16px;
+      text-decoration: underline;
+      text-decoration-color: var(--sage-dark);
+    }
+    .card-notebook p {
+      font-family: var(--font-typewriter);
+      color: #444;
+      line-height: 28px;
+      background-image: repeating-linear-gradient(
+        transparent,
+        transparent 27px,
+        #e0e0e0 27px,
+        #e0e0e0 28px
+      );
+      margin: 0;
+    }
+
+    /* CARD 28: Messaging Interface */
+    .card-messages {
+      background: var(--card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .messages-header {
+      background: var(--card-medium);
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .messages-avatar {
+      width: 32px;
+      height: 32px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+    }
+    .messages-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .messages-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .message {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .message-sent {
+      align-self: flex-end;
+      background: var(--sage);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+    .message-received {
+      align-self: flex-start;
+      background: var(--card-medium);
+      color: var(--text-primary);
+      border-bottom-left-radius: 4px;
+    }
+    .message-time {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    /* CARD 29: File Explorer */
+    .card-file-explorer {
+      background: var(--card-darkest);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .file-header {
+      background: var(--card-medium);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .file-breadcrumb {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .file-tree {
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+    .file-item {
+      padding: 4px 0;
+      padding-left: var(--indent, 0);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .file-item:hover {
+      color: var(--text-primary);
+      background: var(--card-medium);
+      margin: 0 -16px;
+      padding-left: calc(var(--indent, 0) + 16px);
+      padding-right: 16px;
+    }
+    .file-icon {
+      flex-shrink: 0;
+    }
+    .file-folder { color: var(--sage); }
+    .file-code { color: var(--blue-light); }
+    .file-image { color: var(--accent-purple); }
+
+    /* CARD 30: Polaroid Stack */
+    .card-polaroid-stack {
+      padding: 40px;
+      position: relative;
+      min-height: 380px;
+    }
+    .polaroid {
+      position: absolute;
+      background: white;
+      padding: 12px 12px 60px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      width: 240px;
+      transform: rotate(-5deg);
+      transition: all 0.3s;
+    }
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.05);
+      z-index: 10;
+    }
+    .polaroid:nth-child(2) {
+      top: 20px;
+      left: 140px;
+      transform: rotate(3deg);
+    }
+    .polaroid:nth-child(3) {
+      top: 40px;
+      left: 280px;
+      transform: rotate(-3deg);
+    }
+    .polaroid-image {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, var(--sage) 0%, var(--blue) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+    }
+    .polaroid-caption {
+      position: absolute;
+      bottom: 16px;
+      left: 12px;
+      right: 12px;
+      text-align: center;
+      font-family: var(--font-typewriter);
+      color: #333;
+      font-size: 14px;
+    }
+
+    /* CARD 31: Music Player Interface */
+    .card-music-player {
+      background: var(--card-dark);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .player-album {
+      height: 200px;
+      background: linear-gradient(135deg, var(--sage-dark) 0%, var(--blue-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .player-album::after {
+      content: '♪';
+      font-size: 80px;
+      color: rgba(255,255,255,0.2);
+      position: absolute;
+    }
+    .player-controls {
+      padding: 24px;
+    }
+    .player-track {
+      margin-bottom: 20px;
+    }
+    .player-track h3 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--text-primary);
+    }
+    .player-artist {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .player-progress {
+      margin-bottom: 20px;
+    }
+    .progress-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .progress-bar-player {
+      height: 4px;
+      background: var(--card-medium);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill-player {
+      height: 100%;
+      width: 65%;
+      background: var(--sage);
+      border-radius: 2px;
+    }
+    .player-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .player-btn {
+      width: 48px;
+      height: 48px;
+      background: var(--card-medium);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      font-size: 20px;
+    }
+    .player-btn:hover {
+      background: var(--sage);
+      color: white;
+      transform: scale(1.1);
+    }
+    .player-btn.primary {
+      background: var(--sage);
+      color: white;
+    }
+
+    /* CARD 32: Kanban Board */
+    .card-kanban {
+      background: var(--card-medium);
+      padding: 24px;
+      border-radius: 12px;
+    }
+    .kanban-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .kanban-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .kanban-count {
+      background: var(--sage-muted);
+      color: var(--sage);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .kanban-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .kanban-card {
+      background: var(--card-dark);
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+      cursor: move;
+    }
+    .kanban-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .kanban-card.priority-high {
+      border-left-color: var(--accent-orange);
+    }
+    .kanban-card.priority-medium {
+      border-left-color: var(--sage);
+    }
+    .kanban-card.priority-low {
+      border-left-color: var(--blue);
+    }
+    .kanban-card h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    .kanban-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* CARD 33: Film Strip */
+    .card-film-strip {
+      background: #000;
+      padding: 32px 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .film-perforations {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 20px;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 8px,
+        #fff 8px,
+        #fff 16px
+      );
+    }
+    .film-perforations.left { left: 0; }
+    .film-perforations.right { right: 0; }
+    .film-frames {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 0 20px;
+    }
+    .film-frame {
+      flex-shrink: 0;
+      width: 160px;
+      height: 120px;
+      background: var(--card-dark);
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--text-secondary);
+      position: relative;
+    }
+    .film-frame::after {
+      content: attr(data-frame);
+      position: absolute;
+      bottom: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: #fff;
+      font-family: var(--font-mono);
+    }
+
+    /* CARD 34: Typewriter Text */
+    .card-typewriter {
+      background: var(--card-dark);
+      padding: 40px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-typewriter::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: var(--card-medium);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+    .typewriter-text {
+      font-family: var(--font-typewriter);
+      font-size: 16px;
+      color: var(--text-primary);
+      line-height: 2;
+      position: relative;
+      z-index: 1;
+    }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 20px;
+      background: var(--sage);
+      animation: blink 1s infinite;
+      vertical-align: text-bottom;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* CARD 35: Library Card Catalog */
+    .card-catalog {
+      background: var(--card-darkest);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+    }
+    .catalog-tab {
+      background: var(--sage);
+      color: white;
+      padding: 8px 20px;
+      display: inline-block;
+      border-radius: 8px 8px 0 0;
+      font-weight: 600;
+      font-size: 14px;
+      margin-left: 20px;
+      margin-bottom: -2px;
+      position: relative;
+      z-index: 1;
+    }
+    .catalog-content {
+      padding: 24px;
+      background: repeating-linear-gradient(
+        to bottom,
+        var(--card-darkest) 0,
+        var(--card-darkest) 40px,
+        var(--card-dark) 40px,
+        var(--card-dark) 41px
+      );
+    }
+    .catalog-entry {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .catalog-entry:last-child {
+      border-bottom: none;
+    }
+    .catalog-id {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--sage);
+      margin-bottom: 4px;
+    }
+    .catalog-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .catalog-meta {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* CARD 36: Map/Journey */
+    .card-journey {
+      background: var(--card-dark);
+      padding: 32px;
+      border-radius: 12px;
+      position: relative;
+    }
+    .journey-path {
+      position: relative;
+      padding-left: 40px;
+    }
+    .journey-path::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: var(--sage);
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 8px,
+        var(--sage) 8px,
+        var(--sage) 16px
+      );
+    }
+    .journey-stop {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .journey-stop:last-child {
+      margin-bottom: 0;
+    }
+    .journey-marker {
+      position: absolute;
+      left: -30px;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      background: var(--card-dark);
+      border: 3px solid var(--sage);
+      border-radius: 50%;
+    }
+    .journey-stop.completed .journey-marker {
+      background: var(--sage);
+    }
+    .journey-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .journey-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .journey-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Utility classes */
+    .wide {
+      grid-column: span 2;
+    }
+    .tall {
+      grid-row: span 2;
+    }
+    
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .wide, .tall { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Handcrafted & Creative Cards</h1>
+    <p class="subtitle">Creative card designs for engaging interfaces</p>
+    
+    <!-- Handcrafted & Creative Cards -->
+    <section class="section">
+      <h2 class="section-title">Handcrafted & Creative Collection</h2>
+      <div class="grid">
+
+        <!-- postit-cluster -->
+        <div class="card-postit-cluster card-with-label">
+          <div class="card-label">postit-cluster</div>
+          <div class="postit">
+            <h4>Remember!</h4>
+            <p>Signal-driven architecture enables hot-swapping</p>
+          </div>
+          <div class="postit">
+            <h4>TODO</h4>
+            <p>Optimize texture atlas generation for mobile</p>
+          </div>
+          <div class="postit">
+            <h4>Note</h4>
+            <p>Performance tested with 10K+ objects</p>
+          </div>
+        </div>
+
+        <!-- recipe -->
+        <div class="card-recipe card-with-label">
+          <div class="card-label">recipe</div>
+          <h3>Build Recipe</h3>
+          <div class="recipe-meta">
+            <span>⏱ 5 mins</span>
+            <span>🔧 3 steps</span>
+            <span>📦 20 components</span>
+          </div>
+          <div class="recipe-ingredients">
+            <h4>Ingredients</h4>
+            <ul>
+              <li>Aseprite source files</li>
+              <li>Expression tags</li>
+              <li>Lua automation scripts</li>
+              <li>Godot project</li>
+            </ul>
+          </div>
+          <div class="recipe-steps">
+            <div class="recipe-step">Tag all expression components in Aseprite layers</div>
+            <div class="recipe-step">Run automation pipeline to generate spritesheets</div>
+            <div class="recipe-step">Import and preview in Godot editor</div>
+          </div>
+        </div>
+
+        <!-- notebook -->
+        <div class="card-notebook card-with-label">
+          <div class="card-label">notebook</div>
+          <div class="notebook-holes">
+            <div class="notebook-hole"></div>
+            <div class="notebook-hole"></div>
+            <div class="notebook-hole"></div>
+          </div>
+          <h3>Development Notes</h3>
+          <p>The dual-grid system separates logic from visuals. This means we can have complex terrain behaviors without needing artwork for every possible combination. The logic grid drives the game mechanics while the visual grid auto-generates perfect transitions.</p>
+        </div>
+
+        <!-- messages -->
+        <div class="card-messages card-with-label">
+          <div class="card-label">messages</div>
+          <div class="messages-header">
+            <div class="messages-avatar">T</div>
+            <div class="messages-name">Team Chat</div>
+          </div>
+          <div class="messages-body">
+            <div class="message message-received">
+              How's the performance with 10K objects?
+              <div class="message-time">2:34 PM</div>
+            </div>
+            <div class="message message-sent">
+              Sub-100ms saves, zero frame drops!
+              <div class="message-time">2:35 PM</div>
+            </div>
+            <div class="message message-received">
+              That's incredible! Ship it!
+              <div class="message-time">2:36 PM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- polaroid-stack -->
+        <div class="card-polaroid-stack wide card-with-label">
+          <div class="card-label">polaroid-stack</div>
+          <div class="polaroid">
+            <div class="polaroid-image">[Terrain System]</div>
+            <div class="polaroid-caption">70% fewer assets needed</div>
+          </div>
+          <div class="polaroid">
+            <div class="polaroid-image">[Portrait Pipeline]</div>
+            <div class="polaroid-caption">1000+ expressions</div>
+          </div>
+          <div class="polaroid">
+            <div class="polaroid-image">[Save System]</div>
+            <div class="polaroid-caption">Crash-proof persistence</div>
+          </div>
+        </div>
+
+        <!-- music-player -->
+        <div class="card-music-player card-with-label">
+          <div class="card-label">music-player</div>
+          <div class="player-album"></div>
+          <div class="player-controls">
+            <div class="player-track">
+              <h3>Build Pipeline Running</h3>
+              <div class="player-artist">Asset Generation System</div>
+            </div>
+            <div class="player-progress">
+              <div class="progress-time">
+                <span>1:23</span>
+                <span>2:34</span>
+              </div>
+              <div class="progress-bar-player">
+                <div class="progress-fill-player"></div>
+              </div>
+            </div>
+            <div class="player-buttons">
+              <button class="player-btn">◄◄</button>
+              <button class="player-btn primary">▶</button>
+              <button class="player-btn">►►</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- film-strip -->
+        <div class="card-film-strip wide card-with-label">
+          <div class="card-label">film-strip</div>
+          <div class="film-perforations left"></div>
+          <div class="film-perforations right"></div>
+          <div class="film-frames">
+            <div class="film-frame" data-frame="001">[Concept]</div>
+            <div class="film-frame" data-frame="002">[Design]</div>
+            <div class="film-frame" data-frame="003">[Prototype]</div>
+            <div class="film-frame" data-frame="004">[Test]</div>
+            <div class="film-frame" data-frame="005">[Launch]</div>
+          </div>
+        </div>
+
+        <!-- typewriter -->
+        <div class="card-typewriter card-with-label">
+          <div class="card-label">typewriter</div>
+          <div class="typewriter-text">
+            The architecture is event-driven and distributed.
+            <br>Each system operates independently.
+            <br>No tight coupling. Pure signals.<span class="typewriter-cursor"></span>
+          </div>
+        </div>
+
+        <!-- catalog -->
+        <div class="card-catalog card-with-label">
+          <div class="card-label">catalog</div>
+          <div class="catalog-tab">SYSTEMS</div>
+          <div class="catalog-content">
+            <div class="catalog-entry">
+              <div class="catalog-id">SYS.001</div>
+              <div class="catalog-title">Persistence Manager</div>
+              <div class="catalog-meta">Signal-driven save system • v2.1.0</div>
+            </div>
+            <div class="catalog-entry">
+              <div class="catalog-id">SYS.002</div>
+              <div class="catalog-title">Dialogue Engine</div>
+              <div class="catalog-meta">Context-aware NPCs • v1.3.0</div>
+            </div>
+            <div class="catalog-entry">
+              <div class="catalog-id">SYS.003</div>
+              <div class="catalog-title">Terrain System</div>
+              <div class="catalog-meta">Dual-grid architecture • v3.0.0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- journey -->
+        <div class="card-journey card-with-label">
+          <div class="card-label">journey</div>
+          <h3>Development Journey</h3>
+          <div class="journey-path">
+            <div class="journey-stop completed">
+              <div class="journey-marker"></div>
+              <div class="journey-label">Phase 1</div>
+              <div class="journey-title">Architecture Design</div>
+              <div class="journey-desc">Signal-driven foundation</div>
+            </div>
+            <div class="journey-stop completed">
+              <div class="journey-marker"></div>
+              <div class="journey-label">Phase 2</div>
+              <div class="journey-title">Core Systems</div>
+              <div class="journey-desc">Persistence & terrain</div>
+            </div>
+            <div class="journey-stop">
+              <div class="journey-marker"></div>
+              <div class="journey-label">Phase 3</div>
+              <div class="journey-title">Optimization</div>
+              <div class="journey-desc">Performance tuning</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
