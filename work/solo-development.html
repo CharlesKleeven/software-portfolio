@@ -1,188 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SoloDevelopment Community Platform - Jodie Nguyen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoloDevelopment Community Platform - Jodie Nguyen</title>
+    <link rel="icon" type="image/png" href="../assets/images/icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
 </head>
-
-<body>
-  <!-- Header -->
-  <header class="header"></header>
-
-  <!-- Hero -->
-  <section class="hero-section fade-in-up">
-    <div class="container">
-      <h1 class="hero-title subpage">SoloDevelopment Community Platform</h1>
-      <p class="hero-description">
-        OAuth authentication, user portfolios, and community discovery
-      </p>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <section class="content-section fade-in-up">
-    <div class="container">
-      <div class="project-detail-container">
-
-        <!-- What SoloDevelopment Is -->
-        <div class="fade-in-up">
-          <h2 class="section-title blue">What SoloDevelopment Is</h2>
-          
-          <div class="tech-grid">
-            <div class="tech-card">
-              <h3>Community Mission</h3>
-              <p>A community for people making games mostly by themselves. We help solo developers succeed by connecting them, showcasing their portfolios, and giving their work fair visibility.</p>
+<body class="solo-development project-page">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="../index.html" class="nav-brand">Jodie</a>
+                <div class="nav-links">
+                    <a href="../index.html#work" class="nav-link">Work</a>
+                    <a href="../pages/about.html" class="nav-link">About</a>
+                    <a href="../pages/contact.html" class="nav-link">Contact</a>
+                </div>
             </div>
-            
-            <div class="tech-card">
-              <h3>Growing Platform</h3>
-              <p>75,000+ members across Discord and Reddit, with monthly game jams, honest feedback, showcase highlights, and individual developer portfolios.</p>
-            </div>
-          </div>
         </div>
+    </nav>
 
-        <!-- Call to Action -->
-        <div class="fade-in-up">
-          <p class="text-callout">
-            Experience the platform live or explore the technical implementation
-          </p>
-          <div>
-            <a href="https://solodevelopment.org" target="_blank" class="button green">Visit Website</a>
-            <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="button blue">View Code</a>
-          </div>
-        </div>
-
-        <!-- Divider -->
-
-        <!-- User Authentication & Portfolios -->
-        <div class="content-grid fade-in-up">
-          <div class="fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="../assets/videos/oauth-portfolio-demo.mp4" data-lightbox-type="video">
-                <video loop muted playsinline class="preview-video lightbox-img"
-                  data-src="../assets/videos/oauth-portfolio-demo.mp4">
-                  <source type="video/mp4">
-                </video>
-              </a>
-              <p class="media-caption">OAuth login, portfolio creation, and developer discovery</p>
-            </div>
-          </div>
-
-          <div>
-            <h2 class="section-title blue">User Authentication & Portfolios</h2>
-            <p class="challenge-text">Google and Discord OAuth with portfolio creation system. Users showcase their games with screenshots, descriptions, and tags for community discovery.</p>
-            <p class="challenge-text-final">Real-time validation and seamless authentication state management across sessions.</p>
-          </div>
-        </div>
-
-        <!-- Waterfall Discovery Interface -->
-        <div class="content-grid fade-in-up">
-          <div>
-            <h2 class="section-title blue">Waterfall Discovery Interface</h2>
-            <p class="challenge-text">CSS-native masonry layout with tabbed filtering and real-time search for both game
-              jams and user portfolios.</p>
-            <p class="challenge-text-final">Built for 60fps scrolling performance without JavaScript masonry libraries.
+    <!-- Hero -->
+    <section class="hero-section fade-in-up">
+        <div class="container">
+            <h1 class="hero-title subpage">SoloDevelopment Community Platform</h1>
+            <p class="hero-description">
+                OAuth authentication, user portfolios, and community discovery
             </p>
-          </div>
-
-          <div class="fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="../assets/videos/solodev-showcase-demo.mp4" data-lightbox-type="video">
-                <video loop muted playsinline class="preview-video lightbox-img"
-                  data-src="../assets/videos/solodev-showcase-demo.mp4">
-                  <source type="video/mp4">
-                </video>
-              </a>
-              <p class="media-caption">Masonry grid with tabbed filtering and instant search</p>
-            </div>
-          </div>
         </div>
+    </section>
 
-        <!-- External Integration -->
-        <div class="content-grid fade-in-up">
-          <div>
-            <h2 class="section-title blue">External Integration</h2>
-            <p class="challenge-text">Automated itch.io data pipeline with 5-minute refresh cycles and participant tracking that updates every 10 minutes.</p>
-            <p class="challenge-text-final">Graceful fallbacks ensure the system never shows broken data when external services fail.</p>
-          </div>
+    <!-- Main Content -->
+    <section class="content-section fade-in-up">
+        <div class="container">
+            <div class="project-detail-container">
 
-          <div class="fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="../assets/images/external-integration.jpg" data-lightbox-type="image">
-                <img src="../assets/images/external-integration.jpg" alt="External integration architecture"
-                  class="lightbox-img">
-              </a>
-              <p class="media-caption">SoloDev game jam page synchronized with itch.io data</p>
+                <!-- Community Introduction -->
+                <div class="fade-in-up solo-intro-section" style="margin-bottom: 80px; margin-top: 60px;">
+                    <div class="solo-intro-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+                        <!-- Left side - What it is -->
+                        <div class="solo-intro-content">
+                            <h2 class="intro-statement blue">What is SoloDevelopment?</h2>
+                            <p style="font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 24px; line-height: 1.5;">
+                                A community for people making games mostly by themselves.
+                            </p>
+                            <p style="font-size: 18px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 48px;">
+                                We host game jams, showcase member projects, and connect developers through shared experiences.
+                            </p>
+
+                            <!-- CTAs -->
+                            <div class="solo-intro-ctas">
+                                <a href="https://solodevelopment.org" target="_blank" class="button button-secondary">Visit Platform</a>
+                                <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="button button-blue" style="margin-left: 16px;">View Source</a>
+                            </div>
+                        </div>
+
+                        <!-- Right side - Stats -->
+                        <div class="solo-intro-stats" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                            <div class="postit-board" style="margin: 0;">
+                                <div class="postit postit-yellow">
+                                    <div class="postit-number">75K+</div>
+                                    <div class="postit-label">members on Reddit</div>
+                                </div>
+                                <div class="postit postit-sage">
+                                    <div class="postit-number">2021</div>
+                                    <div class="postit-label">founded to support solo devs</div>
+                                </div>
+                                <div class="postit postit-blue">
+                                    <div class="postit-number">8K</div>
+                                    <div class="postit-label">members on Discord</div>
+                                </div>
+                                <div class="postit postit-purple">
+                                    <div class="postit-number">750+</div>
+                                    <div class="postit-label">game jam entries submitted</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile CTAs - shown only on mobile -->
+                    <div class="solo-intro-ctas-mobile">
+                        <a href="https://solodevelopment.org" target="_blank" class="button button-secondary">Visit Platform</a>
+                        <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="button button-blue">View Source</a>
+                    </div>
+                </div>
+
+                <!-- User Authentication -->
+                <div class="content-grid fade-in-up section-spacing">
+                    <div class="fade-lightbox">
+                        <div class="browser-window">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <div class="browser-dot"></div>
+                                    <div class="browser-dot"></div>
+                                    <div class="browser-dot"></div>
+                                </div>
+                                <div class="browser-url">solodevelopment.org/login</div>
+                            </div>
+                            <div class="browser-content">
+                                <div class="lightbox">
+                                    <a href="#" data-lightbox-src="../assets/videos/oauth-portfolio-demo.mp4" data-lightbox-type="video">
+                                        <video autoplay loop muted playsinline class="lightbox-img">
+                                            <source src="../assets/videos/oauth-portfolio-demo.mp4" type="video/mp4">
+                                        </video>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="media-caption">OAuth login, portfolio creation, and developer discovery</p>
+                    </div>
+
+                    <div>
+                        <h2 class="section-title blue">Authentication & Developer Profiles</h2>
+                        <div class="section-content-spacing">
+                            <div style="margin-bottom: 24px;">
+                                <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 8px;">OAuth Integration</h3>
+                                <p style="margin: 0; color: var(--color-text-secondary); line-height: 1.7; font-size: 18px;">Google and Discord login with JWT tokens in httpOnly cookies.</p>
+                            </div>
+                            <div style="margin-bottom: 24px;">
+                                <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 8px;">Developer Portfolios</h3>
+                                <p style="margin: 0; color: var(--color-text-secondary); line-height: 1.7; font-size: 18px;">Create your profile, showcase games, link social media.</p>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 8px;">Community Features</h3>
+                                <p style="margin: 0; color: var(--color-text-secondary); line-height: 1.7; font-size: 18px;">Discover developers, join jams, showcase projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discovery Interface -->
+                <div class="content-grid fade-in-up" style="margin-bottom: 80px; margin-top: 60px;">
+                    <div>
+                        <h2 class="section-title blue">Waterfall Discovery Interface</h2>
+                        <p style="color: var(--color-text-secondary); line-height: 1.7; font-size: 18px; margin-bottom: 24px;">
+                            CSS-native masonry layout displaying game jam entries in a Pinterest-style grid. Features tabbed filtering for marathon and themed jams, plus real-time search across all content.
+                        </p>
+                        <div style="margin-top: 24px;">
+                            <div style="margin-bottom: 16px;">
+                                <div style="font-size: 14px; color: var(--color-sage); margin-bottom: 6px; font-weight: 600;">FILTERING</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">Marathon & themed jam tabs</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 14px; color: var(--color-sage); margin-bottom: 6px; font-weight: 600;">SEARCH</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">Real-time across all content</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-lightbox">
+                        <div class="browser-window">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <div class="browser-dot"></div>
+                                    <div class="browser-dot"></div>
+                                    <div class="browser-dot"></div>
+                                </div>
+                                <div class="browser-url">solodevelopment.org/showcase</div>
+                            </div>
+                            <div class="browser-content">
+                                <div class="lightbox">
+                                    <a href="#" data-lightbox-src="../assets/videos/solodev-showcase-demo.mp4" data-lightbox-type="video">
+                                        <video autoplay loop muted playsinline class="lightbox-img">
+                                            <source src="../assets/videos/solodev-showcase-demo.mp4" type="video/mp4">
+                                        </video>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="media-caption">Masonry grid with tabbed filtering and instant search</p>
+                    </div>
+                </div>
+
+                <!-- External Integration -->
+                <div class="fade-in-up section-spacing">
+                    <h2 class="section-title blue">External Integration</h2>
+                    <p style="color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 32px; max-width: 800px;">
+                        Just like the Waterfall Discovery Interface showcases our game jams, we integrate with itch.io to pull external jam data. This allows solo developers to see all opportunities in one place.
+                    </p>
+                    
+                    <div class="fade-lightbox" style="margin-bottom: 32px;">
+                        <div class="external-integration-browsers" style="display: flex; gap: 20px; position: relative;">
+                            <!-- Left Browser - SoloDevelopment -->
+                            <div class="integration-browser" style="flex: 1;">
+                                <div class="lightbox">
+                                    <a href="#" data-lightbox-src="../assets/images/external-integration-left.jpg" data-lightbox-type="image">
+                                        <div class="browser-window">
+                                            <div class="browser-header">
+                                                <div class="browser-dots">
+                                                    <div class="browser-dot"></div>
+                                                    <div class="browser-dot"></div>
+                                                    <div class="browser-dot"></div>
+                                                </div>
+                                                <div class="browser-url">solodevelopment.org/jams</div>
+                                            </div>
+                                            <div class="browser-content image-content" style="height: 320px;">
+                                                <img src="../assets/images/external-integration-left.jpg"
+                                                    alt="SoloDevelopment game jam page"
+                                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Right Browser - itch.io -->
+                            <div class="integration-browser" style="flex: 1;">
+                                <div class="lightbox">
+                                    <a href="#" data-lightbox-src="../assets/images/external-integration-right.jpg" data-lightbox-type="image">
+                                        <div class="browser-window">
+                                            <div class="browser-header">
+                                                <div class="browser-dots">
+                                                    <div class="browser-dot"></div>
+                                                    <div class="browser-dot"></div>
+                                                    <div class="browser-dot"></div>
+                                                </div>
+                                                <div class="browser-url">itch.io/jams</div>
+                                            </div>
+                                            <div class="browser-content image-content" style="height: 320px;">
+                                                <img src="../assets/images/external-integration-right.jpg"
+                                                    alt="itch.io game jam page"
+                                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="media-caption">External itch.io integration with participant tracking</p>
+                    </div>
+                    
+                    <div class="platform-grid">
+                        <div class="platform-feature">
+                            <div class="feature-label">SYNC RATE</div>
+                            <div class="feature-value">Every 10 min</div>
+                        </div>
+                        <div class="platform-feature">
+                            <div class="feature-label">DATA TRACKED</div>
+                            <div class="feature-value">Participants</div>
+                        </div>
+                        <div class="platform-feature">
+                            <div class="feature-label">CACHE</div>
+                            <div class="feature-value">5 min refresh</div>
+                        </div>
+                        <div class="platform-feature">
+                            <div class="feature-label">FALLBACK</div>
+                            <div class="feature-value">Graceful</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Production Infrastructure -->
+                <div class="fade-in-up">
+                    <h2 class="section-title blue">Production Infrastructure</h2>
+                    
+                    <div class="infrastructure-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+                        <div style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px;">
+                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px; font-weight: 600;">Security</h3>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 13px; color: var(--color-sage); margin-bottom: 4px; font-weight: 600;">AUTHENTICATION</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">JWT + httpOnly cookies</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 13px; color: var(--color-sage); margin-bottom: 4px; font-weight: 600;">ENCRYPTION</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">bcrypt with 12 salt rounds</div>
+                            </div>
+                            
+                            <div>
+                                <div style="font-size: 13px; color: var(--color-sage); margin-bottom: 4px; font-weight: 600;">PROTECTION</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">Rate limiting (200/15min)</div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px;">
+                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px; font-weight: 600;">Performance</h3>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 13px; color: var(--color-blue); margin-bottom: 4px; font-weight: 600;">HOSTING</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">Zero cold-start deployment</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 13px; color: var(--color-blue); margin-bottom: 4px; font-weight: 600;">CACHING</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">Multi-layer intelligent cache</div>
+                            </div>
+                            
+                            <div>
+                                <div style="font-size: 13px; color: var(--color-blue); margin-bottom: 4px; font-weight: 600;">DATABASE</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">MongoDB compound indexes</div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px;">
+                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px; font-weight: 600;">Reliability</h3>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 13px; color: var(--color-orange); margin-bottom: 4px; font-weight: 600;">RESILIENCE</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">Automated error recovery</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 13px; color: var(--color-orange); margin-bottom: 4px; font-weight: 600;">MONITORING</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">Real-time health checks</div>
+                            </div>
+                            
+                            <div>
+                                <div style="font-size: 13px; color: var(--color-orange); margin-bottom: 4px; font-weight: 600;">UPTIME</div>
+                                <div style="font-size: 18px; color: var(--color-text-primary);">99%+ availability SLA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Production Architecture -->
-        <div class="fade-in-up">
-          <h2 class="section-title blue">Production-Grade Infrastructure</h2>
-          
-          <div class="tech-grid">
-            <div class="tech-card">
-              <h3>Security</h3>
-              <p>OAuth 2.0 with Passport.js, JWT + httpOnly cookies, bcrypt with 12 salt rounds, advanced rate limiting</p>
+    <!-- Navigation -->
+    <section class="nav-section fade-in-up">
+        <div class="container">
+            <div class="nav-buttons">
+                <a href="../index.html#work" class="button">← Back to Work</a>
+                <a href="portrait-pipeline.html" class="button">Next Project →</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack-preview">
+        <div class="container">
+            <p class="tech-stack-line">
+                React • TypeScript • Node.js • Express • MongoDB • OAuth 2.0 • JWT • Cloudflare
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Thanks for stopping by!</h3>
+                <div class="footer-links">
+                    <a href="../pages/contact.html" class="footer-button">Say hello</a>
+                </div>
+                <p class="footer-credits">&copy; 2025 Jodie Nguyen</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Lightbox -->
+    <div id="global-lightbox-overlay">
+        <div id="global-lightbox-content"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/components.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Lightbox functionality for new-site
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('global-lightbox-overlay');
+            const container = document.getElementById('global-lightbox-content');
             
-            <div class="tech-card">
-              <h3>Performance</h3>
-              <p>Zero cold-start hosting, intelligent caching, optimized MongoDB queries with proper indexing</p>
-            </div>
+            if (!overlay || !container) {
+                console.error('Lightbox elements not found');
+                return;
+            }
             
-            <div class="tech-card">
-              <h3>Reliability</h3>
-              <p>Health check endpoints, automated fallbacks, environment validation, 99%+ uptime</p>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Navigation -->
-  <section class="nav-section fade-in-up">
-    <div class="container">
-      <div class="nav-buttons">
-        <a href="../" class="button">← All Projects</a>
-        <a href="./portrait-pipeline" class="button">Next Project →</a>
-      </div>
-    </div>
-  </section>
-  </div>
-  </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section class="tech-stack-preview">
-    <div class="container">
-      <p class="tech-stack-line">
-        React • TypeScript • Node.js • Express • MongoDB • OAuth 2.0 • JWT • Cloudflare
-      </p>
-    </div>
-  </section>
-
-  <!-- Global Lightbox -->
-  <div id="global-lightbox-overlay">
-    <div id="global-lightbox-content"></div>
-  </div>
-
-  <!-- Footer -->
-  <div id="footer-placeholder"></div>
-
-  <script src="../js/components.js"></script>
+            // Handle all lightbox triggers
+            document.querySelectorAll('[data-lightbox-src]').forEach(trigger => {
+                trigger.addEventListener('click', e => {
+                    e.preventDefault();
+                    
+                    const src = trigger.getAttribute('data-lightbox-src');
+                    const type = trigger.getAttribute('data-lightbox-type');
+                    
+                    if (src && type) {
+                        container.innerHTML = type === 'video'
+                            ? `<video autoplay loop muted playsinline controls><source src="${src}" type="video/mp4"></video>`
+                            : `<img src="${src}" alt="Lightbox content">`;
+                        
+                        overlay.classList.add('visible');
+                    }
+                });
+            });
+            
+            // Close on click outside
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('visible');
+                    container.innerHTML = '';
+                }
+            });
+            
+            // Close on Escape
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && overlay.classList.contains('visible')) {
+                    overlay.classList.remove('visible');
+                    container.innerHTML = '';
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>

@@ -9,19 +9,19 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.ccss2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body class="home">
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-container">
-                <a href="#" class="nav-brand">Jodie</a>
+                <a href="index.html" class="nav-brand">Jodie</a>
                 <div class="nav-links">
-                    <a href="#work" class="nav-link">Work</a>
+                    <a href="#work" class="nav-link active">Work</a>
                     <a href="pages/about.html" class="nav-link">About</a>
                     <a href="pages/contact.html" class="nav-link">Contact</a>
                 </div>
@@ -30,7 +30,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero fade-in">
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Jodie Nguyen</h1>
@@ -40,15 +40,18 @@
                 </p>
                 <span class="hero-badge">MIT Computer Science & Engineering</span>
             </div>
+            <div class="art-attribution">
+                Illustration by me •
+                Character concept by <a href="https://www.twitch.tv/whitevault" class="attribution-link" target="_blank">WhiteVault</a>
+            </div>
         </div>
     </section>
 
-    <!-- Projects Section Header -->
-    <section id="work" class="projects">
+    <!-- Technical Work Section -->
+    <section id="work" class="section section-technical">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in-up">
                 <h2 class="section-title">Technical Work</h2>
-                <div class="section-header-underline"></div>
                 <p class="section-subtitle">
                     Web development, automation systems, and interactive experiences built from idea to production
                 </p>
@@ -56,168 +59,181 @@
         </div>
     </section>
 
-    <!-- Project 1: SoloDevelopment Community Platform -->
-    <section class="section">
-        <div class="container">
-            <article class="project">
-                <div class="project-content">
-                    <h3>SoloDevelopment Community Platform</h3>
-                    <p class="project-description">
-                        <strong>Live production web app at <a href="https://solodevelopment.org" target="_blank">solodevelopment.org</a></strong> 
-                        serving users with OAuth authentication, user portfolios, real-time game jam management, and community discovery features.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag blue">Full-Stack Web</span>
-                        <span class="tag blue">User Authentication & OAuth</span>
-                        <span class="tag blue">Real-time Features</span>
-                        <span class="tag blue">Community Platform</span>
-                        <span class="tag blue">Production Deployment</span>
+    <!-- Projects -->
+    <div class="project-list">
+        <!-- SoloDevelopment Community Platform -->
+        <section class="section">
+            <div class="container">
+                <div class="project-container">
+                    <article class="project-item fade-in-up">
+                        <div class="project-content">
+                        <h3>SoloDevelopment Community Platform</h3>
+                        <p class="project-description">
+                            <strong>Live production web app at <a href="https://solodevelopment.org" target="_blank" class="accent-link">solodevelopment.org</a></strong> 
+                            serving users with OAuth authentication, user portfolios, real-time game jam management, and community discovery features.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag blue">Full-Stack Web</span>
+                            <span class="tag blue">User Authentication & OAuth</span>
+                            <span class="tag blue">Real-time Features</span>
+                            <span class="tag blue">Community Platform</span>
+                            <span class="tag blue">Production Deployment</span>
+                        </div>
+                        <a href="work/solo-development.html" class="project-link blue">View Project</a>
                     </div>
-                    <a href="work/solo-development.html" class="project-link blue">View Project</a>
-                </div>
-                <div class="project-media">
-                    <video class="project-video" autoplay loop muted playsinline>
-                        <source src="assets/videos/solodev-demo.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p class="media-caption">Community platform with intuitive navigation and user features</p>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- Project 2: Portrait Animation Pipeline -->
-    <section class="section">
-        <div class="container">
-            <article class="project">
-                <div class="project-content">
-                    <h3>Portrait Animation Pipeline</h3>
-                    <p class="project-description">
-                        Automated system that <strong>generates 1,000+ character expressions from just 20 art assets</strong>, 
-                        reducing creation time by <strong>95%</strong> with real-time preview.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag green">Process Automation</span>
-                        <span class="tag green">Asset Generation</span>
-                        <span class="tag green">Tool Integration</span>
-                        <span class="tag green">Workflow Optimization</span>
+                    <div class="project-media">
+                        <a href="work/solo-development.html" style="display: block;">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/videos/solodev-demo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </a>
+                        <p class="media-caption">Community platform with intuitive navigation and user features</p>
                     </div>
-                    <a href="work/portrait-pipeline.html" class="project-link green">View Project</a>
-                </div>
-                <div class="project-media">
-                    <video class="project-video" autoplay loop muted playsinline>
-                        <source src="assets/videos/teaser-portrait-previewer.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p class="media-caption">Live previewer plugin for expression switching</p>
-                </div>
-            </article>
+                </article></div>
+            </div>
+        </section>
 
-        </div>
-    </section>
-
-    <!-- Project 3: Interactive World Editor -->
-    <section class="section">
-        <div class="container">
-            <article class="project">
-                <div class="project-content">
-                    <h3>Interactive World Editor</h3>
-                    <p class="project-description">
-                        Real-time terrain editing with <strong>70% asset reduction</strong> through dual-grid architecture. 
-                        Single actions update multiple layers automatically.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag blue">Real-time Editing</span>
-                        <span class="tag blue">Performance Optimization</span>
-                        <span class="tag blue">UI Systems</span>
-                        <span class="tag blue">Algorithmic Design</span>
+        <!-- Portrait Animation Pipeline -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="project-container">
+                    <article class="project-item fade-in-up">
+                    <div class="project-content">
+                        <h3>Portrait Animation Pipeline</h3>
+                        <p class="project-description">
+                            Automated system that <strong>generates 1,000+ character expressions from just 20 art assets</strong>, 
+                            reducing creation time by <strong>95%</strong> with real-time preview.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag sage">Process Automation</span>
+                            <span class="tag sage">Asset Generation</span>
+                            <span class="tag sage">Tool Integration</span>
+                            <span class="tag sage">Workflow Optimization</span>
+                        </div>
+                        <a href="work/portrait-pipeline.html" class="project-link green">View Project</a>
                     </div>
-                    <a href="work/world-editor.html" class="project-link blue">View Project</a>
-                </div>
-                <div class="project-media">
-                    <video class="project-video" autoplay loop muted playsinline>
-                        <source src="assets/videos/teaser-dual-grid.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p class="media-caption">Multi-layer terrain updates with automatic state persistence</p>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- Project 4: Data Persistence System -->
-    <section class="section">
-        <div class="container">
-            <article class="project">
-                <div class="project-content">
-                    <h3>Data Persistence System</h3>
-                    <p class="project-description">
-                        <strong>Crash-proof distributed system</strong> that automatically saves and restores 
-                        complex game worlds across levels with full compatibility.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag green">Distributed Systems</span>
-                        <span class="tag green">Crash Recovery</span>
-                        <span class="tag green">State Management</span>
-                        <span class="tag green">Data Architecture</span>
+                    <div class="project-media">
+                        <a href="work/portrait-pipeline.html" style="display: block;">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/videos/teaser-portrait-previewer.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </a>
+                        <p class="media-caption">Live previewer plugin for expression switching</p>
                     </div>
-                    <a href="work/data-persistence.html" class="project-link green">View Project</a>
-                </div>
-                <div class="project-media">
-                    <video class="project-video" autoplay loop muted playsinline>
-                        <source src="assets/videos/store-entering-demo.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p class="media-caption">Automatic state restoration — player, environment, and objects persist across level changes</p>
-                </div>
-            </article>
+                </article></div>
+            </div>
+        </section>
 
-        </div>
-    </section>
-
-    <!-- Project 5: Context-Aware Dialogue System -->
-    <section class="section">
-        <div class="container">
-            <article class="project">
-                <div class="project-content">
-                    <h3>Context-Aware Dialogue System</h3>
-                    <p class="project-description">
-                        <strong>Context-aware AI system</strong> that selects appropriate dialogue based on game state and relationships, 
-                        eliminating thousands of manual scripting combinations.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag blue">Context-Aware AI</span>
-                        <span class="tag blue">Rule Engines</span>
-                        <span class="tag blue">Dynamic Content</span>
-                        <span class="tag blue">Behavioral Logic</span>
+        <!-- Interactive World Editor -->
+        <section class="section">
+            <div class="container">
+                <div class="project-container">
+                    <article class="project-item fade-in-up">
+                    <div class="project-content">
+                        <h3>Interactive World Editor</h3>
+                        <p class="project-description">
+                            Real-time terrain editing with <strong>70% asset reduction</strong> through dual-grid architecture. 
+                            Single actions update multiple layers automatically.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag blue">Real-time Editing</span>
+                            <span class="tag blue">Performance Optimization</span>
+                            <span class="tag blue">UI Systems</span>
+                            <span class="tag blue">Algorithmic Design</span>
+                        </div>
+                        <a href="work/world-editor.html" class="project-link blue">View Project</a>
                     </div>
-                    <a href="work/dialogue-system.html" class="project-link blue">View Project</a>
-                </div>
-                <div class="project-media">
-                    <video class="project-video" autoplay loop muted playsinline>
-                        <source src="assets/videos/anterrogation.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p class="media-caption">
-                        AI-generated dialogue adapting to player choices and game context — 
-                        art by <a href="https://twitch.tv/practicalnpc" target="_blank">PracticalNPC</a>
-                    </p>
-                </div>
-            </article>
-        </div>
-    </section>
+                    <div class="project-media">
+                        <a href="work/world-editor.html" style="display: block;">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/videos/teaser-dual-grid.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </a>
+                        <p class="media-caption">Multi-layer terrain updates with automatic state persistence</p>
+                    </div>
+                </article></div>
+            </div>
+        </section>
+
+        <!-- Data Persistence System -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="project-container">
+                    <article class="project-item fade-in-up">
+                    <div class="project-content">
+                        <h3>Data Persistence System</h3>
+                        <p class="project-description">
+                            <strong>Crash-proof distributed system</strong> that automatically saves and restores 
+                            complex game worlds across levels with full compatibility.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag sage">Distributed Systems</span>
+                            <span class="tag sage">Crash Recovery</span>
+                            <span class="tag sage">State Management</span>
+                            <span class="tag sage">Data Architecture</span>
+                        </div>
+                        <a href="work/data-persistence.html" class="project-link green">View Project</a>
+                    </div>
+                    <div class="project-media">
+                        <a href="work/data-persistence.html" style="display: block;">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/videos/store-entering-demo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </a>
+                        <p class="media-caption">Automatic state restoration - player, environment, and objects persist across level changes</p>
+                    </div>
+                </article></div>
+            </div>
+        </section>
+
+        <!-- Context-Aware Dialogue System -->
+        <section class="section">
+            <div class="container">
+                <div class="project-container">
+                    <article class="project-item fade-in-up">
+                    <div class="project-content">
+                        <h3>Context-Aware Dialogue System</h3>
+                        <p class="project-description">
+                            <strong>Context-aware AI system</strong> that selects appropriate dialogue based on game state and relationships, 
+                            eliminating thousands of manual scripting combinations.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag blue">Context-Aware AI</span>
+                            <span class="tag blue">Rule Engines</span>
+                            <span class="tag blue">Dynamic Content</span>
+                            <span class="tag blue">Behavioral Logic</span>
+                        </div>
+                        <a href="work/dialogue-system.html" class="project-link blue">View Project</a>
+                    </div>
+                    <div class="project-media">
+                        <a href="work/dialogue-system.html" style="display: block;">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/videos/anterrogation.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </a>
+                        <p class="media-caption">
+                            AI-generated dialogue adapting to player choices and game context - 
+                            art by <a href="https://twitch.tv/practicalnpc" target="_blank" class="accent-link">PracticalNPC</a>
+                        </p>
+                    </div>
+                </article></div>
+            </div>
+        </section>
+    </div>
 
     <!-- Tech Stack Section -->
     <section class="section-sm tech-stack">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in-up">
                 <h2 class="section-title">Technologies</h2>
-                <div class="section-header-underline"></div>
             </div>
             
-            <div class="tech-grid">
+            <div class="tech-grid fade-in-up">
                 <div class="tech-category">
                     <h4>Languages</h4>
                     <div class="tech-tags">
@@ -225,6 +241,7 @@
                         <span class="tag">JavaScript</span>
                         <span class="tag">Python</span>
                         <span class="tag">C#</span>
+                        <span class="tag">GDScript</span>
                     </div>
                 </div>
                 
@@ -260,30 +277,18 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <h3>Thanks for stopping by!</h3>
-            <a href="pages/contact.html" class="footer-button">Say hello</a>
-            <p class="footer-credits">&copy; 2025 Jodie Nguyen</p>
+            <div class="footer-content">
+                <h3 class="footer-title">Thanks for stopping by!</h3>
+                <div class="footer-links">
+                    <a href="pages/contact.html" class="footer-button">Say hello</a>
+                </div>
+                <p class="footer-credits">&copy; 2025 Jodie Nguyen</p>
+            </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script>
-        // Simple scroll animations
-        const observeElements = () => {
-            const elements = document.querySelectorAll('.project, .section-header');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            elements.forEach(el => observer.observe(el));
-        };
-
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', observeElements);
-    </script>
+    <script src="js/components.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+/* =============================================================================
+   MAIN CSS - Import Orchestrator
+   
+   This file imports all CSS modules in the correct order.
+   DO NOT write styles directly in this file.
+   ============================================================================= */
+
+/* 1. Variables - Design tokens and CSS custom properties */
+@import url('variables.css');
+
+/* 2. Base - Reset, typography, and utility classes */
+@import url('base.css');
+
+/* 3. Layout - Grid systems, sections, navigation, footer */
+@import url('layout.css');
+
+/* 4. Components - All reusable UI components */
+@import url('components.css');
+
+/* 5. Pages - Page-specific overrides and unique components */
+@import url('pages.css');
+
+/* =============================================================================
+   ARCHITECTURE NOTES
+   
+   - variables.css: All design tokens (colors, fonts, spacing, etc)
+   - base.css: CSS reset, base typography, utility classes
+   - layout.css: Page structure, grids, navigation, footer
+   - components.css: Reusable components (cards, buttons, media, etc)
+   - pages.css: Page-specific styles and overrides
+   
+   To add new styles:
+   1. Reusable components → components.css
+   2. Page-specific styles → pages.css
+   3. New design tokens → variables.css
+   4. Layout changes → layout.css
+   
+   NEVER add inline styles or create new CSS files without updating this import.
+   ============================================================================= */

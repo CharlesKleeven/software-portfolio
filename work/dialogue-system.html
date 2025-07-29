@@ -1,130 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Context-Aware Dialogue System - Jodie Nguyen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context-Aware Dialogue System - Jodie Nguyen</title>
+    <link rel="icon" type="image/png" href="../assets/images/icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
 </head>
-<body>
-  <!-- Header -->
-  <header class="header"></header>
-
-  <!-- Hero -->
-  <section class="hero-section fade-in-up">
-    <div class="container">
-      <h1 class="hero-title subpage">Context-Aware Dialogue System</h1>
-      <p class="hero-description">
-        Dynamic conversation engine that eliminates thousands of manual scripting combinations through contextual AI
-      </p>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <section class="content-section fade-in-up">
-    <div class="container">
-      <div class="project-detail-container">
-        
-        <!-- Overview -->
-        <div class="content-grid">
-          <div class="fade-in-up">
-            <h2 class="section-title blue">The Challenge</h2>
-            <p class="challenge-text">Static dialogue systems break immersion in narrative games. Characters need to adapt to time of day, relationship history, story progress, and player choices — creating believable NPCs that remember past interactions.</p>
-            <p class="challenge-text-final">Traditional branching dialogue becomes exponentially complex with multiple variables. I needed a dynamic system that could handle contextual awareness without requiring manual scripting of every possible conversation state.</p>
-          </div>
-
-          <!-- System Diagram -->
-          <div class="fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="/assets/images/dialogue-flow-sketch.jpg" data-lightbox-type="image">
-                <img src="/assets/images/dialogue-flow-sketch.jpg" alt="Dialogue system architecture overview" class="architecture-diagram lightbox-img">
-              </a>
-              <p class="media-caption">Rule-based architecture with priority selection and automatic fallbacks</p>
+<body class="dialogue-system project-page">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="../index.html" class="nav-brand">Jodie</a>
+                <div class="nav-links">
+                    <a href="../index.html#work" class="nav-link">Work</a>
+                    <a href="../pages/about.html" class="nav-link">About</a>
+                    <a href="../pages/contact.html" class="nav-link">Contact</a>
+                </div>
             </div>
-          </div>
         </div>
+    </nav>
 
-        <!-- Technical Implementation -->
-        <div class="fade-in-up">
-          <h2 class="section-title blue">Technical Implementation</h2>
-          <p class="challenge-text">
-            Inspired by <a href="https://www.youtube.com/watch?v=tAbBID3N64A" target="_blank" class="accent-link">Elan Ruskin's GDC talk</a> on dynamic dialogue, implemented with custom fact dictionaries and priority selection.
-          </p>
-
-          <div class="tech-grid">
-            <div class="tech-card">
-              <h3>Fact & Priority System</h3>
-              <p><strong>Contextual Facts:</strong> Tracks player actions, relationships, world state, and story progress</p>
-              <p><strong>Smart Selection:</strong> More specific dialogue conditions automatically take priority</p>
-              <p><strong>Automatic Fallback:</strong> Always has appropriate dialogue, never breaks immersion</p>
-            </div>
-
-            <div class="tech-card">
-              <h3>Event-Driven Flow</h3>
-              <p><strong>Dynamic Triggers:</strong> Player actions and world events update conversation context</p>
-              <p><strong>Multi-Character:</strong> Supports complex group conversations with relationship dynamics</p>
-              <p><strong>System Integration:</strong> Works seamlessly with portrait and audio systems</p>
-            </div>
-
-            <div class="tech-card">
-              <h3>Contextual Intelligence</h3>
-              <p><strong>World Awareness:</strong> Responds to time, weather, location, and story state</p>
-              <p><strong>Relationship Memory:</strong> NPCs remember and reference past interactions</p>
-              <p><strong>Zero Manual Scripting:</strong> New content automatically integrates without combinatorial complexity</p>
-            </div>
-          </div>
+    <!-- Hero -->
+    <section class="hero-section fade-in-up">
+        <div class="container">
+            <h1 class="hero-title subpage">Context-Aware Dialogue System</h1>
+            <p class="hero-description">
+                Dynamic conversation engine that eliminates thousands of manual scripting combinations through contextual AI
+            </p>
         </div>
+    </section>
 
+    <!-- Main Content -->
+    <section class="content-section fade-in-up" style="padding-top: 40px;">
+        <div class="container">
+            <div class="project-detail-container">
+                <!-- The Challenge -->
+                <div class="content-grid">
+                    <div class="fade-in-up">
+                        <h2 class="section-title blue">The Challenge</h2>
+                        <div class="challenge-points">
+                            <div class="challenge-point">
+                                <h4>Static dialogue breaks immersion</h4>
+                                <p>NPCs repeat identical lines regardless of time, weather, or relationship history</p>
+                            </div>
+                            <div class="challenge-point">
+                                <h4>Exponential scripting complexity</h4>
+                                <p>Traditional branching dialogue requires manual scripting for every possible conversation state</p>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Results -->
-        <div class="fade-in-up">
-          <h2 class="section-title blue">Results</h2>
-          <div class="results-grid">
-            <div class="result-card">
-              <h3>Before</h3>
-              <p>Static dialogue trees with manual branching for every scenario. Exponential complexity when adding new variables or story elements.</p>
+                    <!-- Obsidian Diagram -->
+                    <div class="fade-lightbox">
+                        <div class="lightbox">
+                            <a href="#" data-lightbox-src="../assets/images/dialogue-flow-sketch.jpg" data-lightbox-type="image">
+                                <div class="obsidian-window">
+                                    <div class="obsidian-header">
+                                        <div class="browser-dots">
+                                            <div class="browser-dot"></div>
+                                            <div class="browser-dot"></div>
+                                            <div class="browser-dot"></div>
+                                        </div>
+                                        <div class="obsidian-title">Dialogue System Design - Obsidian</div>
+                                    </div>
+                                    <div class="obsidian-content">
+                                        <div class="obsidian-sidebar">
+                                            <div style="margin-bottom: 8px; color: #999; font-size: 9px;">Vault</div>
+                                            <div style="padding: 2px 0; cursor: pointer; font-size: 9px; color: #7c3aed;">◆ Flow</div>
+                                            <div style="padding: 2px 0; cursor: pointer; font-size: 9px;">◇ Rules</div>
+                                            <div style="padding: 2px 0; cursor: pointer; font-size: 9px;">◇ Priority</div>
+                                            <div style="padding: 2px 0; cursor: pointer; font-size: 9px;">◇ Memory</div>
+                                        </div>
+                                        <div class="obsidian-main">
+                                            <div style="width: 100%; height: 100%; background: url('../assets/images/dialogue-flow-sketch.jpg') center/contain no-repeat;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <p class="media-caption">Context evaluation and response selection flow (click to zoom)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Solution -->
+                <div class="content-grid fade-in-up section-spacing dialogue-solution-grid">
+                    <div>
+                        <h2 class="section-title blue">The Solution</h2>
+                        <div class="innovation-points">
+                            <div class="innovation-point">
+                                <span class="innovation-bullet">•</span>
+                                <span>Context-aware rule system that tracks player relationships, world state, and environmental factors</span>
+                            </div>
+                            <div class="innovation-point">
+                                <span class="innovation-bullet">•</span>
+                                <span>Priority-based selection automatically chooses the most appropriate response</span>
+                            </div>
+                            <div class="innovation-point">
+                                <span class="innovation-bullet">•</span>
+                                <span>Memory system allows NPCs to reference past conversations and build relationships</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Priority Ladder -->
+                    <div>
+                        <div class="priority-ladder" style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px; margin: 0;">
+                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px; text-align: center;">Rule Priority System</h3>
+                            <div style="position: relative; padding: 0 40px; min-height: 350px;">
+                                <div style="position: absolute; top: 0; bottom: 0; width: 2px; background: var(--color-border); left: 20px;"></div>
+                                <div style="position: absolute; top: 0; bottom: 0; width: 2px; background: var(--color-border); right: 20px;"></div>
+                                
+                                <div class="ladder-rung" style="position: relative; margin-bottom: 40px; padding: 16px 24px; background: var(--color-bg-card-medium); border-radius: 8px; transition: all 0.3s; cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 15px;">Weather + Time + Relationship + Location</span>
+                                        <span style="font-size: 14px; font-weight: 700; color: var(--color-sage); font-family: var(--font-mono);">High</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="ladder-rung" style="position: relative; margin-bottom: 40px; padding: 16px 24px; background: var(--color-bg-card-medium); border-radius: 8px; transition: all 0.3s; cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 15px;">Time + Relationship</span>
+                                        <span style="font-size: 14px; font-weight: 700; color: var(--color-sage); font-family: var(--font-mono);">Medium</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="ladder-rung" style="position: relative; margin-bottom: 40px; padding: 16px 24px; background: var(--color-bg-card-medium); border-radius: 8px; transition: all 0.3s; cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 15px;">Time only</span>
+                                        <span style="font-size: 14px; font-weight: 700; color: var(--color-sage); font-family: var(--font-mono);">Low</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="ladder-rung" style="position: relative; margin-bottom: 40px; padding: 16px 24px; background: var(--color-bg-card-medium); border-radius: 8px; transition: all 0.3s; cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 15px;">Default fallback</span>
+                                        <span style="font-size: 14px; font-weight: 700; color: var(--color-sage); font-family: var(--font-mono);">Lowest</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="media-caption">More criteria result in higher priority (simplified for demonstration)</p>
+                    </div>
+                </div>
+
+                <!-- Technical Implementation -->
+                <div class="fade-in-up section-spacing">
+                    <h2 class="section-title blue">Technical Implementation</h2>
+                    <p style="color: var(--color-text-secondary); font-size: 18px; line-height: 1.7; margin-bottom: 48px; font-style: italic;">
+                        Inspired by <a href="https://www.youtube.com/watch?v=tAbBID3N64A" target="_blank" style="color: var(--color-sage); text-decoration: none;">Elan Ruskin's GDC talk</a> on dynamic dialogue.
+                    </p>
+                    
+                    <!-- Visual Flow -->
+                    <div style="text-align: center; margin-bottom: 48px; overflow-x: auto;">
+                        <div class="dialogue-flow-chart" style="display: inline-flex; align-items: center; gap: 32px; padding: 32px; background: var(--color-bg-card-dark); border-radius: 12px; min-width: fit-content;">
+                            <!-- Facts -->
+                            <div>
+                                <div style="font-family: var(--font-mono); font-size: 14px; text-align: left; color: var(--color-text-muted); line-height: 1.6;">
+                                    <div>weather: rain</div>
+                                    <div>time: evening</div>
+                                    <div>met_player: no</div>
+                                </div>
+                                <div style="margin-top: 8px; font-size: 13px; color: var(--color-sage);">World State</div>
+                            </div>
+                            
+                            <!-- Arrow -->
+                            <div class="flow-arrow" style="font-size: 24px; color: var(--color-text-muted);">→</div>
+                            
+                            <!-- Rules -->
+                            <div>
+                                <div style="font-size: 16px; color: var(--color-text-primary); margin-bottom: 4px;">Find best match</div>
+                                <div style="font-size: 13px; color: var(--color-blue);">Rule Engine</div>
+                            </div>
+                            
+                            <!-- Arrow -->
+                            <div class="flow-arrow" style="font-size: 24px; color: var(--color-text-muted);">→</div>
+                            
+                            <!-- Output -->
+                            <div>
+                                <div style="font-size: 15px; color: var(--color-text-secondary); font-style: italic; max-width: 200px;">
+                                    "Terrible weather for introductions..."
+                                </div>
+                                <div style="margin-top: 8px; font-size: 13px; color: var(--color-orange);">Dialogue Output</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Core Innovation -->
+                    <div class="content-grid" style="gap: 32px;">
+                        <div>
+                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 16px;">The approach</h3>
+                            <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-secondary);">
+                                Instead of writing every possible conversation, you define facts about the world and rules that respond to them. The system figures out the rest.
+                            </p>
+                            <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-secondary); margin-top: 16px;">
+                                More specific rules automatically win. A rule checking three conditions beats one checking two. Always finds the best match.
+                            </p>
+                        </div>
+                        
+                        <div style="background: var(--color-bg-card-darkest); padding: 28px; border-radius: 8px;">
+                            <h4 style="font-size: 16px; color: var(--color-text-primary); margin: 0 0 16px;">Key components</h4>
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div>
+                                    <span style="color: var(--color-sage); font-weight: 600;">Fact Dictionaries</span>
+                                    <span style="color: var(--color-text-muted); margin-left: 8px;">— Track world state</span>
+                                </div>
+                                <div>
+                                    <span style="color: var(--color-blue); font-weight: 600;">Entry Selector</span>
+                                    <span style="color: var(--color-text-muted); margin-left: 8px;">— Find best rule</span>
+                                </div>
+                                <div>
+                                    <span style="color: var(--color-orange); font-weight: 600;">Response Processor</span>
+                                    <span style="color: var(--color-text-muted); margin-left: 8px;">— Output & update</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="fade-in-up section-spacing">
+                    <h2 class="section-title blue">The Results</h2>
+                    <div class="results-comparison">
+                        <div class="comparison-side">
+                            <h3>Before</h3>
+                            <div class="comparison-items">
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Process</span>
+                                    Manual scripting for every scenario
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Complexity</span>
+                                    Exponential growth with variables
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Feel</span>
+                                    Robotic, repetitive responses
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-side">
+                            <h3>After</h3>
+                            <div class="comparison-items">
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Process</span>
+                                    Contextual rules generate responses
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Complexity</span>
+                                    Linear growth, infinite combinations
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Feel</span>
+                                    Natural, relationship-aware NPCs
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="result-card">
-              <h3>After</h3>
-              <p>Dynamic conversations that feel natural and contextual. New dialogue content integrates automatically without breaking existing interactions.</p>
-            </div>
-          </div>
         </div>
+    </section>
 
-      </div>
+    <!-- Navigation -->
+    <section class="nav-section fade-in-up">
+        <div class="container">
+            <div class="nav-buttons">
+                <a href="data-persistence.html" class="button">← Previous Project</a>
+                <a href="../index.html#work" class="button">Back to Work →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack-preview">
+        <div class="container">
+            <p class="tech-stack-line">
+                Godot Engine • GDScript • Rule Engine • Context System • State Tracking
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Thanks for stopping by!</h3>
+                <div class="footer-links">
+                    <a href="../pages/contact.html" class="footer-button">Say hello</a>
+                </div>
+                <p class="footer-credits">&copy; 2025 Jodie Nguyen</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Lightbox -->
+    <div id="global-lightbox-overlay">
+        <div id="global-lightbox-content"></div>
     </div>
-  </section>
 
-  <!-- Navigation -->
-  <section class="nav-section fade-in-up">
-    <div class="container">
-      <div class="nav-buttons">
-        <a href="./data-persistence" class="button">← Previous Project</a>
-        <a href="../" class="button">All Projects →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section class="tech-stack-preview">
-    <div class="container">
-      <p class="tech-stack-line">
-        C# • GDScript • Godot • Event Architecture • Rule Engine
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <div id="footer-placeholder"></div>
-  
-  <!-- Global Lightbox -->
-  <div id="global-lightbox-overlay">
-    <div id="global-lightbox-content"></div>
-  </div>
-  
-  <script src="../js/components.js"></script>
+    <!-- Scripts -->
+    <script src="../js/components.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Lightbox functionality for new-site
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('global-lightbox-overlay');
+            const container = document.getElementById('global-lightbox-content');
+            
+            if (!overlay || !container) {
+                console.error('Lightbox elements not found');
+                return;
+            }
+            
+            // Handle all lightbox triggers
+            document.querySelectorAll('[data-lightbox-src]').forEach(trigger => {
+                trigger.addEventListener('click', e => {
+                    e.preventDefault();
+                    
+                    const src = trigger.getAttribute('data-lightbox-src');
+                    const type = trigger.getAttribute('data-lightbox-type');
+                    
+                    if (src && type) {
+                        container.innerHTML = type === 'video'
+                            ? `<video autoplay loop muted playsinline controls><source src="${src}" type="video/mp4"></video>`
+                            : `<img src="${src}" alt="Lightbox content">`;
+                        
+                        overlay.classList.add('visible');
+                    }
+                });
+            });
+            
+            // Close on click outside
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('visible');
+                    container.innerHTML = '';
+                }
+            });
+            
+            // Close on Escape
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && overlay.classList.contains('visible')) {
+                    overlay.classList.remove('visible');
+                    container.innerHTML = '';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

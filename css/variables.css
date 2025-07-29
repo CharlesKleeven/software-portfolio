@@ -1,0 +1,217 @@
+/* =============================================================================
+   CSS VARIABLES - Single Source of Truth
+   
+   All design tokens extracted from mockups
+   Never hardcode these values elsewhere
+   ============================================================================= */
+
+:root {
+  /* =============================================================================
+     COLORS
+     ============================================================================= */
+  
+  /* Primary Palette */
+  --color-sage: #92bba1;
+  --color-sage-light: #a8d5ba;
+  --color-sage-dark: #5a7265;
+  --color-sage-muted: rgba(146, 187, 161, 0.2);
+  
+  /* Secondary Palette */
+  --color-blue: #66a5da;
+  --color-blue-light: #7391ab;
+  --color-orange: #ff7a59;
+  
+  /* Background Colors */
+  --color-bg-main: #20262e;
+  --color-bg-alternate: #292f37;
+  --color-bg-card-darkest: #1a1f2e;
+  --color-bg-card-dark: #232937;
+  --color-bg-card-medium: #2d3548;
+  --color-bg-card-light: #374151;
+  --color-hero-bg: #1a1a1a;
+  --color-nav-bg: #0d1117;
+  --color-footer-bg: #0d1117;
+  --color-technical-work: #333e4e;
+  
+  /* Text Colors */
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #b8c5d1;
+  --color-text-muted: #808080;
+  
+  /* UI Colors */
+  --color-border: #3d4556;
+  --color-border-light: rgba(255, 255, 255, 0.05);
+  --color-border-medium: rgba(255, 255, 255, 0.1);
+  
+  /* Button Colors */
+  --color-accent: #56758c;
+  --color-accent-hover: #4a6578;
+  --color-hero-text: rgb(243, 245, 242);
+  
+  /* Special Colors (Solo Dev) */
+  --color-purple: #7c3aed;
+  --color-yellow: #f59e0b;
+  --color-postit-blue: #89CFF0;
+  --color-postit-purple: #d4a5ff;
+  
+  /* Comparison Card Backgrounds */
+  --color-comparison-before: rgba(120, 175, 210, 0.15);
+  --color-comparison-after: rgba(180, 220, 195, 0.22);
+  
+  /* Browser Window Colors */
+  --color-browser-bg: #2b2b2b;
+  --color-browser-header: #3a3a3a;
+  --color-browser-dot-red: #ff5f57;
+  --color-browser-dot-yellow: #ffbd2e;
+  --color-browser-dot-green: #28ca42;
+  
+  /* =============================================================================
+     TYPOGRAPHY
+     ============================================================================= */
+  
+  /* Font Families */
+  --font-display: 'Rubik', system-ui, -apple-system, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;      /* 12px - Tiny labels */
+  --text-sm: 0.875rem;     /* 14px - Small text, captions */
+  --text-base: 1rem;       /* 16px - Base size */
+  --text-md: 1.125rem;     /* 18px - Body text */
+  --text-lg: 1.25rem;      /* 20px - Large body */
+  --text-xl: 1.5rem;       /* 24px - Small headings */
+  --text-2xl: 1.875rem;    /* 30px - Medium headings */
+  --text-3xl: 2.25rem;     /* 36px - Large headings */
+  --text-4xl: 3rem;        /* 48px - Page titles */
+  --text-5xl: 4.5rem;      /* 72px - Hero titles */
+  
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  
+  /* Line Heights */
+  --leading-tight: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.7;
+  --leading-loose: 1.8;
+  
+  /* Letter Spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.08em;
+  --tracking-ultra: 0.2em;
+  
+  /* =============================================================================
+     SPACING
+     ============================================================================= */
+  
+  --space-xs: 0.5rem;      /* 8px */
+  --space-sm: 0.75rem;     /* 12px */
+  --space-base: 1rem;      /* 16px */
+  --space-md: 1.25rem;     /* 20px */
+  --space-lg: 1.5rem;      /* 24px */
+  --space-xl: 2rem;        /* 32px */
+  --space-2xl: 2.5rem;     /* 40px */
+  --space-3xl: 3rem;       /* 48px */
+  --space-4xl: 4rem;       /* 64px */
+  --space-5xl: 5rem;       /* 80px */
+  --space-6xl: 6rem;       /* 96px */
+  
+  /* =============================================================================
+     LAYOUT
+     ============================================================================= */
+  
+  --container-max: 1200px;
+  --container-padding: var(--space-lg);
+  
+  /* Grid Gaps */
+  --grid-gap-sm: 1.25rem;  /* 20px */
+  --grid-gap-md: 1.5rem;   /* 24px */
+  --grid-gap-lg: 2rem;     /* 32px */
+  --grid-gap-xl: 3rem;     /* 48px */
+  --grid-gap-2xl: 4rem;    /* 64px */
+  
+  /* =============================================================================
+     BORDERS & RADII
+     ============================================================================= */
+  
+  --radius-sm: 4px;
+  --radius-base: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  
+  /* =============================================================================
+     SHADOWS
+     ============================================================================= */
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-base: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.4);
+  --shadow-2xl: 0 30px 60px rgba(0, 0, 0, 0.5);
+  
+  /* Special Shadows */
+  --shadow-postit: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 8px 25px rgba(0, 0, 0, 0.2);
+  
+  /* =============================================================================
+     TRANSITIONS
+     ============================================================================= */
+  
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  --transition-slower: 0.4s ease;
+  
+  /* =============================================================================
+     Z-INDEX SCALE
+     ============================================================================= */
+  
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  
+  /* =============================================================================
+     ANIMATIONS
+     ============================================================================= */
+  
+  --animation-duration: 0.6s;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =============================================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================================= */
+
+/* Defined as CSS variables for JavaScript access if needed */
+@media (min-width: 768px) {
+  :root {
+    --breakpoint-current: 'md';
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --breakpoint-current: 'lg';
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --breakpoint-current: 'xl';
+  }
+}

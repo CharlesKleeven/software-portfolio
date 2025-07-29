@@ -1,153 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portrait Animation Pipeline - Jodie Nguyen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portrait Animation Pipeline - Jodie Nguyen</title>
+    <link rel="icon" type="image/png" href="../assets/images/icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
 </head>
-<body>
-  <!-- Header -->
-  <header class="header"></header>
-
-  <!-- Hero -->
-  <section class="hero-section fade-in-up">
-    <div class="container">
-      <h1 class="hero-title subpage">Portrait Animation Pipeline</h1>
-      <p class="hero-description">
-        Custom automation between Aseprite and Godot that generates 1,000+ character expressions from just 20 art assets
-      </p>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <section class="content-section fade-in-up">
-    <div class="container">
-      <div class="project-detail-container">
-
-        <!-- The Problem -->
-        <div class="content-grid">
-          <div class="fade-in-up">
-            <h2 class="section-title blue">The Challenge</h2>
-            <p class="challenge-text">Creating character expressions manually meant drawing entire new faces for every emotion. Each expression required complete artwork, individual file exports, and manual animation setup in the game engine.</p>
-            <p class="challenge-text-final">Testing different combinations was painfully slow — making it impractical to achieve the expression variety I wanted for dynamic characters.</p>
-          </div>
-
-          <!-- Video Demo -->
-          <div class="fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="../assets/videos/portrait-pipeline-demo.mp4" data-lightbox-type="video">
-                <video loop muted playsinline class="lightbox-img" data-src="../assets/videos/portrait-pipeline-demo.mp4">
-                  <source type="video/mp4">
-                </video>
-              </a>
-              <p class="media-caption">Real-time expression testing with instant preview combinations</p>
+<body class="portrait-pipeline project-page">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="../index.html" class="nav-brand">Jodie</a>
+                <div class="nav-links">
+                    <a href="../index.html#work" class="nav-link">Work</a>
+                    <a href="../pages/about.html" class="nav-link">About</a>
+                    <a href="../pages/contact.html" class="nav-link">Contact</a>
+                </div>
             </div>
-          </div>
         </div>
+    </nav>
 
-        <!-- The Solution -->
-        <div class="how-it-works-section content-grid fade-in-up">
-          <!-- Process Diagram -->
-          <div class="diagram-container fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="../assets/images/pipeline.svg" data-lightbox-type="image">
-                <img src="/assets/images/pipeline.svg" alt="Pipeline workflow from Aseprite to Godot" class="architecture-diagram lightbox-img">
-              </a>
-              <p class="media-caption">Three-stage automation: Tag → Process → Generate</p>
-            </div>
-          </div>
-
-          <!-- Process Explanation -->
-          <div class="how-it-works-text">
-            <h2 class="section-title blue">The Solution</h2>
-
-            <p class="feature-description">
-              <strong>Smart Tag System:</strong> Artists tag expression components (eyes, mouths, eyebrows) in Aseprite using simple naming conventions. The system reads these tags automatically.
+    <!-- Hero -->
+    <section class="hero-section fade-in-up">
+        <div class="container">
+            <h1 class="hero-title subpage">Portrait Animation Pipeline</h1>
+            <p class="hero-description">
+                Modular animation system that auto-generates character expressions with live preview testing
             </p>
-
-            <p class="feature-description">
-              <strong>Cross-Tool Automation:</strong> Custom tools extract the tagged data, generate optimized spritesheets, and create complete Godot animation tracks — no manual setup required.
-            </p>
-
-            <p class="feature-description-final">
-              <strong>Real-Time Preview:</strong> Editor plugins allow instant testing of expression combinations directly in the game engine, making iteration fast and creative.
-            </p>
-          </div>
         </div>
+    </section>
 
-        <!-- Key Innovation -->
-        <div class="content-grid fade-in-up">
-          <div>
-            <h2 class="section-title blue">Key Innovation</h2>
-            <p class="challenge-text">
-              <strong>Modular Expression System:</strong> Instead of drawing complete faces, artists create reusable components that combine automatically. Twenty base assets generate over 1,000 unique expressions through smart combinations.
-            </p>
-            <p class="challenge-text-final">
-              20 art assets → 1,000+ expressions → 95% time reduction
-            </p>
-          </div>
+    <!-- Main Content -->
+    <section class="content-section fade-in-up" style="padding-top: 40px;">
+        <div class="container">
+            <div class="project-detail-container">
+                <!-- The Challenge -->
+                <div class="content-grid">
+                    <div class="fade-in-up">
+                        <h2 class="section-title blue">The Challenge</h2>
+                    <div class="challenge-points">
+                        <div class="challenge-point">
+                            <h4>Manual artwork for every emotion</h4>
+                            <p>Each expression required drawing a complete new face, individual file exports, and manual setup in the game engine</p>
+                        </div>
+                        <div class="challenge-point">
+                            <h4>Painfully slow iteration</h4>
+                            <p>Testing different combinations took hours, making it impractical to achieve the expression variety needed for dynamic characters</p>
+                        </div>
+                    </div>
+                    </div>
 
-          <!-- Tags Demo -->
-          <div class="fade-lightbox">
-            <div class="lightbox">
-              <a href="#" data-lightbox-src="/assets/images/aseprite-tags.jpg" data-lightbox-type="image">
-                <img src="/assets/images/aseprite-tags.jpg" alt="Aseprite tag setup for automation" class="lightbox-img">
-              </a>
-              <p class="media-caption">Simple tag setup drives the entire automation</p>
+                    <!-- Video Demo -->
+                    <div class="fade-lightbox">
+                        <div class="lightbox">
+                            <a href="#" data-lightbox-src="../assets/videos/portrait-pipeline-demo.mp4" data-lightbox-type="video">
+                                <video autoplay loop muted playsinline class="lightbox-img">
+                                    <source src="../assets/videos/portrait-pipeline-demo.mp4" type="video/mp4">
+                                </video>
+                            </a>
+                            <p class="media-caption">Real-time expression testing with instant preview combinations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Solution -->
+                <div class="how-it-works-section content-grid fade-in-up section-spacing">
+                    <!-- Process Diagram -->
+                    <div class="fade-lightbox">
+                        <div class="lightbox svg-lightbox">
+                            <a href="#" data-lightbox-src="../assets/images/pipeline.svg" data-lightbox-type="image">
+                                <img src="../assets/images/pipeline.svg" alt="Pipeline workflow from Aseprite to Godot" class="architecture-diagram lightbox-img">
+                            </a>
+                        </div>
+                        <p class="media-caption">Three-stage automation: Tag → Process → Generate</p>
+                    </div>
+
+                <!-- Process Explanation -->
+                <div>
+                    <h2 class="section-title blue">The Solution</h2>
+                    <div class="process-numbered">
+                        <div class="process-step">
+                            <div class="process-step-content">
+                                <h4>Smart Tag System</h4>
+                                <p>Artists tag expression components (eyes, mouths, eyebrows) in Aseprite using simple naming conventions. The system reads these tags automatically.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="process-step-content">
+                                <h4>Cross-Tool Automation</h4>
+                                <p>Custom tools extract the tagged data, generate optimized spritesheets, and create complete Godot animation tracks. No manual setup required.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="process-step-content">
+                                <h4>Live Animation Preview</h4>
+                                <p>Test any expression combination instantly in the game engine with full animation playback. No exports, no waiting.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+                <!-- Key Innovation -->
+                <div class="content-grid fade-in-up section-spacing">
+                    <div>
+                        <h2 class="section-title blue">The Innovation</h2>
+                    <h3 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin: 0 0 16px;">Modular Expression System</h3>
+                    <div class="innovation-points">
+                        <div class="innovation-point">
+                            <span class="innovation-bullet">•</span>
+                            <span class="innovation-text">Artists create reusable facial components instead of complete faces</span>
+                        </div>
+                        <div class="innovation-point">
+                            <span class="innovation-bullet">•</span>
+                            <span class="innovation-text">Components automatically combine into fully-animated expressions</span>
+                        </div>
+                        <div class="innovation-point">
+                            <span class="innovation-bullet">•</span>
+                            <span class="innovation-text">No manual setup required between art and game engine</span>
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- Tags Demo -->
+                    <div class="fade-lightbox">
+                        <div class="lightbox">
+                            <a href="#" data-lightbox-src="../assets/images/aseprite-tags.jpg" data-lightbox-type="image">
+                                <img src="../assets/images/aseprite-tags.jpg" alt="Aseprite tag setup for automation" class="lightbox-img">
+                            </a>
+                            <p class="media-caption">Simple tag setup drives the entire automation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="fade-in-up section-spacing">
+                    <h2 class="section-title blue">The Results</h2>
+                    <div class="results-comparison">
+                        <div class="comparison-side">
+                            <h3>Before</h3>
+                            <div class="comparison-items">
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Process</span>
+                                    Drawing every face from scratch
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Time</span>
+                                    Days for basic emotions
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Workflow</span>
+                                    Export errors between programs
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-side">
+                            <h3>After</h3>
+                            <div class="comparison-items">
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Process</span>
+                                    Modular components combine automatically
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Time</span>
+                                    Full characters in hours
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-category">Workflow</span>
+                                    Live preview with instant animation testing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Results -->
-        <div class="fade-in-up">
-          <h2 class="section-title blue">Results</h2>
-          <div class="results-grid">
-            <div class="result-card">
-              <h3>Before</h3>
-              <p>Manual face drawing for every expression. Days of work for basic character emotions. Complex sequence calculations and animation errors between tools.</p>
+    <!-- Navigation -->
+    <section class="nav-section fade-in-up">
+        <div class="container">
+            <div class="nav-buttons">
+                <a href="solo-development.html" class="button">← Previous Project</a>
+                <a href="world-editor.html" class="button">Next Project →</a>
             </div>
-            <div class="result-card">
-              <h3>After</h3>
-              <p>Infinite expression combinations from modular components. New characters with full emotional range in hours, not days. Seamless workflow integration.</p>
-            </div>
-          </div>
         </div>
+    </section>
 
-      </div>
+    <!-- Tech Stack -->
+    <section class="tech-stack-preview">
+        <div class="container">
+            <p class="tech-stack-line">
+                Lua • C# • GDScript • JSON • Godot • Aseprite
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Thanks for stopping by!</h3>
+                <div class="footer-links">
+                    <a href="../pages/contact.html" class="footer-button">Say hello</a>
+                </div>
+                <p class="footer-credits">&copy; 2025 Jodie Nguyen</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Lightbox -->
+    <div id="global-lightbox-overlay">
+        <div id="global-lightbox-content"></div>
     </div>
-  </section>
 
-  <!-- Navigation -->
-  <section class="nav-section fade-in-up">
-    <div class="container">
-      <div class="nav-buttons">
-        <a href="./solo-development" class="button">← Previous Project</a>
-        <a href="./world-editor" class="button">Next Project →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section class="tech-stack-preview">
-    <div class="container">
-      <p class="tech-stack-line">
-        Lua • C# • GDScript • JSON • Godot • Aseprite
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <div id="footer-placeholder"></div>
-
-  <!-- Global Lightbox -->
-  <div id="global-lightbox-overlay">
-    <div id="global-lightbox-content"></div>
-  </div>
-
-  <script src="../js/components.js"></script>
+    <!-- Scripts -->
+    <script src="../js/components.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Lightbox functionality for new-site
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('global-lightbox-overlay');
+            const container = document.getElementById('global-lightbox-content');
+            
+            if (!overlay || !container) {
+                console.error('Lightbox elements not found');
+                return;
+            }
+            
+            // Handle all lightbox triggers
+            document.querySelectorAll('[data-lightbox-src]').forEach(trigger => {
+                trigger.addEventListener('click', e => {
+                    e.preventDefault();
+                    
+                    const src = trigger.getAttribute('data-lightbox-src');
+                    const type = trigger.getAttribute('data-lightbox-type');
+                    
+                    if (src && type) {
+                        container.innerHTML = type === 'video'
+                            ? `<video autoplay loop muted playsinline controls><source src="${src}" type="video/mp4"></video>`
+                            : `<img src="${src}" alt="Lightbox content">`;
+                        
+                        overlay.classList.add('visible');
+                    }
+                });
+            });
+            
+            // Close on click outside
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('visible');
+                    container.innerHTML = '';
+                }
+            });
+            
+            // Close on Escape
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && overlay.classList.contains('visible')) {
+                    overlay.classList.remove('visible');
+                    container.innerHTML = '';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
