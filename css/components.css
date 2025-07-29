@@ -571,6 +571,24 @@
   transition: all 0.3s ease;
 }
 
+/* Video loading states */
+.project-media video {
+  background: var(--color-bg-card-dark);
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="light"] .project-media video {
+  background: var(--color-bg-card-darkest);
+}
+
+.project-media video[data-src] {
+  opacity: 0.9;
+}
+
+.project-media video.loaded {
+  opacity: 1;
+}
+
 .media-container img,
 .media-container video,
 .project-media img,

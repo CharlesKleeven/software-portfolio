@@ -66,8 +66,16 @@ document.addEventListener('DOMContentLoaded', function () {
     </footer>
   `;
 
-  document.querySelector('header.header').innerHTML = components;
-  document.getElementById('footer-placeholder').innerHTML = footer;
+  const headerElement = document.querySelector('header.header');
+  const footerElement = document.getElementById('footer-placeholder');
+  
+  if (headerElement) {
+    headerElement.innerHTML = components;
+  }
+  
+  if (footerElement) {
+    footerElement.innerHTML = footer;
+  }
 
   // === Scroll Position Handling ===
   if (isDirectWorkLoad) {
@@ -92,9 +100,23 @@ document.addEventListener('DOMContentLoaded', function () {
           if (src) {
             const source = video.querySelector('source');
             if (source) {
-              source.src = src;
+              // Handle source element's data-src if it exists
+              const sourceSrc = source.getAttribute('data-src') || src;
+              source.src = sourceSrc;
+              source.removeAttribute('data-src');
+              
               video.load();
-              video.play(); // Start playing once loaded
+              
+              // Add event listeners for debugging
+              video.addEventListener('loadeddata', () => {
+                video.play();
+                video.classList.add('loaded');
+              });
+              
+              video.addEventListener('error', (e) => {
+                console.error('Video load error:', src, e);
+              });
+              
               video.removeAttribute('data-src');
               videoObserver.unobserve(video);
             }
