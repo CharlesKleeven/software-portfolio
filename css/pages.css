@@ -16,7 +16,7 @@
 }
 
 [data-theme="light"] .home .hero::before {
-  opacity: 0.25;
+  opacity: 0.7;
   mix-blend-mode: multiply;
 }
 
@@ -28,8 +28,8 @@
   right: 0;
   bottom: 0;
   background: radial-gradient(ellipse at center center,
-      rgba(226, 227, 229, 0.6) 0%,
-      rgba(226, 227, 229, 0.3) 40%,
+      rgba(226, 227, 229, 0.8) 0%,
+      rgba(226, 227, 229, 0.5) 40%,
       transparent 70%);
   pointer-events: none;
   z-index: 1;
@@ -1009,15 +1009,15 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
-  
+
   .platform-feature {
     padding: 0 4px;
   }
-  
+
   .feature-label {
     font-size: 0.65rem;
   }
-  
+
   .feature-value {
     font-size: 0.875rem;
   }
@@ -1316,7 +1316,7 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   /* Fix all comparison items on mobile */
   .comparison-side .comparison-items {
     height: auto;
