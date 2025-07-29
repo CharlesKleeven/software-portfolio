@@ -13,18 +13,40 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="../css/main.css">
-</head>
+    
+    <!-- Prevent flash of incorrect theme -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script></head>
 <body class="solo-development project-page">
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-container">
-                <a href="../index.html" class="nav-brand">Jodie</a>
+                <a href="/index.html" class="nav-brand">Jodie</a>
                 <div class="nav-links">
                     <a href="../index.html#work" class="nav-link">Work</a>
                     <a href="../pages/about.html" class="nav-link">About</a>
                     <a href="../pages/contact.html" class="nav-link">Contact</a>
-                </div>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>                </div>
             </div>
         </div>
     </nav>
@@ -45,28 +67,28 @@
             <div class="project-detail-container">
 
                 <!-- Community Introduction -->
-                <div class="fade-in-up solo-intro-section" style="margin-bottom: 80px; margin-top: 60px;">
-                    <div class="solo-intro-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+                <div class="fade-in-up solo-intro-section section-spacing">
+                    <div class="solo-intro-grid">
                         <!-- Left side - What it is -->
                         <div class="solo-intro-content">
-                            <h2 class="intro-statement blue">What is SoloDevelopment?</h2>
-                            <p style="font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 24px; line-height: 1.5;">
+                            <h2 class="section-title blue">What is SoloDevelopment?</h2>
+                            <p class="section-subtitle">
                                 A community for people making games mostly by themselves.
                             </p>
-                            <p style="font-size: 18px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 48px;">
+                            <p class="section-description mt-lg">
                                 We host game jams, showcase member projects, and connect developers through shared experiences.
                             </p>
 
                             <!-- CTAs -->
                             <div class="solo-intro-ctas">
-                                <a href="https://solodevelopment.org" target="_blank" class="button button-secondary">Visit Platform</a>
-                                <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="button button-blue" style="margin-left: 16px;">View Source</a>
+                                <a href="https://solodevelopment.org" target="_blank" class="project-link green no-arrow">Visit Platform</a>
+                                <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="project-link blue no-arrow">View Source</a>
                             </div>
                         </div>
 
                         <!-- Right side - Stats -->
-                        <div class="solo-intro-stats" style="display: flex; align-items: center; justify-content: center; height: 100%;">
-                            <div class="postit-board" style="margin: 0;">
+                        <div class="solo-intro-stats">
+                            <div class="postit-board">
                                 <div class="postit postit-yellow">
                                     <div class="postit-number">75K+</div>
                                     <div class="postit-label">members on Reddit</div>
@@ -89,8 +111,8 @@
                     
                     <!-- Mobile CTAs - shown only on mobile -->
                     <div class="solo-intro-ctas-mobile">
-                        <a href="https://solodevelopment.org" target="_blank" class="button button-secondary">Visit Platform</a>
-                        <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="button button-blue">View Source</a>
+                        <a href="https://solodevelopment.org" target="_blank" class="project-link green no-arrow">Visit Platform</a>
+                        <a href="https://github.com/CharlesKleeven/solodevelopment" target="_blank" class="project-link blue no-arrow">View Source</a>
                     </div>
                 </div>
 
@@ -122,37 +144,37 @@
                     <div>
                         <h2 class="section-title blue">Authentication & Developer Profiles</h2>
                         <div class="section-content-spacing">
-                            <div style="margin-bottom: 24px;">
-                                <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 8px;">OAuth Integration</h3>
-                                <p style="margin: 0; color: var(--color-text-secondary); line-height: 1.7; font-size: 18px;">Google and Discord login with JWT tokens in httpOnly cookies.</p>
+                            <div class="feature-section">
+                                <h3 class="feature-heading">OAuth Integration</h3>
+                                <p class="feature-description">Google and Discord login with JWT tokens in httpOnly cookies.</p>
                             </div>
-                            <div style="margin-bottom: 24px;">
-                                <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 8px;">Developer Portfolios</h3>
-                                <p style="margin: 0; color: var(--color-text-secondary); line-height: 1.7; font-size: 18px;">Create your profile, showcase games, link social media.</p>
+                            <div class="feature-section">
+                                <h3 class="feature-heading">Developer Portfolios</h3>
+                                <p class="feature-description">Create your profile, showcase games, link social media.</p>
                             </div>
-                            <div>
-                                <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 8px;">Community Features</h3>
-                                <p style="margin: 0; color: var(--color-text-secondary); line-height: 1.7; font-size: 18px;">Discover developers, join jams, showcase projects.</p>
+                            <div class="feature-section">
+                                <h3 class="feature-heading">Community Features</h3>
+                                <p class="feature-description">Discover developers, join jams, showcase projects.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Discovery Interface -->
-                <div class="content-grid fade-in-up" style="margin-bottom: 80px; margin-top: 60px;">
+                <div class="content-grid fade-in-up section-spacing mt-3xl">
                     <div>
                         <h2 class="section-title blue">Waterfall Discovery Interface</h2>
-                        <p style="color: var(--color-text-secondary); line-height: 1.7; font-size: 18px; margin-bottom: 24px;">
+                        <p class="discovery-description">
                             CSS-native masonry layout displaying game jam entries in a Pinterest-style grid. Features tabbed filtering for marathon and themed jams, plus real-time search across all content.
                         </p>
-                        <div style="margin-top: 24px;">
-                            <div style="margin-bottom: 16px;">
-                                <div style="font-size: 14px; color: var(--color-sage); margin-bottom: 6px; font-weight: 600;">FILTERING</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">Marathon & themed jam tabs</div>
+                        <div class="feature-details">
+                            <div class="feature-detail-item">
+                                <div class="feature-label-small">FILTERING</div>
+                                <div class="feature-value">Marathon & themed jam tabs</div>
                             </div>
-                            <div>
-                                <div style="font-size: 14px; color: var(--color-sage); margin-bottom: 6px; font-weight: 600;">SEARCH</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">Real-time across all content</div>
+                            <div class="feature-detail-item">
+                                <div class="feature-label-small">SEARCH</div>
+                                <div class="feature-value">Real-time across all content</div>
                             </div>
                         </div>
                     </div>
@@ -184,14 +206,14 @@
                 <!-- External Integration -->
                 <div class="fade-in-up section-spacing">
                     <h2 class="section-title blue">External Integration</h2>
-                    <p style="color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 32px; max-width: 800px;">
+                    <p class="section-description mb-lg" style="max-width: 800px;">
                         Just like the Waterfall Discovery Interface showcases our game jams, we integrate with itch.io to pull external jam data. This allows solo developers to see all opportunities in one place.
                     </p>
                     
-                    <div class="fade-lightbox" style="margin-bottom: 32px;">
-                        <div class="external-integration-browsers" style="display: flex; gap: 20px; position: relative;">
+                    <div class="fade-lightbox mb-lg">
+                        <div class="external-integration-browsers">
                             <!-- Left Browser - SoloDevelopment -->
-                            <div class="integration-browser" style="flex: 1;">
+                            <div class="integration-browser">
                                 <div class="lightbox">
                                     <a href="#" data-lightbox-src="../assets/images/external-integration-left.jpg" data-lightbox-type="image">
                                         <div class="browser-window">
@@ -203,10 +225,9 @@
                                                 </div>
                                                 <div class="browser-url">solodevelopment.org/jams</div>
                                             </div>
-                                            <div class="browser-content image-content" style="height: 320px;">
+                                            <div class="browser-content image-content">
                                                 <img src="../assets/images/external-integration-left.jpg"
-                                                    alt="SoloDevelopment game jam page"
-                                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                                    alt="SoloDevelopment game jam page">
                                             </div>
                                         </div>
                                     </a>
@@ -214,7 +235,7 @@
                             </div>
                             
                             <!-- Right Browser - itch.io -->
-                            <div class="integration-browser" style="flex: 1;">
+                            <div class="integration-browser">
                                 <div class="lightbox">
                                     <a href="#" data-lightbox-src="../assets/images/external-integration-right.jpg" data-lightbox-type="image">
                                         <div class="browser-window">
@@ -226,10 +247,9 @@
                                                 </div>
                                                 <div class="browser-url">itch.io/jams</div>
                                             </div>
-                                            <div class="browser-content image-content" style="height: 320px;">
+                                            <div class="browser-content image-content">
                                                 <img src="../assets/images/external-integration-right.jpg"
-                                                    alt="itch.io game jam page"
-                                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                                    alt="itch.io game jam page">
                                             </div>
                                         </div>
                                     </a>
@@ -263,61 +283,61 @@
                 <div class="fade-in-up">
                     <h2 class="section-title blue">Production Infrastructure</h2>
                     
-                    <div class="infrastructure-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-                        <div style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px; font-weight: 600;">Security</h3>
+                    <div class="infrastructure-grid mt-xl">
+                        <div class="infrastructure-card">
+                            <h3 class="infrastructure-heading">Security</h3>
                             
-                            <div style="margin-bottom: 20px;">
-                                <div style="font-size: 13px; color: var(--color-sage); margin-bottom: 4px; font-weight: 600;">AUTHENTICATION</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">JWT + httpOnly cookies</div>
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label">AUTHENTICATION</div>
+                                <div class="infrastructure-value">JWT + httpOnly cookies</div>
                             </div>
                             
-                            <div style="margin-bottom: 20px;">
-                                <div style="font-size: 13px; color: var(--color-sage); margin-bottom: 4px; font-weight: 600;">ENCRYPTION</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">bcrypt with 12 salt rounds</div>
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label">ENCRYPTION</div>
+                                <div class="infrastructure-value">bcrypt with 12 salt rounds</div>
                             </div>
                             
-                            <div>
-                                <div style="font-size: 13px; color: var(--color-sage); margin-bottom: 4px; font-weight: 600;">PROTECTION</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">Rate limiting (200/15min)</div>
-                            </div>
-                        </div>
-                        
-                        <div style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px; font-weight: 600;">Performance</h3>
-                            
-                            <div style="margin-bottom: 20px;">
-                                <div style="font-size: 13px; color: var(--color-blue); margin-bottom: 4px; font-weight: 600;">HOSTING</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">Zero cold-start deployment</div>
-                            </div>
-                            
-                            <div style="margin-bottom: 20px;">
-                                <div style="font-size: 13px; color: var(--color-blue); margin-bottom: 4px; font-weight: 600;">CACHING</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">Multi-layer intelligent cache</div>
-                            </div>
-                            
-                            <div>
-                                <div style="font-size: 13px; color: var(--color-blue); margin-bottom: 4px; font-weight: 600;">DATABASE</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">MongoDB compound indexes</div>
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label">PROTECTION</div>
+                                <div class="infrastructure-value">Rate limiting (200/15min)</div>
                             </div>
                         </div>
                         
-                        <div style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px; font-weight: 600;">Reliability</h3>
+                        <div class="infrastructure-card">
+                            <h3 class="infrastructure-heading">Performance</h3>
                             
-                            <div style="margin-bottom: 20px;">
-                                <div style="font-size: 13px; color: var(--color-orange); margin-bottom: 4px; font-weight: 600;">RESILIENCE</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">Automated error recovery</div>
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label blue">HOSTING</div>
+                                <div class="infrastructure-value">Zero cold-start deployment</div>
                             </div>
                             
-                            <div style="margin-bottom: 20px;">
-                                <div style="font-size: 13px; color: var(--color-orange); margin-bottom: 4px; font-weight: 600;">MONITORING</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">Real-time health checks</div>
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label blue">CACHING</div>
+                                <div class="infrastructure-value">Multi-layer intelligent cache</div>
                             </div>
                             
-                            <div>
-                                <div style="font-size: 13px; color: var(--color-orange); margin-bottom: 4px; font-weight: 600;">UPTIME</div>
-                                <div style="font-size: 18px; color: var(--color-text-primary);">99%+ availability SLA</div>
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label blue">DATABASE</div>
+                                <div class="infrastructure-value">MongoDB compound indexes</div>
+                            </div>
+                        </div>
+                        
+                        <div class="infrastructure-card">
+                            <h3 class="infrastructure-heading">Reliability</h3>
+                            
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label orange">RESILIENCE</div>
+                                <div class="infrastructure-value">Automated error recovery</div>
+                            </div>
+                            
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label orange">MONITORING</div>
+                                <div class="infrastructure-value">Real-time health checks</div>
+                            </div>
+                            
+                            <div class="infrastructure-item">
+                                <div class="infrastructure-label orange">UPTIME</div>
+                                <div class="infrastructure-value">99%+ availability SLA</div>
                             </div>
                         </div>
                     </div>
@@ -365,6 +385,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="../js/theme.js"></script>
     <script src="../js/components.js"></script>
     <script src="../js/animations.js"></script>
     <script>

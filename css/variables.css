@@ -64,7 +64,63 @@
   --color-browser-dot-red: #ff5f57;
   --color-browser-dot-yellow: #ffbd2e;
   --color-browser-dot-green: #28ca42;
+}
+
+/* =============================================================================
+   LIGHT MODE VARIABLES
+   ============================================================================= */
+
+[data-theme="light"] {
+  /* Background Colors - Softer, less stark */
+  --color-bg-main: #fafaf9;
+  --color-bg-alternate: #f5f5f3;
+  --color-bg-card-darkest: #eeeeec;
+  --color-bg-card-dark: #f2f2f0;
+  --color-bg-card-medium: #f5f5f3;
+  --color-bg-card-light: #ebebea;
+  --color-hero-bg: #e8e8e5;
+  --color-nav-bg: #4a5568;
+  --color-footer-bg: #374151;
+  --color-technical-work: #f0f0ed;
   
+  /* Text Colors - Dark versions for light backgrounds */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #424242;
+  --color-text-muted: #6c757d;
+  
+  /* UI Colors - Same as dark mode */
+  --color-border: #dee2e6;
+  --color-border-light: rgba(0, 0, 0, 0.05);
+  --color-border-medium: rgba(0, 0, 0, 0.1);
+  
+  /* Button Colors */
+  --color-accent: #5a7265;
+  --color-accent-hover: #4a5c55;
+  --color-hero-text: #1a1a1a;
+  
+  /* Light mode specific colors */
+  --color-light-blue-soft: #e1ecf4;
+  --color-light-blue-border: #d0dbe8;
+  --color-light-blue-hover: #5a7fa8;
+  --color-light-blue-bg: rgba(110, 130, 150, 0.08);
+  
+  /* Muted colors for light mode */
+  --color-blue-muted: #5a7c9a;
+  --color-sage-muted: #6b8574;
+  
+  /* Shadows - Much lighter for light mode */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-base: 0 2px 4px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.06);
+  --shadow-2xl: 0 12px 24px rgba(0, 0, 0, 0.08);
+  --shadow-postit: 1px 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Resume dark mode variables in root scope */
+:root {
   /* =============================================================================
      TYPOGRAPHY
      ============================================================================= */

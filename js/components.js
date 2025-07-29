@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const components = `
     <div class="container">
       <div class="nav-container">
-        <a href="${pathPrefix || '/'}" class="nav-brand">Jodie</a>
+        <a href="${pathPrefix}index.html" class="nav-brand">Jodie</a>
         <div class="nav-links">
           <div class="nav-item">
             <a href="${pathPrefix || '/'}#work" class="nav-link ${activeLink === 'work' ? 'active' : ''}">Work</a>

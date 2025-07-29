@@ -13,18 +13,40 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="../css/main.css">
-</head>
+    
+    <!-- Prevent flash of incorrect theme -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script></head>
 <body class="data-persistence project-page">
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-container">
-                <a href="../index.html" class="nav-brand">Jodie</a>
+                <a href="/index.html" class="nav-brand">Jodie</a>
                 <div class="nav-links">
                     <a href="../index.html#work" class="nav-link">Work</a>
                     <a href="../pages/about.html" class="nav-link">About</a>
                     <a href="../pages/contact.html" class="nav-link">Contact</a>
-                </div>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>                </div>
             </div>
         </div>
     </nav>
@@ -40,7 +62,7 @@
     </section>
 
     <!-- Main Content -->
-    <section class="content-section fade-in-up" style="padding-top: 40px;">
+    <section class="content-section fade-in-up pt-xl">
         <div class="container">
             <div class="project-detail-container">
                 <!-- The Challenge -->
@@ -75,50 +97,50 @@
                 <!-- Technical Implementation -->
                 <div class="fade-in-up section-spacing">
                     <h2 class="section-title blue">Technical Implementation</h2>
-                    <p style="color: var(--color-text-secondary); font-size: 18px; line-height: 1.7; margin-bottom: 48px; font-style: italic;">
-                        Inspired by <a href="https://github.com/godotneers/saving-loading-video" target="_blank" style="color: var(--color-sage); text-decoration: none;">Jan Thomä's guide</a> on save compatibility in Godot.
+                    <p class="section-description mb-3xl" style="font-style: italic;">
+                        Inspired by <a href="https://github.com/godotneers/saving-loading-video" target="_blank" class="link-sage">Jan Thomä's guide</a> on save compatibility in Godot.
                     </p>
                     
                     <!-- The Real Problem -->
-                    <div style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px; margin-bottom: 32px;">
-                        <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px;">Why most games break saves</h3>
+                    <div class="code-comparison-box">
+                        <h3 class="code-comparison-heading">Why most games break saves</h3>
                         
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                        <div class="code-comparison-grid">
                             <!-- Without This System -->
-                            <div>
-                                <h4 style="color: var(--color-orange); font-size: 16px; margin: 0 0 16px;">Without this system</h4>
-                                <div style="font-family: var(--font-mono); font-size: 13px; color: var(--color-text-muted); line-height: 1.8;">
-                                    <div style="margin-bottom: 12px;">
-                                        <span style="color: var(--color-text-secondary);">// Version 1.0</span><br>
+                            <div class="code-comparison-column">
+                                <h4 class="orange">Without this system</h4>
+                                <div class="code-snippet">
+                                    <div class="code-snippet-block">
+                                        <span class="code-comment">// Version 1.0</span><br>
                                         player_health = 100
                                     </div>
-                                    <div style="margin-bottom: 12px;">
-                                        <span style="color: var(--color-text-secondary);">// Version 1.1 - renamed variable</span><br>
-                                        <span style="text-decoration: line-through; opacity: 0.6;">player_health</span> → health<br>
-                                        <span style="color: var(--color-orange);">All saves corrupted</span>
+                                    <div class="code-snippet-block">
+                                        <span class="code-comment">// Version 1.1 - renamed variable</span><br>
+                                        <span class="code-strike">player_health</span> → health<br>
+                                        <span class="code-error">All saves corrupted</span>
                                     </div>
                                     <div>
-                                        <span style="color: var(--color-text-secondary);">// Version 1.2 - added feature</span><br>
+                                        <span class="code-comment">// Version 1.2 - added feature</span><br>
                                         + player_stamina<br>
-                                        <span style="color: var(--color-orange);">Old saves crash on load</span>
+                                        <span class="code-error">Old saves crash on load</span>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- With This System -->
-                            <div>
-                                <h4 style="color: var(--color-sage); font-size: 16px; margin: 0 0 16px;">With this system</h4>
-                                <div style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.8;">
-                                    <div style="margin-bottom: 12px;">
-                                        <strong style="color: var(--color-text-primary);">Flexible property mapping</strong><br>
+                            <div class="code-comparison-column">
+                                <h4 class="sage">With this system</h4>
+                                <div class="system-feature-desc">
+                                    <div class="system-feature">
+                                        <strong>Flexible property mapping</strong><br>
                                         Old names map to new ones automatically
                                     </div>
-                                    <div style="margin-bottom: 12px;">
-                                        <strong style="color: var(--color-text-primary);">Graceful defaults</strong><br>
+                                    <div class="system-feature">
+                                        <strong>Graceful defaults</strong><br>
                                         Missing properties get sensible values
                                     </div>
-                                    <div>
-                                        <strong style="color: var(--color-text-primary);">Self-healing saves</strong><br>
+                                    <div class="system-feature">
+                                        <strong>Self-healing saves</strong><br>
                                         Objects rebuild from partial data
                                     </div>
                                 </div>
@@ -127,43 +149,43 @@
                     </div>
                     
                     <!-- Architecture Details -->
-                    <div class="content-grid" style="gap: 32px;">
+                    <div class="content-grid gap-lg">
                         <div>
-                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 16px;">How it works</h3>
-                            <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-secondary);">
+                            <h3 class="architecture-heading">How it works</h3>
+                            <p class="architecture-paragraph">
                                 Every game object broadcasts its state through signals. No central tracking system that becomes a bottleneck or single point of failure.
                             </p>
-                            <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-secondary); margin-top: 16px;">
+                            <p class="architecture-paragraph">
                                 State lives in memory until explicitly saved. This means instant autosaves, zero corruption from crashes, and perfect recovery even from power loss.
                             </p>
-                            <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-secondary); margin-top: 16px;">
+                            <p class="architecture-paragraph">
                                 The real magic: property versioning. When you refactor code, the save system adapts. Players keep their progress through every update.
                             </p>
                         </div>
                         
                         <!-- Protection Layers -->
-                        <div class="feature-list" style="background: var(--color-bg-card-dark); padding: 32px; border-radius: 12px;">
-                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px;">Protection Layers</h3>
-                            <div class="feature-items" style="display: flex; flex-direction: column; gap: 16px;">
-                                <div class="feature-item" style="display: flex; align-items: flex-start; gap: 16px;">
-                                    <div class="feature-icon" style="width: 32px; height: 32px; background: var(--color-sage-muted); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-sage); font-weight: 700; flex-shrink: 0;">1</div>
+                        <div class="feature-list">
+                            <h3 class="feature-list-heading">Protection Layers</h3>
+                            <div class="feature-items">
+                                <div class="feature-item">
+                                    <div class="feature-icon">1</div>
                                     <div class="feature-content">
-                                        <h4 style="font-size: 16px; color: var(--color-text-primary); margin: 0 0 4px;">Write-ahead logging</h4>
-                                        <p style="font-size: 14px; color: var(--color-text-secondary); margin: 0; line-height: 1.5;">Changes written to temp files first. Original saves untouched until validated.</p>
+                                        <h4>Write-ahead logging</h4>
+                                        <p>Changes written to temp files first. Original saves untouched until validated.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item" style="display: flex; align-items: flex-start; gap: 16px;">
-                                    <div class="feature-icon" style="width: 32px; height: 32px; background: var(--color-sage-muted); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-sage); font-weight: 700; flex-shrink: 0;">2</div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">2</div>
                                     <div class="feature-content">
-                                        <h4 style="font-size: 16px; color: var(--color-text-primary); margin: 0 0 4px;">Memory-first architecture</h4>
-                                        <p style="font-size: 14px; color: var(--color-text-secondary); margin: 0; line-height: 1.5;">State cached in memory. Crashes can't corrupt disk data.</p>
+                                        <h4>Memory-first architecture</h4>
+                                        <p>State cached in memory. Crashes can't corrupt disk data.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item" style="display: flex; align-items: flex-start; gap: 16px;">
-                                    <div class="feature-icon" style="width: 32px; height: 32px; background: var(--color-sage-muted); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-sage); font-weight: 700; flex-shrink: 0;">3</div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">3</div>
                                     <div class="feature-content">
-                                        <h4 style="font-size: 16px; color: var(--color-text-primary); margin: 0 0 4px;">Self-healing saves</h4>
-                                        <p style="font-size: 14px; color: var(--color-text-secondary); margin: 0; line-height: 1.5;">Objects rebuild from partial data. Game continues with defaults if needed.</p>
+                                        <h4>Self-healing saves</h4>
+                                        <p>Objects rebuild from partial data. Game continues with defaults if needed.</p>
                                     </div>
                                 </div>
                             </div>
@@ -253,6 +275,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="../js/theme.js"></script>
     <script src="../js/components.js"></script>
     <script src="../js/animations.js"></script>
     <script>

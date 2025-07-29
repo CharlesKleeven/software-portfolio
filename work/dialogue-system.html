@@ -13,18 +13,40 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="../css/main.css">
-</head>
+    
+    <!-- Prevent flash of incorrect theme -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script></head>
 <body class="dialogue-system project-page">
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-container">
-                <a href="../index.html" class="nav-brand">Jodie</a>
+                <a href="/index.html" class="nav-brand">Jodie</a>
                 <div class="nav-links">
                     <a href="../index.html#work" class="nav-link">Work</a>
                     <a href="../pages/about.html" class="nav-link">About</a>
                     <a href="../pages/contact.html" class="nav-link">Contact</a>
-                </div>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>                </div>
             </div>
         </div>
     </nav>
@@ -40,7 +62,7 @@
     </section>
 
     <!-- Main Content -->
-    <section class="content-section fade-in-up" style="padding-top: 40px;">
+    <section class="content-section fade-in-up">
         <div class="container">
             <div class="project-detail-container">
                 <!-- The Challenge -->
@@ -74,14 +96,14 @@
                                     </div>
                                     <div class="obsidian-content">
                                         <div class="obsidian-sidebar">
-                                            <div style="margin-bottom: 8px; color: #999; font-size: 9px;">Vault</div>
-                                            <div style="padding: 2px 0; cursor: pointer; font-size: 9px; color: #7c3aed;">◆ Flow</div>
-                                            <div style="padding: 2px 0; cursor: pointer; font-size: 9px;">◇ Rules</div>
-                                            <div style="padding: 2px 0; cursor: pointer; font-size: 9px;">◇ Priority</div>
-                                            <div style="padding: 2px 0; cursor: pointer; font-size: 9px;">◇ Memory</div>
+                                            <div class="obsidian-sidebar-header">Vault</div>
+                                            <div class="obsidian-sidebar-item active">Flow</div>
+                                            <div class="obsidian-sidebar-item">Rules</div>
+                                            <div class="obsidian-sidebar-item">Priority</div>
+                                            <div class="obsidian-sidebar-item">Memory</div>
                                         </div>
                                         <div class="obsidian-main">
-                                            <div style="width: 100%; height: 100%; background: url('../assets/images/dialogue-flow-sketch.jpg') center/contain no-repeat;"></div>
+                                            <img src="../assets/images/dialogue-flow-sketch.jpg" alt="Dialogue flow sketch" style="width: 100%; height: 100%; object-fit: contain;">
                                         </div>
                                     </div>
                                 </div>
@@ -113,37 +135,37 @@
 
                     <!-- Priority Ladder -->
                     <div>
-                        <div class="priority-ladder" style="background: var(--color-bg-card-dark); border-radius: 12px; padding: 32px; margin: 0;">
-                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 24px; text-align: center;">Rule Priority System</h3>
-                            <div style="position: relative; padding: 0 40px; min-height: 350px;">
-                                <div style="position: absolute; top: 0; bottom: 0; width: 2px; background: var(--color-border); left: 20px;"></div>
-                                <div style="position: absolute; top: 0; bottom: 0; width: 2px; background: var(--color-border); right: 20px;"></div>
+                        <div class="priority-ladder">
+                            <h3>Rule Priority System</h3>
+                            <div class="priority-ladder-container">
+                                <div class="priority-ladder-rail left"></div>
+                                <div class="priority-ladder-rail right"></div>
                                 
-                                <div class="ladder-rung" style="position: relative; margin-bottom: 40px; padding: 16px 24px; background: var(--color-bg-card-medium); border-radius: 8px; transition: all 0.3s; cursor: pointer;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <span style="font-size: 15px;">Weather + Time + Relationship + Location</span>
-                                        <span style="font-size: 14px; font-weight: 700; color: var(--color-sage); font-family: var(--font-mono);">High</span>
+                                <div class="ladder-rung">
+                                    <div class="ladder-rung-content">
+                                        <span class="ladder-rung-text">Weather + Time + Relationship + Location</span>
+                                        <span class="priority-high">High</span>
                                     </div>
                                 </div>
                                 
-                                <div class="ladder-rung" style="position: relative; margin-bottom: 40px; padding: 16px 24px; background: var(--color-bg-card-medium); border-radius: 8px; transition: all 0.3s; cursor: pointer;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <span style="font-size: 15px;">Time + Relationship</span>
-                                        <span style="font-size: 14px; font-weight: 700; color: var(--color-sage); font-family: var(--font-mono);">Medium</span>
+                                <div class="ladder-rung">
+                                    <div class="ladder-rung-content">
+                                        <span class="ladder-rung-text">Time + Relationship</span>
+                                        <span class="priority-medium">Medium</span>
                                     </div>
                                 </div>
                                 
-                                <div class="ladder-rung" style="position: relative; margin-bottom: 40px; padding: 16px 24px; background: var(--color-bg-card-medium); border-radius: 8px; transition: all 0.3s; cursor: pointer;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <span style="font-size: 15px;">Time only</span>
-                                        <span style="font-size: 14px; font-weight: 700; color: var(--color-sage); font-family: var(--font-mono);">Low</span>
+                                <div class="ladder-rung">
+                                    <div class="ladder-rung-content">
+                                        <span class="ladder-rung-text">Time only</span>
+                                        <span class="priority-low">Low</span>
                                     </div>
                                 </div>
                                 
-                                <div class="ladder-rung" style="position: relative; margin-bottom: 40px; padding: 16px 24px; background: var(--color-bg-card-medium); border-radius: 8px; transition: all 0.3s; cursor: pointer;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <span style="font-size: 15px;">Default fallback</span>
-                                        <span style="font-size: 14px; font-weight: 700; color: var(--color-sage); font-family: var(--font-mono);">Lowest</span>
+                                <div class="ladder-rung">
+                                    <div class="ladder-rung-content">
+                                        <span class="ladder-rung-text">Default fallback</span>
+                                        <span class="priority-low">Lowest</span>
                                     </div>
                                 </div>
                             </div>
@@ -155,71 +177,71 @@
                 <!-- Technical Implementation -->
                 <div class="fade-in-up section-spacing">
                     <h2 class="section-title blue">Technical Implementation</h2>
-                    <p style="color: var(--color-text-secondary); font-size: 18px; line-height: 1.7; margin-bottom: 48px; font-style: italic;">
-                        Inspired by <a href="https://www.youtube.com/watch?v=tAbBID3N64A" target="_blank" style="color: var(--color-sage); text-decoration: none;">Elan Ruskin's GDC talk</a> on dynamic dialogue.
+                    <p class="section-description mt-lg">
+                        <em>Inspired by <a href="https://www.youtube.com/watch?v=tAbBID3N64A" target="_blank" class="link-sage">Elan Ruskin's GDC talk</a> on dynamic dialogue.</em>
                     </p>
                     
                     <!-- Visual Flow -->
-                    <div style="text-align: center; margin-bottom: 48px; overflow-x: auto;">
-                        <div class="dialogue-flow-chart" style="display: inline-flex; align-items: center; gap: 32px; padding: 32px; background: var(--color-bg-card-dark); border-radius: 12px; min-width: fit-content;">
+                    <div class="text-center mb-xl" style="overflow-x: auto;">
+                        <div class="dialogue-flow-chart">
                             <!-- Facts -->
                             <div>
-                                <div style="font-family: var(--font-mono); font-size: 14px; text-align: left; color: var(--color-text-muted); line-height: 1.6;">
+                                <div class="world-state">
                                     <div>weather: rain</div>
                                     <div>time: evening</div>
                                     <div>met_player: no</div>
                                 </div>
-                                <div style="margin-top: 8px; font-size: 13px; color: var(--color-sage);">World State</div>
+                                <div class="world-state-label">World State</div>
                             </div>
                             
                             <!-- Arrow -->
-                            <div class="flow-arrow" style="font-size: 24px; color: var(--color-text-muted);">→</div>
+                            <div class="flow-arrow">→</div>
                             
                             <!-- Rules -->
-                            <div>
-                                <div style="font-size: 16px; color: var(--color-text-primary); margin-bottom: 4px;">Find best match</div>
-                                <div style="font-size: 13px; color: var(--color-blue);">Rule Engine</div>
+                            <div class="rule-engine">
+                                <div class="rule-engine-title">Find best match</div>
+                                <div class="rule-engine-label">Rule Engine</div>
                             </div>
                             
                             <!-- Arrow -->
-                            <div class="flow-arrow" style="font-size: 24px; color: var(--color-text-muted);">→</div>
+                            <div class="flow-arrow">→</div>
                             
                             <!-- Output -->
-                            <div>
-                                <div style="font-size: 15px; color: var(--color-text-secondary); font-style: italic; max-width: 200px;">
+                            <div class="dialogue-output">
+                                <div class="dialogue-output-text">
                                     "Terrible weather for introductions..."
                                 </div>
-                                <div style="margin-top: 8px; font-size: 13px; color: var(--color-orange);">Dialogue Output</div>
+                                <div class="dialogue-output-label">Dialogue Output</div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Core Innovation -->
-                    <div class="content-grid" style="gap: 32px;">
+                    <div class="content-grid gap-lg">
                         <div>
-                            <h3 style="font-size: 20px; color: var(--color-text-primary); margin: 0 0 16px;">The approach</h3>
-                            <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-secondary);">
+                            <h3 class="section-heading">The approach</h3>
+                            <p class="section-paragraph">
                                 Instead of writing every possible conversation, you define facts about the world and rules that respond to them. The system figures out the rest.
                             </p>
-                            <p style="font-size: 16px; line-height: 1.7; color: var(--color-text-secondary); margin-top: 16px;">
+                            <p class="section-paragraph mt-base">
                                 More specific rules automatically win. A rule checking three conditions beats one checking two. Always finds the best match.
                             </p>
                         </div>
                         
-                        <div style="background: var(--color-bg-card-darkest); padding: 28px; border-radius: 8px;">
-                            <h4 style="font-size: 16px; color: var(--color-text-primary); margin: 0 0 16px;">Key components</h4>
-                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="key-components-box">
+                            <h4 class="key-components-title">Key components</h4>
+                            <div class="key-components-list">
                                 <div>
-                                    <span style="color: var(--color-sage); font-weight: 600;">Fact Dictionaries</span>
-                                    <span style="color: var(--color-text-muted); margin-left: 8px;">— Track world state</span>
+                                    <span class="component-item-name">Fact Dictionaries</span>
+                                    <span class="component-item-desc">— Track world state</span>
                                 </div>
                                 <div>
-                                    <span style="color: var(--color-blue); font-weight: 600;">Entry Selector</span>
-                                    <span style="color: var(--color-text-muted); margin-left: 8px;">— Find best rule</span>
+                                    <span class="component-item-name blue">Entry Selector</span>
+                                    <span class="component-item-desc">— Find best rule</span>
                                 </div>
                                 <div>
-                                    <span style="color: var(--color-orange); font-weight: 600;">Response Processor</span>
-                                    <span style="color: var(--color-text-muted); margin-left: 8px;">— Output & update</span>
+                                    <span class="component-item-name orange">Response Processor</span>
+                                    <span class="component-item-desc">— Output & update</span>
                                 </div>
                             </div>
                         </div>
@@ -308,6 +330,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="../js/theme.js"></script>
     <script src="../js/components.js"></script>
     <script src="../js/animations.js"></script>
     <script>

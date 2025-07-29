@@ -6,6 +6,28 @@
    NAVIGATION
    ============================================================================= */
 
+/* Light mode navigation colors */
+[data-theme="light"] .nav {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .nav-brand {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+[data-theme="light"] .nav-link {
+  color: #cbd5e0;
+}
+
+[data-theme="light"] .nav-link:hover {
+  color: #ffffff;
+}
+
+[data-theme="light"] .nav-link.active {
+  color: #a8d5ba;
+}
+
 .nav {
   position: fixed;
   top: 0;
@@ -71,6 +93,11 @@
   transform: scaleX(0);
   transform-origin: right;
   transition: transform var(--transition-base);
+}
+
+/* Light mode - sage underline */
+[data-theme="light"] .nav-link::after {
+  background: var(--color-sage-light);
 }
 
 .nav-link:hover::after,
@@ -408,6 +435,17 @@
 /* =============================================================================
    FOOTER
    ============================================================================= */
+
+/* Light mode footer colors */
+[data-theme="light"] .footer-title,
+[data-theme="light"] .footer-link,
+[data-theme="light"] .footer-credits {
+  color: #e8e8e8;
+}
+
+[data-theme="light"] .footer-link:hover {
+  color: #ffffff;
+}
 
 .footer {
   background: var(--color-footer-bg);
